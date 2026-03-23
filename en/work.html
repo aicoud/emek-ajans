@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Our Work — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans portfolio — campaigns, web, PR, events."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+  .page-hero{height:52vh;min-height:380px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:4rem 5vw;padding-top:68px;}
+  .page-hero-img{position:absolute;inset:0;}.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.78) 0%,rgba(26,26,26,.28) 60%,transparent 100%);}
+  .page-hero-content{position:relative;z-index:1;}.page-hero-content .serif-title{color:#fff;font-size:clamp(2.5rem,5vw,4.5rem);}.page-hero-content .section-label{color:rgba(255,255,255,.6);}
+  
+.filter-bar{background:var(--beige);padding:2.5rem 5vw;border-bottom:1px solid rgba(0,0,0,.07);}
+.filter-tabs{display:flex;gap:.75rem;flex-wrap:wrap;}
+.filter-tab{padding:.55rem 1.25rem;border-radius:2px;border:1.5px solid rgba(0,0,0,.12);font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--text-m);transition:all .2s;}
+.filter-tab:hover,.filter-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.work-grid-section{background:var(--beige);padding:4rem 5vw;}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.work-item{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;background:var(--beige-dd);transition:opacity .5s,filter .5s;}
+.work-item.dimmed{opacity:.12;filter:grayscale(.6);pointer-events:none;}
+.work-item-img{aspect-ratio:4/3;overflow:hidden;}
+.work-item-img img{transition:transform .7s;}
+.work-item:hover .work-item-img img{transform:scale(1.07);}
+.work-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.65),transparent 55%);opacity:0;transition:opacity .4s;}
+.work-item:hover .work-item-overlay{opacity:1;}
+.work-item-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;transform:translateY(10px);opacity:0;transition:all .4s;}
+.work-item:hover .work-item-info{opacity:1;transform:none;}
+.work-item-cat{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.3rem;}
+.work-item-title{font-size:1rem;font-weight:700;color:#fff;line-height:1.3;}
+.work-item-featured{grid-column:span 2;}
+@media(max-width:900px){.work-item-featured{grid-column:span 1;}.work-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.work-grid{grid-template-columns:1fr;}.work-item-featured{grid-column:span 1;}}
+
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="../index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links"><li><a href="../services.html">Services</a></li><li><a href="../work.html" class="active">Our Work</a></li><li><a href="../about.html">About</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇬🇧 EN</span><span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Close" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../services.html" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="../work.html" onclick="closeMobileNav()">Our Work</a></li>
+      <li><a href="../about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="../blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="../contact.html" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn " data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn active" data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1920&q=80" alt="Our Work"/></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">Our Work</span><h1 class="serif-title">Stories worth<br/>sharing.</h1></div>
+</div>
+<div class="filter-bar"><div class="filter-tabs">
+  <button class="filter-tab active" data-cat="all">All</button>
+  <button class="filter-tab" data-cat="digital">Digital Marketing</button>
+  <button class="filter-tab" data-cat="brand">Brand Identity</button>
+  <button class="filter-tab" data-cat="pr">Public Relations</button>
+  <button class="filter-tab" data-cat="media">Media Planning</button>
+  <button class="filter-tab" data-cat="web">Web Design</button>
+  <button class="filter-tab" data-cat="event">Events</button>
+</div></div>
+<div class="work-grid-section"><div class="work-grid">
+  <div class="work-item work-item-featured reveal" data-cat="brand"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Brand Campaign</span><div class="work-item-title">360° Brand Campaign — OOH & Digital Integration</div></div></div>
+  <div class="work-item reveal" data-cat="brand"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Brand Identity</span><div class="work-item-title">Corporate Identity Refresh</div></div></div>
+  <div class="work-item reveal" data-cat="digital"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Digital Marketing</span><div class="work-item-title">Performance Marketing Campaign</div></div></div>
+  <div class="work-item reveal" data-cat="web"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Web Design</span><div class="work-item-title">Corporate Website Design & Development</div></div></div>
+  <div class="work-item reveal" data-cat="event"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Event Management</span><div class="work-item-title">Annual Corporate Conference — 1,200 Attendees</div></div></div>
+  <div class="work-item reveal" data-cat="pr"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Public Relations</span><div class="work-item-title">Product Launch PR Campaign</div></div></div>
+  <div class="work-item work-item-featured reveal" data-cat="digital"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Strategy</span><div class="work-item-title">Integrated Communications Strategy — 12-Month Roadmap</div></div></div>
+  <div class="work-item reveal" data-cat="digital"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">Social Media</span><div class="work-item-title">Social Media Strategy & Management</div></div></div>
+  <div class="work-item reveal" data-cat="media"><div class="work-item-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt=""/></div><div class="work-item-overlay"></div><div class="work-item-info"><span class="work-item-cat">SEO & Digital</span><div class="work-item-title">SEO & UX Optimisation — 180% Traffic Increase</div></div></div>
+</div></div>
+<script>
+document.querySelectorAll('.filter-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.filter-tab').forEach(function(t){t.classList.remove('active');});tab.classList.add('active');var cat=tab.dataset.cat;document.querySelectorAll('.work-item').forEach(function(item){item.classList.toggle('dimmed',cat!=='all'&&item.dataset.cat!==cat);});});});
+</script>
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="../index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">strategic · creative · communications agency · Since 1967 · Istanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Services</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../services.html">Digital Marketing</a><br/><a href="../services.html">Web Design</a><br/><a href="../services.html">Brand Identity</a><br/><a href="../services.html">PR</a><br/><a href="../services.html">Media Planning</a></div></div>
+    <div><div class="footer-col-title">Company</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../about.html">About</a><br/><a href="../work.html">Our Work</a><br/><a href="../blog.html">Blog</a><br/><a href="../contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Istanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / Istanbul</div></div>
+    <div><div class="footer-col-title">Certifications</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Years<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Social Media</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. All rights reserved.</p><ul class="footer-legal"><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookies</a></li></ul></div>
+</footer>
+<script>
+  const _nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>_nav.classList.toggle('scrolled',window.scrollY>30));
+  const _obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('up');_obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>_obs.observe(el));
+</script>
+<script src="../lang.js"></script>
+</body></html>

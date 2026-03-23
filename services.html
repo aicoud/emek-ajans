@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hizmetler — Emek Ajans</title>
+  <meta name="description" content="360° entegre hizmetler: dijital pazarlama, web tasarım, kurumsal kimlik, halkla ilişkiler, medya planlaması ve etkinlik yönetimi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .services-intro { background: var(--beige); padding: 7rem 5vw; }
+    .services-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .services-intro-text .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); font-style: italic; margin-bottom: 1.5rem; }
+    .services-intro-text p { font-size: 0.92rem; color: var(--text-m); line-height: 1.9; margin-bottom: 1.25rem; }
+    .services-intro-text strong { color: var(--navy); font-weight: 600; }
+    .services-intro-img { aspect-ratio: 4/3; overflow: hidden; border-radius: 2px; }
+    .services-intro-img img { transition: transform 0.8s var(--ease); }
+    .services-intro:hover .services-intro-img img { transform: scale(1.04); }
+
+    .service-block { padding: 7rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+    .service-block-alt { background: var(--beige-d); }
+    .service-block-dark { background: var(--navy); }
+    .service-block-web { background: var(--beige); border-top: 1px solid rgba(0,0,0,0.07); }
+    .service-num-large { font-family: var(--serif); font-size: 5.5rem; font-weight: 900; color: rgba(0,0,0,0.06); line-height: 1; margin-bottom: -1.5rem; display: block; }
+    .service-num-large.light { color: rgba(255,255,255,0.06); }
+    .service-block-title { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 900; font-style: italic; color: var(--navy); margin-bottom: 1rem; line-height: 1.1; }
+    .service-block-title.light { color: var(--white); }
+    .service-block-desc { font-size: 0.9rem; color: var(--text-m); line-height: 1.9; margin-bottom: 1.5rem; }
+    .service-block-desc.light { color: rgba(255,255,255,0.55); }
+    .service-block-desc strong { color: var(--navy); font-weight: 600; }
+    .service-block-desc.light strong { color: rgba(255,255,255,0.9); }
+    .service-bullets { list-style: none; margin-bottom: 2rem; }
+    .service-bullets li { font-size: 0.82rem; color: var(--text-m); padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; gap: 0.75rem; }
+    .service-bullets li::before { content: '→'; color: var(--orange); font-weight: 700; }
+    .service-bullets.light li { color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.07); }
+    .service-img { aspect-ratio: 4/3; overflow: hidden; border-radius: 2px; position: relative; }
+    .service-img img { transition: transform 0.8s var(--ease); }
+    .service-block:hover .service-img img { transform: scale(1.05); }
+    .service-img-tag { position: absolute; bottom: 1.5rem; right: 1.5rem; background: var(--orange); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.5rem 1rem; border-radius: 1px; }
+
+    .digital-section { background: var(--beige); padding: 7rem 5vw; }
+    .digital-header { margin-bottom: 4rem; }
+    .digital-header .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; }
+    .digital-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .digital-card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 2px; overflow: hidden; transition: transform 0.4s var(--ease), box-shadow 0.4s; }
+    .digital-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+    .digital-card-img { height: 160px; overflow: hidden; }
+    .digital-card-img img { transition: transform 0.6s var(--ease); }
+    .digital-card:hover .digital-card-img img { transform: scale(1.07); }
+    .digital-card-body { padding: 1.5rem; }
+    .digital-card-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .digital-card-desc { font-size: 0.78rem; color: var(--text-m); line-height: 1.7; }
+
+    .partner-strip { background: var(--navy); padding: 3rem 5vw; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .partner-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 1rem 2rem; text-align: center; color: var(--white); min-width: 180px; }
+    .partner-badge-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; }
+    .partner-badge-sub { font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+    .process-section { background: var(--beige-d); padding: 7rem 5vw; }
+    .process-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; text-align: center; margin-bottom: 4rem; color: var(--navy); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(0,0,0,0.06); overflow: hidden; }
+    .process-step { background: var(--beige-d); padding: 2.5rem 2rem; }
+    .process-num { font-family: var(--serif); font-size: 3rem; font-weight: 900; color: var(--orange); line-height: 1; opacity: 0.5; display: block; margin-bottom: 0.75rem; }
+    .process-step-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .process-step-desc { font-size: 0.8rem; color: var(--text-m); line-height: 1.75; }
+
+    .services-cta { background: var(--orange); padding: 6rem 5vw; text-align: center; }
+    .services-cta .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--white); font-style: italic; margin-bottom: 1rem; }
+    .services-cta p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 2rem; }
+
+    @media(max-width:1024px){
+      .services-intro-grid{grid-template-columns:1fr;gap:3rem;}
+      .service-block{grid-template-columns:1fr;gap:3rem;}
+      .service-block.reverse{direction:ltr;}
+      .digital-grid{grid-template-columns:1fr 1fr;}
+      .process-steps{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:640px){.digital-grid{grid-template-columns:1fr;}.process-steps{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Hizmetler</a></li>
+    <li><a href="work.html">Çalışmalarımız</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Kapat" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Hizmetler</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">&#xC7;al&#x131;&#x15F;malar&#x131;m&#x131;z</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">Hakk&#x131;m&#x131;zda</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">&#x130;leti&#x15F;im</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Dil / Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn active" data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn " data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1920&q=80" alt="Yaratıcı ajans" />
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="section-label">Hizmetler ve Çözümler</span>
+    <h1 class="serif-title">Markanız için<br/>tek duraksız çözüm noktası.</h1>
+  </div>
+</div>
+
+<section class="services-intro">
+  <div class="services-intro-grid">
+    <div class="services-intro-text reveal-left">
+      <span class="section-label">360° Entegre</span>
+      <h2 class="serif-title">Markanızın ihtiyacı olan her şey için tek ortak.</h2>
+      <p>Günümüz ekosisteminde markalar <strong>bütünleşik bir iletişim ortağı</strong> beklemektedir. Dijitalden fiziksel olana, yaratıcıdan veriye kadar her kanalda uyumlu bir yaklaşım sunan bir ajans.</p>
+      <p>Emek Ajans'ta tüm disiplinler <strong>tek bir stratejiden</strong> beslenir. Her hizmet birbirini güçlendirir — gerçek entegrasyonun anlamı budur.</p>
+      <a href="contact.html" class="btn btn-navy" style="margin-top:0.75rem;">Projeyi Başlatalım</a>
+    </div>
+    <div class="services-intro-img reveal-right">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Strateji toplantısı" />
+    </div>
+  </div>
+</section>
+
+<!-- 01 — DİJİTAL PAZARLAMA -->
+<div class="service-block">
+  <div class="reveal-left">
+    <span class="service-num-large">01</span>
+    <h2 class="service-block-title">Veri Odaklı<br/>Dijital Pazarlama</h2>
+    <p class="service-block-desc">Hedef kitlenizin davranış ve arama niyetini analiz ederek <strong>dönüşüm sağlayan kampanyalar</strong> kuruyoruz. Her karar veriye dayalı, her bütçe lirası hesaplıdır.</p>
+    <ul class="service-bullets">
+      <li>Hedef kitle segmentasyonu ve strateji</li>
+      <li>Kampanya planlama, uygulama ve optimizasyon</li>
+      <li>Performans takibi ve raporlama panoları</li>
+      <li>A/B testi ve dönüşüm oranı optimizasyonu</li>
+    </ul>
+    <a href="contact.html" class="btn btn-navy">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-right">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Dijital pazarlama analitik" />
+    <span class="service-img-tag">Veri Odaklı</span>
+  </div>
+</div>
+
+<!-- 02 — WEB TASARIM -->
+<div class="service-block service-block-web reverse">
+  <div class="reveal-right">
+    <span class="service-num-large">02</span>
+    <h2 class="service-block-title">Web Tasarım &amp;<br/>Dijital Deneyim</h2>
+    <p class="service-block-desc">Markanızı dijitalde <strong>en çarpıcı şekilde</strong> temsil eden, hızlı yüklenen, SEO uyumlu ve kullanıcı dostu web siteleri tasarlıyoruz. Landing page'den e-ticarete kadar <strong>uçtan uca</strong> dijital deneyim.</p>
+    <ul class="service-bullets">
+      <li>Kurumsal web sitesi tasarımı ve geliştirme</li>
+      <li>UI/UX analizi ve kullanıcı deneyimi optimizasyonu</li>
+      <li>Landing page ve kampanya siteleri</li>
+      <li>E-ticaret çözümleri ve dönüşüm optimizasyonu</li>
+    </ul>
+    <a href="contact.html" class="btn btn-navy">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-left">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Web tasarım geliştirme" />
+    <span class="service-img-tag">Web &amp; UX</span>
+  </div>
+</div>
+
+<!-- 03 — KURUMSAL KİMLİK -->
+<div class="service-block service-block-alt">
+  <div class="reveal-left">
+    <span class="service-num-large">03</span>
+    <h2 class="service-block-title">Kurumsal Kimlik &amp;<br/>Yaratıcı Hizmetler</h2>
+    <p class="service-block-desc"><strong>Tanınırlık ve güven</strong> inşa eden marka sistemleri tasarlıyoruz. Logodan tam kampanya yaratıma kadar her şey tutarlılık ve etki için tasarlanmıştır.</p>
+    <ul class="service-bullets">
+      <li>Marka stratejisi ve konumlandırma</li>
+      <li>Logo tasarımı ve görsel kimlik sistemleri</li>
+      <li>Reklam kampanyaları ve yaratıcı yönetim</li>
+      <li>Baskı, dijital ve ambalaj tasarımı</li>
+    </ul>
+    <a href="contact.html" class="btn btn-navy">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-right">
+    <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=900&q=80" alt="Kurumsal kimlik tasarım" />
+    <span class="service-img-tag">Yaratıcı</span>
+  </div>
+</div>
+
+<!-- 04 — HALKLA İLİŞKİLER -->
+<div class="service-block service-block-dark reverse">
+  <div class="reveal-right">
+    <span class="service-num-large light">04</span>
+    <h2 class="service-block-title light">Halkla İlişkiler &amp;<br/>Kurumsal İletişim</h2>
+    <p class="service-block-desc light">Markaların paydaşlarıyla, medyayla ve kamuoyuyla <strong>doğru şekilde iletişim kurmasına</strong> yardımcı oluyoruz. Kriz yönetimi, basın ilişkileri ve stratejik hikâye anlatımı.</p>
+    <ul class="service-bullets light">
+      <li>Basın bültenleri ve medya ilişkileri</li>
+      <li>Kriz iletişimi planlaması</li>
+      <li>Paydaş ve yatırımcı iletişimi</li>
+      <li>İç iletişim stratejisi</li>
+    </ul>
+    <a href="contact.html" class="btn btn-orange">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-left">
+    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80" alt="Halkla ilişkiler" />
+    <span class="service-img-tag">PR</span>
+  </div>
+</div>
+
+<!-- 05 — MEDYA PLANLAMA -->
+<div class="service-block service-block-alt">
+  <div class="reveal-left">
+    <span class="service-num-large">05</span>
+    <h2 class="service-block-title">Medya Planlaması<br/>&amp; Satın Alma</h2>
+    <p class="service-block-desc">TV, radyo, baskı, dijital ve açıkhavada <strong>çok kanallı medya stratejileri</strong> — erişim, frekans ve bütçe verimliliği için optimize edilmiş. Her medya liranızdan en fazlayı alıyoruz.</p>
+    <ul class="service-bullets">
+      <li>Çok kanallı medya stratejisi</li>
+      <li>TV, radyo ve açıkhava planlaması</li>
+      <li>Dijital görüntüleme ve programatik satın alma</li>
+      <li>Medya denetimi ve harcama analizi</li>
+    </ul>
+    <a href="contact.html" class="btn btn-navy">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-right">
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80" alt="Medya planlaması" />
+    <span class="service-img-tag">Medya</span>
+  </div>
+</div>
+
+<!-- 06 — ETKİNLİK YÖNETİMİ -->
+<div class="service-block">
+  <div class="reveal-left">
+    <span class="service-num-large">06</span>
+    <h2 class="service-block-title">Etkinlik &amp;<br/>Organizasyon Yönetimi</h2>
+    <p class="service-block-desc">Konseptten sahne arkasına kadar — mekân seçimi, prodüksiyon, lojistik, konuşmacı yönetimi ve marka aktivasyonu. <strong>Profesyonel, marka uyumlu</strong> ve akılda kalan etkinlikler.</p>
+    <ul class="service-bullets">
+      <li>Kurumsal etkinlikler ve konferanslar</li>
+      <li>Ürün lansmanları ve aktivasyonlar</li>
+      <li>Basın toplantıları ve fuar katılımları</li>
+      <li>Tam proje yönetimi ve prodüksiyon</li>
+    </ul>
+    <a href="contact.html" class="btn btn-navy">Teklif Al</a>
+  </div>
+  <div class="service-img reveal-right">
+    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt="Etkinlik yönetimi" />
+    <span class="service-img-tag">Etkinlik</span>
+  </div>
+</div>
+
+<!-- DİJİTAL ÇÖZÜMLER GRID -->
+<section class="digital-section">
+  <div class="digital-header">
+    <span class="section-label">Dijital Yetenekler</span>
+    <h2 class="serif-title reveal">Dijital pazarlama<br/>çözümlerimiz.</h2>
+  </div>
+  <div class="digital-grid">
+    <div class="digital-card reveal">
+      <div class="digital-card-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=600&q=80" alt="Google Ads" /></div>
+      <div class="digital-card-body">
+        <div class="digital-card-title">Google Ads</div>
+        <p class="digital-card-desc">8 yıllık sertifikalı Google Partner ekibiyle Arama, Görüntülü ve Alışveriş kampanyaları. Maksimum ROI, minimum israf.</p>
+      </div>
+    </div>
+    <div class="digital-card reveal">
+      <div class="digital-card-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt="Sosyal Medya" /></div>
+      <div class="digital-card-body">
+        <div class="digital-card-title">Sosyal Medya Yönetimi</div>
+        <p class="digital-card-desc">Meta, LinkedIn ve TikTok'ta içerik üretimi, topluluk yönetimi ve ücretli sosyal medya reklamları.</p>
+      </div>
+    </div>
+    <div class="digital-card reveal">
+      <div class="digital-card-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="SEO" /></div>
+      <div class="digital-card-body">
+        <div class="digital-card-title">SEO &amp; UX/UI Analizi</div>
+        <p class="digital-card-desc">Teknik SEO, içerik stratejisi ve dönüşüm odaklı UX iyileştirmeleriyle organik görünürlük.</p>
+      </div>
+    </div>
+    <div class="digital-card reveal">
+      <div class="digital-card-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Web Tasarım" /></div>
+      <div class="digital-card-body">
+        <div class="digital-card-title">Web Tasarım &amp; Geliştirme</div>
+        <p class="digital-card-desc">Kurumsal web siteleri, landing page'ler, e-ticaret ve kampanya siteleri — SEO uyumlu ve kullanıcı dostu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="partner-strip">
+  <div class="partner-badge reveal"><div class="partner-badge-title">Google Partner</div><div class="partner-badge-sub">Sertifikalı · 8+ Yıl</div></div>
+  <div class="partner-badge reveal"><div class="partner-badge-title">Meta Business Partner</div><div class="partner-badge-sub">Facebook · Instagram Reklamları</div></div>
+  <div class="partner-badge reveal"><div class="partner-badge-title">360° Entegre</div><div class="partner-badge-sub">1967'den Beri Tam Hizmet</div></div>
+</div>
+
+<section class="process-section">
+  <h2 class="process-title reveal">Nasıl çalışırız.</h2>
+  <div class="process-steps">
+    <div class="process-step reveal"><span class="process-num">01</span><div class="process-step-title">Keşfet</div><p class="process-step-desc">Markanıza, hedef kitlenize, rekabetçi bağlama ve iş hedeflerinize tamamen dalıyoruz.</p></div>
+    <div class="process-step reveal"><span class="process-num">02</span><div class="process-step-title">Strateji Kur</div><p class="process-step-desc">Tüm kanalları tek ölçülebilir hedefe yönelten entegre bir iletişim stratejisi geliştiriyoruz.</p></div>
+    <div class="process-step reveal"><span class="process-num">03</span><div class="process-step-title">Yarat &amp; Uygula</div><p class="process-step-desc">Yaratıcı ve medya ekiplerimiz stratejiyi hayata geçirir — zamanında, marka uyumlu ve bütçe dahilinde.</p></div>
+    <div class="process-step reveal"><span class="process-num">04</span><div class="process-step-title">Ölç &amp; Optimize Et</div><p class="process-step-desc">Her metriği takip ediyor, şeffaf raporluyoruz ve daha iyi sonuçlar için sürekli optimize ediyoruz.</p></div>
+  </div>
+</section>
+
+<section class="services-cta">
+  <h2 class="serif-title reveal">Başlamaya hazır mısınız?</h2>
+  <p class="reveal">Markanız hakkında bize anlatın, birlikte doğru çözümü bulalım.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal">
+    <a href="contact.html" class="btn btn-outline-white">Bize Ulaşın</a>
+    <a href="work.html" class="btn" style="background:#fff;color:var(--orange);">Çalışmalarımızı Gör</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a>
+      <a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a>
+      <a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a>
+    </div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Hizmetler</div><hr class="footer-rule"/><div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br/><a href="services.html">Web Tasarım</a><br/><a href="services.html">Kurumsal Kimlik</a><br/><a href="services.html">Halkla İlişkiler</a><br/><a href="services.html">Medya Planlaması</a></div></div>
+    <div><div class="footer-col-title">Kurumsal</div><hr class="footer-rule"/><div class="footer-col-body"><a href="about.html">Hakkımızda</a><br/><a href="work.html">Çalışmalarımız</a><br/><a href="blog.html">Blog</a><br/><a href="contact.html">İletişim</a></div></div>
+    <div><div class="footer-col-title">İstanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / İstanbul</div></div>
+    <div><div class="footer-col-title">Sertifikalar</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Yıl<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Sosyal Medya Yönetimi</div></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p>
+    <ul class="footer-legal"><li><a href="#">KVKK Politikası</a></li><li><a href="#">Çerez Politikası</a></li><li><a href="#">Gizlilik</a></li></ul>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+  <script src="lang.js"></script>
+</body>
+</html>

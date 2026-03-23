@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Blog — Emek Ajans</title>
+  <meta name="description" content="Insights and perspectives from the Emek Ajans team."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+  .page-hero{height:52vh;min-height:380px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:4rem 5vw;padding-top:68px;}
+  .page-hero-img{position:absolute;inset:0;}.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.78) 0%,rgba(26,26,26,.28) 60%,transparent 100%);}
+  .page-hero-content{position:relative;z-index:1;}.page-hero-content .serif-title{color:#fff;font-size:clamp(2.5rem,5vw,4.5rem);}.page-hero-content .section-label{color:rgba(255,255,255,.6);}
+  
+.featured-post{background:var(--beige);padding:5rem 5vw;}
+.featured-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border:1px solid rgba(0,0,0,.07);border-radius:2px;overflow:hidden;background:var(--white);}
+.featured-img{overflow:hidden;min-height:360px;}
+.featured-img img{transition:transform .8s;}
+.featured-inner:hover .featured-img img{transform:scale(1.05);}
+.featured-body{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.featured-tag{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.85rem;display:block;}
+.featured-title{font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:1rem;}
+.featured-excerpt{font-size:.88rem;color:var(--text-m);line-height:1.85;margin-bottom:1.5rem;}
+.featured-meta{font-size:.68rem;color:var(--text-l);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+.blog-section{background:var(--beige);padding:0 5vw 7rem;}
+.blog-section-title{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:var(--navy);margin-bottom:2.5rem;}
+.blog-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.blog-post{background:var(--white);border:1px solid rgba(0,0,0,.07);border-radius:2px;overflow:hidden;text-decoration:none;display:block;transition:transform .4s,box-shadow .4s;}
+.blog-post:hover{transform:translateY(-7px);box-shadow:0 20px 48px rgba(0,0,0,.08);}
+.blog-post-img{height:200px;overflow:hidden;}
+.blog-post-img img{transition:transform .6s;}
+.blog-post:hover .blog-post-img img{transform:scale(1.07);}
+.blog-post-body{padding:1.5rem;}
+.blog-post-cat{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem;display:block;}
+.blog-post-title{font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.6rem;}
+.blog-post-excerpt{font-size:.78rem;color:var(--text-m);line-height:1.7;margin-bottom:1rem;}
+.blog-post-meta{font-size:.65rem;color:var(--text-l);text-transform:uppercase;letter-spacing:.08em;border-top:1px solid rgba(0,0,0,.06);padding-top:.75rem;}
+@media(max-width:1024px){.featured-inner{grid-template-columns:1fr;}.blog-list{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.blog-list{grid-template-columns:1fr;}}
+
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="../index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links"><li><a href="../services.html">Services</a></li><li><a href="../work.html">Our Work</a></li><li><a href="../about.html">About</a></li><li><a href="../blog.html" class="active">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇬🇧 EN</span><span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Close" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../services.html" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="../work.html" onclick="closeMobileNav()">Our Work</a></li>
+      <li><a href="../about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="../blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="../contact.html" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn " data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn active" data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?auto=format&fit=crop&w=1920&q=80" alt="Blog"/></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">Blog</span><h1 class="serif-title">Insights &<br/>perspectives.</h1></div>
+</div>
+<section class="featured-post">
+  <div class="featured-inner reveal">
+    <div class="featured-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=80" alt="GEO"/></div>
+    <div class="featured-body">
+      <span class="featured-tag">Featured · GEO · Strategy</span>
+      <h2 class="featured-title">Capturing the Future with GEO (Generative Engine Optimisation)</h2>
+      <p class="featured-excerpt">The rise of AI assistants like ChatGPT, Gemini and Claude is fundamentally changing how brands are discovered — and how digital marketing must evolve.</p>
+      <div class="featured-meta">March 2026 · 8 min read</div>
+      <a href="#" class="btn btn-navy">Read Article</a>
+    </div>
+  </div>
+</section>
+<section class="blog-section">
+  <h2 class="blog-section-title reveal">Latest articles.</h2>
+  <div class="blog-list">
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Google Ads · Performance</span><div class="blog-post-title">The Complete Brand Guide to Google Search Ads</div><div class="blog-post-excerpt">The clearest signal of purchase intent and the channel that delivers the highest ROI.</div><div class="blog-post-meta">February 2026 · 6 min read</div></div></a>
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Public Relations</span><div class="blog-post-title">The Power of PR and Corporate Communications</div><div class="blog-post-excerpt">A strong communications strategy unlocks long-term brand value in a fast-changing landscape.</div><div class="blog-post-meta">January 2026 · 5 min read</div></div></a>
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Web Design · UX</span><div class="blog-post-title">Web Design Trends That Set Brands Apart in 2026</div><div class="blog-post-excerpt">UX, speed and conversion optimisation — the three pillars of modern web design.</div><div class="blog-post-meta">December 2025 · 7 min read</div></div></a>
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Data · Analytics</span><div class="blog-post-title">Why First-Party Data is Your Most Valuable Marketing Asset</div><div class="blog-post-excerpt">Brands investing in first-party data strategies gain competitive advantage as third-party cookies disappear.</div><div class="blog-post-meta">November 2025 · 9 min read</div></div></a>
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Events</span><div class="blog-post-title">The Return of Live Events: What Brands Need to Know</div><div class="blog-post-excerpt">Strategic and logistical lessons from managing 50+ corporate events in 2025.</div><div class="blog-post-meta">October 2025 · 6 min read</div></div></a>
+    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Social Media</span><div class="blog-post-title">Building Community on Social Media in 2026</div><div class="blog-post-excerpt">The shift from broadcasting to community building: how leading brands tackle this challenge.</div><div class="blog-post-meta">September 2025 · 5 min read</div></div></a>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="../index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">strategic · creative · communications agency · Since 1967 · Istanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Services</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../services.html">Digital Marketing</a><br/><a href="../services.html">Web Design</a><br/><a href="../services.html">Brand Identity</a><br/><a href="../services.html">PR</a><br/><a href="../services.html">Media Planning</a></div></div>
+    <div><div class="footer-col-title">Company</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../about.html">About</a><br/><a href="../work.html">Our Work</a><br/><a href="../blog.html">Blog</a><br/><a href="../contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Istanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / Istanbul</div></div>
+    <div><div class="footer-col-title">Certifications</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Years<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Social Media</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. All rights reserved.</p><ul class="footer-legal"><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookies</a></li></ul></div>
+</footer>
+<script>
+  const _nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>_nav.classList.toggle('scrolled',window.scrollY>30));
+  const _obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('up');_obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>_obs.observe(el));
+</script>
+<script src="../lang.js"></script>
+</body></html>

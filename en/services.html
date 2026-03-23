@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Services — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans — full-service communications agency."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+  .page-hero{height:52vh;min-height:380px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:4rem 5vw;padding-top:68px;}
+  .page-hero-img{position:absolute;inset:0;}.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.78) 0%,rgba(26,26,26,.28) 60%,transparent 100%);}
+  .page-hero-content{position:relative;z-index:1;}.page-hero-content .serif-title{color:#fff;font-size:clamp(2.5rem,5vw,4.5rem);}.page-hero-content .section-label{color:rgba(255,255,255,.6);}
+  
+.svc-block{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;}
+.svc-block:nth-child(even) .svc-block-img{order:2;}
+.svc-block-img{overflow:hidden;min-height:420px;}
+.svc-block-img img{transition:transform .8s;}
+.svc-block:hover .svc-block-img img{transform:scale(1.04);}
+.svc-block-body{padding:4rem 5vw;display:flex;flex-direction:column;justify-content:center;background:var(--beige);}
+.svc-block-num{font-size:5rem;font-weight:800;color:var(--mid-grey);line-height:1;margin-bottom:.5rem;}
+.svc-block-title{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:var(--navy);margin-bottom:1rem;}
+.svc-block-desc{font-size:.9rem;color:var(--text-m);line-height:1.85;margin-bottom:1.5rem;}
+.svc-block-desc strong{color:var(--navy);font-weight:600;}
+.svc-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--beige-dd);padding:.35rem .75rem;border-radius:1px;margin:.25rem .25rem 0 0;color:var(--text-m);}
+.svc-intro{background:var(--navy);padding:5rem 5vw;text-align:center;}
+.svc-intro h2{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:800;color:#fff;max-width:750px;margin:0 auto 1rem;line-height:1.25;}
+.svc-intro h2 strong{color:var(--orange);}
+.svc-intro p{font-size:.9rem;color:rgba(255,255,255,.45);max-width:55ch;margin:0 auto;line-height:1.9;}
+@media(max-width:900px){.svc-block{grid-template-columns:1fr;}.svc-block:nth-child(even) .svc-block-img{order:0;}}
+
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="../index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links"><li><a href="../services.html" class="active">Services</a></li><li><a href="../work.html">Our Work</a></li><li><a href="../about.html">About</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇬🇧 EN</span><span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Close" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../services.html" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="../work.html" onclick="closeMobileNav()">Our Work</a></li>
+      <li><a href="../about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="../blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="../contact.html" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn " data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn active" data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80" alt="What We Do"/></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><span class="section-label">What We Do</span><h1 class="serif-title">Integrated services<br/>that deliver results.</h1></div>
+</div>
+<div class="svc-intro"><h2 class="reveal">Communications that create <strong>real impact</strong>,<br/>delivered under one roof.</h2><p class="reveal">From digital marketing to media planning, web design to PR — full 360° communications coverage.</p></div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Data-Driven Digital Marketing"/></div>
+  <div class="svc-block-body reveal-right"><div class="svc-block-num">01</div><h2 class="svc-block-title">Data-Driven Digital Marketing</h2><p class="svc-block-desc">From audience analysis to <strong>measurable ROI</strong>, precision campaigns across every digital channel. Google Ads, social media, SEO, performance marketing.</p><div><span class="svc-tag">Google Ads</span><span class="svc-tag">SEO</span><span class="svc-tag">Social Media</span><span class="svc-tag">Programmatic</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Web Design & Digital Experience"/></div>
+  <div class="svc-block-body reveal-left"><div class="svc-block-num">02</div><h2 class="svc-block-title">Web Design & Digital Experience</h2><p class="svc-block-desc">We design websites that represent your brand <strong>in the most compelling way</strong> — fast, SEO-friendly and user-centred. From landing pages to e-commerce.</p><div><span class="svc-tag">UX/UI</span><span class="svc-tag">Corporate Sites</span><span class="svc-tag">E-commerce</span><span class="svc-tag">Landing Pages</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=900&q=80" alt="Brand Identity & Creative"/></div>
+  <div class="svc-block-body reveal-right"><div class="svc-block-num">03</div><h2 class="svc-block-title">Brand Identity & Creative</h2><p class="svc-block-desc">Brand strategy, logo design, visual identity systems and advertising creation. We shape how your brand is <strong>perceived and remembered</strong>.</p><div><span class="svc-tag">Brand Strategy</span><span class="svc-tag">Logo</span><span class="svc-tag">Visual ID</span><span class="svc-tag">Advertising</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=80" alt="Public Relations & Corporate Communications"/></div>
+  <div class="svc-block-body reveal-left"><div class="svc-block-num">04</div><h2 class="svc-block-title">Public Relations & Corporate Communications</h2><p class="svc-block-desc">Strategic <strong>reputation management</strong> and stakeholder communications. Press relations, crisis communications, corporate storytelling.</p><div><span class="svc-tag">Press Relations</span><span class="svc-tag">Crisis Comms</span><span class="svc-tag">Reputation</span><span class="svc-tag">CSR</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80" alt="Media Planning & Buying"/></div>
+  <div class="svc-block-body reveal-right"><div class="svc-block-num">05</div><h2 class="svc-block-title">Media Planning & Buying</h2><p class="svc-block-desc">Multi-channel media strategy and buying across TV, radio, OOH, print and digital. We maximise your <strong>media investment efficiency</strong>.</p><div><span class="svc-tag">TV</span><span class="svc-tag">Radio</span><span class="svc-tag">Out-of-Home</span><span class="svc-tag">Digital Media</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div><div class="svc-block">
+  <div class="svc-block-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt="Event & Experiential Management"/></div>
+  <div class="svc-block-body reveal-left"><div class="svc-block-num">06</div><h2 class="svc-block-title">Event & Experiential Management</h2><p class="svc-block-desc">From venue selection to production, logistics to brand activation — <strong>full-service event management</strong>. 50+ corporate events in 2025.</p><div><span class="svc-tag">Corporate Events</span><span class="svc-tag">Activation</span><span class="svc-tag">Conferences</span><span class="svc-tag">Launches</span></div><a href="../contact.html" class="btn btn-navy" style="margin-top:1.5rem;">Get a Quote</a></div>
+</div>
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="../index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">strategic · creative · communications agency · Since 1967 · Istanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Services</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../services.html">Digital Marketing</a><br/><a href="../services.html">Web Design</a><br/><a href="../services.html">Brand Identity</a><br/><a href="../services.html">PR</a><br/><a href="../services.html">Media Planning</a></div></div>
+    <div><div class="footer-col-title">Company</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../about.html">About</a><br/><a href="../work.html">Our Work</a><br/><a href="../blog.html">Blog</a><br/><a href="../contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Istanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / Istanbul</div></div>
+    <div><div class="footer-col-title">Certifications</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Years<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Social Media</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. All rights reserved.</p><ul class="footer-legal"><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookies</a></li></ul></div>
+</footer>
+<script>
+  const _nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>_nav.classList.toggle('scrolled',window.scrollY>30));
+  const _obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('up');_obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>_obs.observe(el));
+</script>
+<script src="../lang.js"></script>
+</body></html>

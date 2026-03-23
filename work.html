@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Çalışmalarımız — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans kampanya, marka kimliği, PR ve dijital pazarlama projeleri portfolyosu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .filter-bar { background: var(--beige); padding: 2.5rem 5vw; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .filter-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .filter-tab { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.55rem 1.25rem; border-radius: 1px; cursor: pointer; border: 1.5px solid rgba(0,0,0,0.12); color: var(--text-m); background: transparent; transition: var(--trans); font-family: var(--sans); }
+    .filter-tab:hover, .filter-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    .work-grid-section { background: var(--beige); padding: 4rem 5vw; }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .work-item { position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; background: var(--beige-dd); }
+    .work-item.dimmed { opacity: 0.12; filter: grayscale(0.6); pointer-events: none; transition: opacity 0.5s ease, filter 0.5s ease; }
+    .work-item:not(.dimmed) { transition: opacity 0.5s ease, filter 0.5s ease; }
+    .work-item-img { aspect-ratio: 4/3; overflow: hidden; }
+    .work-item-img img { transition: transform 0.7s var(--ease); }
+    .work-item:hover .work-item-img img { transform: scale(1.07); }
+    .work-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,42,0.72) 0%, transparent 55%); opacity: 0; transition: opacity 0.4s; }
+    .work-item:hover .work-item-overlay { opacity: 1; }
+    .work-item-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.75rem; transform: translateY(12px); opacity: 0; transition: transform 0.4s, opacity 0.4s; }
+    .work-item:hover .work-item-info { transform: none; opacity: 1; }
+    .work-item-cat { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.35rem; display: block; }
+    .work-item-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.25; }
+    .work-item-featured { grid-column: span 2; }
+    .work-item-featured .work-item-img { aspect-ratio: 16/7; }
+
+    .clients-section { background: var(--beige-d); padding: 5rem 0; overflow: hidden; }
+    .clients-header { text-align: center; margin-bottom: 2.5rem; padding: 0 5vw; }
+    .clients-header .serif-title { font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-style: italic; }
+    .partner-chip { background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: 1px; padding: 0.7rem 1.75rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-m); white-space: nowrap; flex-shrink: 0; }
+
+    .work-testimonials { background: var(--orange); padding: 6rem 5vw; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; }
+    .testimonial-card { background: rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 2px; }
+    .t-card-quote { font-family: var(--serif); font-size: 1rem; font-style: italic; font-weight: 700; color: #fff; line-height: 1.55; margin-bottom: 1.5rem; }
+    .t-card-author { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .t-card-author strong { display: block; color: rgba(255,255,255,0.9); margin-bottom: 0.2rem; }
+
+    .work-cta { background: var(--navy); padding: 6rem 5vw; text-align: center; }
+    .work-cta .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--white); font-style: italic; margin-bottom: 1rem; }
+    .work-cta p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 2rem; max-width: 44ch; margin-left: auto; margin-right: auto; }
+
+    @media(max-width:1024px){.work-grid{grid-template-columns:1fr 1fr;}.work-item-featured{grid-column:span 1;}.work-item-featured .work-item-img{aspect-ratio:4/3;}.testimonials-grid{grid-template-columns:1fr;}}
+    @media(max-width:640px){.work-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Hizmetler</a></li>
+    <li><a href="work.html" class="active">Çalışmalarımız</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Kapat" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Hizmetler</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">&#xC7;al&#x131;&#x15F;malar&#x131;m&#x131;z</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">Hakk&#x131;m&#x131;zda</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">&#x130;leti&#x15F;im</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Dil / Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn active" data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn " data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1920&q=80" alt="Reklam kampanyası" /></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="section-label">Çalışmalarımız</span>
+    <h1 class="serif-title">Hikâyelerimiz,<br/>paylaşmak için.</h1>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-cat="all">Tümü</button>
+    <button class="filter-tab" data-cat="digital">Dijital Pazarlama</button>
+    <button class="filter-tab" data-cat="brand">Marka Kimliği</button>
+    <button class="filter-tab" data-cat="pr">Halkla İlişkiler</button>
+    <button class="filter-tab" data-cat="media">Medya Planlaması</button>
+    <button class="filter-tab" data-cat="web">Web Tasarım</button>
+    <button class="filter-tab" data-cat="event">Etkinlikler</button>
+  </div>
+</div>
+
+<section class="work-grid-section">
+  <div class="work-grid">
+    <div class="work-item work-item-featured reveal" data-cat="brand">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Açıkhava kampanyası" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Marka Kampanyası</span><div class="work-item-title">360° Marka Kampanyası — Açıkhava &amp; Dijital Entegrasyonu</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="brand">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=600&q=80" alt="Kurumsal kimlik" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Marka Kimliği</span><div class="work-item-title">Kurumsal Kimlik Yenileme</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="digital">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Dijital pazarlama" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Dijital Pazarlama</span><div class="work-item-title">Performans Pazarlama Kampanyası</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="web">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Web Tasarım" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Web Tasarım</span><div class="work-item-title">Kurumsal Web Sitesi Tasarımı &amp; Geliştirme</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="event">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Kurumsal etkinlik" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Etkinlik Yönetimi</span><div class="work-item-title">Yıllık Kurumsal Konferans — 1.200 Katılımcı</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="pr">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="PR iletişim" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Halkla İlişkiler</span><div class="work-item-title">Ürün Lansmanı PR Kampanyası</div></div>
+    </div>
+    <div class="work-item work-item-featured reveal" data-cat="digital">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Strateji" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Strateji</span><div class="work-item-title">Entegre İletişim Stratejisi — 12 Aylık Yol Haritası</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="digital">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt="Sosyal medya" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">Sosyal Medya</span><div class="work-item-title">Sosyal Medya Stratejisi &amp; Yönetimi</div></div>
+    </div>
+    <div class="work-item reveal" data-cat="media">
+      <div class="work-item-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="SEO analitik" /></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info"><span class="work-item-cat">SEO &amp; Dijital</span><div class="work-item-title">SEO &amp; UX Optimizasyonu — %180 Trafik Artışı</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="clients-section">
+  <div class="clients-header"><span class="section-label">Müşterilerimiz</span><h2 class="serif-title reveal">200+ marka ortağı.</h2></div>
+  <div class="marquee-wrap">
+    <div class="marquee-row">
+      <div class="partner-chip">Marka Ortağı 01</div><div class="partner-chip">Müşteri 02</div><div class="partner-chip">Marka Ortağı 03</div><div class="partner-chip">Müşteri 04</div><div class="partner-chip">Marka Ortağı 05</div><div class="partner-chip">Müşteri 06</div><div class="partner-chip">Marka Ortağı 07</div><div class="partner-chip">Müşteri 08</div><div class="partner-chip">Marka Ortağı 09</div><div class="partner-chip">Müşteri 10</div>
+      <div class="partner-chip">Marka Ortağı 01</div><div class="partner-chip">Müşteri 02</div><div class="partner-chip">Marka Ortağı 03</div><div class="partner-chip">Müşteri 04</div><div class="partner-chip">Marka Ortağı 05</div><div class="partner-chip">Müşteri 06</div><div class="partner-chip">Marka Ortağı 07</div><div class="partner-chip">Müşteri 08</div><div class="partner-chip">Marka Ortağı 09</div><div class="partner-chip">Müşteri 10</div>
+    </div>
+  </div>
+</section>
+
+<section class="work-testimonials">
+  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+    <span class="section-label" style="color:rgba(255,255,255,0.5);">Müşteri Görüşleri</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;font-style:italic;color:#fff;">Müşterilerimiz ne diyor.</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <p class="t-card-quote">"Emek Ajans, tüm KPI'larımızı aşan tam entegre bir kampanya yürüttü. Yaratıcı kalitenin veri odaklı hassasiyetle buluşmasını daha önce hiç deneyimlememiştik."</p>
+      <div class="t-card-author"><strong>Pazarlama Direktörü</strong>Önde Gelen FMCG Markası · Türkiye</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <p class="t-card-quote">"Web sitemizin yeniden tasarımından medya planlamasına ve canlı etkinliğe kadar her şey kusursuz yürütüldü. Büyük resmi görürken detaylara hakimiyet etkileyiciydi."</p>
+      <div class="t-card-author"><strong>İletişim Başkanı</strong>Finansal Hizmetler Grubu</div>
+    </div>
+  </div>
+</section>
+
+<section class="work-cta">
+  <h2 class="serif-title reveal">Aklınızda bir proje mi var?</h2>
+  <p class="reveal">Birlikte neler inşa edebileceğimizi konuşalım.</p>
+  <a href="contact.html" class="btn btn-orange reveal">Konuşmayı Başlat</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Hizmetler</div><hr class="footer-rule"/><div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br/><a href="services.html">Web Tasarım</a><br/><a href="services.html">Kurumsal Kimlik</a><br/><a href="services.html">Halkla İlişkiler</a><br/><a href="services.html">Medya Planlaması</a></div></div>
+    <div><div class="footer-col-title">Kurumsal</div><hr class="footer-rule"/><div class="footer-col-body"><a href="about.html">Hakkımızda</a><br/><a href="work.html">Çalışmalarımız</a><br/><a href="blog.html">Blog</a><br/><a href="contact.html">İletişim</a></div></div>
+    <div><div class="footer-col-title">İstanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / İstanbul</div></div>
+    <div><div class="footer-col-title">Sertifikalar</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Yıl<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Sosyal Medya Yönetimi</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p><ul class="footer-legal"><li><a href="#">KVKK Politikası</a></li><li><a href="#">Çerez Politikası</a></li><li><a href="#">Gizlilik</a></li></ul></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      document.querySelectorAll('.work-item').forEach(item => {
+        if (cat === 'all' || item.dataset.cat === cat) {
+          item.classList.remove('dimmed');
+        } else {
+          item.classList.add('dimmed');
+        }
+      });
+    });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+  <script src="lang.js"></script>
+</body>
+</html>

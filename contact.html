@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İletişim — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans ile iletişime geçin — İstanbul merkezli stratejik iletişim ajansı." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-main { background: var(--beige); padding: 6rem 5vw 7rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; }
+    .contact-info .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); font-style: italic; margin-bottom: 1rem; }
+    .contact-info > p { font-size: 0.9rem; color: var(--text-m); line-height: 1.85; margin-bottom: 2.5rem; }
+    .contact-info strong { color: var(--navy); font-weight: 600; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
+    .contact-item-icon { width: 44px; height: 44px; flex-shrink: 0; background: var(--beige-d); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 1px solid rgba(0,0,0,0.07); }
+    .contact-item-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-l); margin-bottom: 0.3rem; }
+    .contact-item-val { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+    .contact-item-val a { color: inherit; text-decoration: none; transition: color .2s; }
+    .contact-item-val a:hover { color: var(--orange); }
+    .contact-socials { display: flex; gap: 0.75rem; margin-top: 2rem; }
+    .contact-social-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--navy); text-decoration: none; transition: var(--trans); }
+    .contact-social-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    .contact-form-wrap { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 2px; padding: 3rem; }
+    .contact-form-wrap h2 { font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--navy); margin-bottom: 2rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-l); }
+    .form-group input, .form-group textarea, .form-group select { background: var(--beige); border: 1px solid rgba(0,0,0,0.1); border-radius: 1px; padding: 0.85rem 1rem; font-family: var(--sans); font-size: 0.875rem; color: var(--text); outline: none; transition: border-color .25s, background .25s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--navy); background: var(--white); }
+    .form-group textarea { height: 140px; resize: vertical; }
+    .form-submit { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+    .form-note { font-size: 0.72rem; color: var(--text-l); }
+    .form-success { display: none; text-align: center; padding: 3rem 2rem; background: var(--beige); border-radius: 2px; border: 1px solid rgba(0,0,0,0.07); }
+    .form-success.visible { display: block; }
+    .form-success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+
+    .map-section { background: var(--beige-d); }
+    .map-frame { width: 100%; height: 420px; border: none; filter: grayscale(0.3) contrast(1.05); display: block; }
+
+    .free-consult { background: var(--orange); padding: 6rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .free-consult-text .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-style: italic; margin-bottom: 1rem; }
+    .free-consult-text p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.85; }
+    .free-consult-items { display: flex; flex-direction: column; gap: 1.25rem; }
+    .free-consult-item { background: rgba(255,255,255,0.12); border-radius: 2px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .consult-item-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .consult-item-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+    .consult-item-desc { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    @media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:4rem;}.free-consult{grid-template-columns:1fr;gap:3rem;}}
+    @media(max-width:640px){.form-row{grid-template-columns:1fr;}.form-submit{flex-direction:column;gap:1rem;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Hizmetler</a></li>
+    <li><a href="work.html">Çalışmalarımız</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="active">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Kapat" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Hizmetler</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">&#xC7;al&#x131;&#x15F;malar&#x131;m&#x131;z</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">Hakk&#x131;m&#x131;zda</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">&#x130;leti&#x15F;im</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Dil / Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn active" data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn " data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1920&q=80" alt="İstanbul Boğazı" /></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="section-label">İletişim</span>
+    <h1 class="serif-title">Bir konuşma<br/>başlatalım.</h1>
+  </div>
+</div>
+
+<section class="contact-main">
+  <div class="contact-grid">
+    <div class="contact-info reveal-left">
+      <span class="section-label">Bize Ulaşın</span>
+      <h2 class="serif-title">Markanız hakkında<br/>duymaktan mutluluk duyarız.</h2>
+      <p>Aklınızda <strong>belirli bir proje</strong> olsun ya da olmasın, her zaman bir konuşmaya açığız. İstanbul'daki ekibimiz sizi dinlemeye hazır.</p>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div><div class="contact-item-lbl">Adres</div><div class="contact-item-val">Etiler, Nispetiye Cd. No:40/10<br/>Gürel Apt., D:B, 34340<br/>Beşiktaş / İstanbul</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div><div class="contact-item-lbl">Telefon</div><div class="contact-item-val"><a href="tel:+902122300979">+90 212 230 09 79</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div><div class="contact-item-lbl">E-posta</div><div class="contact-item-val"><a href="mailto:info@emekajans.com">info@emekajans.com</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div><div class="contact-item-lbl">Çalışma Saatleri</div><div class="contact-item-val">Pazartesi – Cuma: 09:00 – 18:00<br/>İstanbul Saati (UTC+3)</div></div>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="contact-social-btn">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="contact-social-btn">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="contact-social-btn">yt</a>
+      </div>
+    </div>
+
+    <div class="reveal-right">
+      <div class="contact-form-wrap" id="formWrap">
+        <h2>Bize bir mesaj gönderin</h2>
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">Ad Soyad *</label><input id="fname" type="text" placeholder="Adınız ve soyadınız" required /></div>
+            <div class="form-group"><label for="femail">E-posta Adresi *</label><input id="femail" type="email" placeholder="siz@sirket.com" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="fcompany">Şirket</label><input id="fcompany" type="text" placeholder="Şirket adınız" /></div>
+            <div class="form-group"><label for="fphone">Telefon</label><input id="fphone" type="tel" placeholder="+90 ..." /></div>
+          </div>
+          <div class="form-group">
+            <label for="fservice">İlgilendiğiniz Hizmet</label>
+            <select id="fservice">
+              <option value="">Hizmet seçin...</option>
+              <option>Dijital Pazarlama</option>
+              <option>Web Tasarım &amp; Dijital Deneyim</option>
+              <option>Kurumsal Kimlik &amp; Yaratıcı</option>
+              <option>Halkla İlişkiler &amp; İletişim</option>
+              <option>Medya Planlaması &amp; Satın Alma</option>
+              <option>Etkinlik Yönetimi</option>
+              <option>SEO &amp; Google Ads</option>
+              <option>Sosyal Medya Yönetimi</option>
+              <option>Genel Bilgi</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="fsubject">Konu *</label><input id="fsubject" type="text" placeholder="Kısa konu başlığı" required /></div>
+          <div class="form-group"><label for="fmsg">Mesajınız *</label><textarea id="fmsg" placeholder="Projeniz, hedefleriniz, zaman çizelgesi ve bütçeniz hakkında bilgi verin..." required></textarea></div>
+          <div class="form-submit">
+            <p class="form-note">Genellikle 24 saat içinde yanıt veriyoruz.</p>
+            <button type="submit" class="btn btn-navy">Gönder →</button>
+          </div>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <div class="form-success-title">Mesajınız iletildi!</div>
+          <p>Bize ulaştığınız için teşekkür ederiz. 24 saat içinde sizinle iletişime geçeceğiz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="map-section">
+  <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.4735!2d29.0292!3d41.0782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7175a2b3c1b%3A0x1234567890abcdef!2sNispetiye%20Cd.%2C%20Be%C5%9Fikta%C5%9F%2C%20%C4%B0stanbul!5e0!3m2!1str!2str!4v1234567890" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Emek Ajans İstanbul Ofisi"></iframe>
+</div>
+
+<section class="free-consult">
+  <div class="free-consult-text reveal-left">
+    <span class="section-label" style="color:rgba(255,255,255,0.5);">Başlangıç</span>
+    <h2 class="serif-title">Ücretsiz SEO &amp;<br/>Dijital Pazarlama Analizi</h2>
+    <p>Nereden başlayacağınızı bilmiyor musunuz? Mevcut dijital varlığınızın, <strong>SEO performansınızın</strong> ve UX/UI'ınızın ücretsiz analizini yapıyor, somut öneriler sunuyoruz.</p>
+    <a href="#contactForm" class="btn" style="background:#fff;color:var(--orange);margin-top:2rem;" onclick="document.querySelector('#fservice').value='SEO & Google Ads'">Ücretsiz Analiz İste</a>
+  </div>
+  <div class="free-consult-items reveal-right">
+    <div class="free-consult-item"><div class="consult-item-icon">🔍</div><div><div class="consult-item-title">SEO Denetimi</div><div class="consult-item-desc">Web siteniz için tam teknik SEO analizi, anahtar kelime boşluk raporu ve içerik fırsat haritası.</div></div></div>
+    <div class="free-consult-item"><div class="consult-item-icon">📊</div><div><div class="consult-item-title">Dijital Performans İncelemesi</div><div class="consult-item-desc">Google Ads, sosyal medya ve dijital kanal performansınızı sektör kıyaslamalarıyla analiz ediyoruz.</div></div></div>
+    <div class="free-consult-item"><div class="consult-item-icon">💻</div><div><div class="consult-item-title">Web Tasarım &amp; UX Değerlendirmesi</div><div class="consult-item-desc">Web sitenizin kullanıcı deneyimi uzman incelemesi ve dönüşüm optimizasyonu önerileri.</div></div></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Hizmetler</div><hr class="footer-rule"/><div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br/><a href="services.html">Web Tasarım</a><br/><a href="services.html">Kurumsal Kimlik</a><br/><a href="services.html">Halkla İlişkiler</a><br/><a href="services.html">Medya Planlaması</a></div></div>
+    <div><div class="footer-col-title">Kurumsal</div><hr class="footer-rule"/><div class="footer-col-body"><a href="about.html">Hakkımızda</a><br/><a href="work.html">Çalışmalarımız</a><br/><a href="blog.html">Blog</a><br/><a href="contact.html">İletişim</a></div></div>
+    <div><div class="footer-col-title">İstanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / İstanbul</div></div>
+    <div><div class="footer-col-title">Sertifikalar</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Yıl<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Sosyal Medya Yönetimi</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p><ul class="footer-legal"><li><a href="#">KVKK Politikası</a></li><li><a href="#">Çerez Politikası</a></li><li><a href="#">Gizlilik</a></li></ul></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display='none';
+    document.getElementById('formSuccess').classList.add('visible');
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+  <script src="lang.js"></script>
+</body>
+</html>

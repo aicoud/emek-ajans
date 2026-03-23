@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımızda — Emek Ajans</title>
+  <meta name="description" content="1967'de kurulan Emek Ajans, İstanbul merkezli 360° entegre iletişim ajansıdır." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .story-section { background: var(--beige); padding: 7rem 5vw; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .story-text .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); font-style: italic; margin-bottom: 1.5rem; }
+    .story-text p { font-size: 0.92rem; color: var(--text-m); line-height: 1.9; margin-bottom: 1.2rem; }
+    .story-text strong { color: var(--navy); font-weight: 600; }
+    .story-img { aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; position: relative; }
+    .story-img img { transition: transform 0.8s var(--ease); }
+    .story-section:hover .story-img img { transform: scale(1.04); }
+    .story-img-badge { position: absolute; top: 2rem; right: -1rem; background: var(--navy); color: #fff; padding: 1.25rem 1.5rem; border-radius: 2px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .story-img-badge strong { display: block; font-family: var(--serif); font-size: 2.5rem; font-weight: 900; line-height: 1; }
+    .story-img-badge span { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
+
+    .timeline-section { background: var(--beige-d); padding: 7rem 5vw; }
+    .timeline-section .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; text-align: center; margin-bottom: 4rem; }
+    .timeline { max-width: 860px; margin: 0 auto; }
+    .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 2.5rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); align-items: start; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-year { font-family: var(--serif); font-size: 1.8rem; font-weight: 900; color: var(--orange); line-height: 1; }
+    .timeline-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.82rem; color: var(--text-m); line-height: 1.75; }
+    .timeline-desc strong { color: var(--navy); font-weight: 600; }
+
+    .values-section { background: var(--navy); padding: 7rem 5vw; }
+    .values-header { text-align: center; margin-bottom: 4rem; }
+    .values-header .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; color: var(--white); }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .value-card { background: var(--navy); padding: 3rem 2.5rem; transition: background var(--trans); }
+    .value-card:hover { background: rgba(255,255,255,0.04); }
+    .value-num { font-family: var(--serif); font-size: 3rem; font-weight: 900; color: rgba(233,91,34,0.25); line-height: 1; margin-bottom: 1rem; display: block; }
+    .value-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+    .value-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
+
+    .team-section { background: var(--beige); padding: 7rem 5vw; }
+    .team-header { margin-bottom: 3.5rem; }
+    .team-header .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; }
+    .team-img-wide { width: 100%; height: 480px; overflow: hidden; border-radius: 2px; position: relative; }
+    .team-img-wide img { transition: transform 0.8s var(--ease); }
+    .team-section:hover .team-img-wide img { transform: scale(1.03); }
+    .team-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,27,42,0.55), transparent 60%); display: flex; align-items: center; padding: 4rem; }
+    .team-overlay-text .serif-title { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); font-style: italic; max-width: 10ch; }
+    .team-overlay-text p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-top: 1rem; max-width: 34ch; line-height: 1.8; }
+
+    .certs-section { background: var(--beige-d); padding: 5rem 5vw; }
+    .certs-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .certs-text .serif-title { font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-style: italic; margin-bottom: 1rem; }
+    .certs-text p { font-size: 0.88rem; color: var(--text-m); line-height: 1.85; }
+    .certs-text strong { color: var(--navy); font-weight: 600; }
+    .certs-badges { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+    .cert-badge { background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: 2px; padding: 1.25rem 2rem; flex: 1; min-width: 180px; text-align: center; }
+    .cert-badge-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+    .cert-badge-sub { font-size: 0.7rem; color: var(--text-l); letter-spacing: 0.08em; }
+
+    .about-cta { position: relative; overflow: hidden; height: 380px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .about-cta-bg { position: absolute; inset: 0; }
+    .about-cta-bg img { opacity: 0.3; }
+    .about-cta-overlay { position: absolute; inset: 0; background: rgba(13,27,42,0.72); }
+    .about-cta-content { position: relative; z-index: 1; padding: 2rem 5vw; }
+    .about-cta-content .serif-title { font-size: clamp(1.8rem, 3.5vw, 3rem); color: var(--white); font-style: italic; margin-bottom: 1rem; }
+    .about-cta-content p { color: rgba(255,255,255,0.5); font-size: 0.88rem; margin-bottom: 2rem; }
+
+    @media(max-width:1024px){.story-grid{grid-template-columns:1fr;gap:3rem;}.values-grid{grid-template-columns:1fr 1fr;}.certs-inner{grid-template-columns:1fr;}}
+    @media(max-width:640px){.timeline-item{grid-template-columns:1fr;gap:0.75rem;}.values-grid{grid-template-columns:1fr;}.team-img-wide{height:300px;}}
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Hizmetler</a></li>
+    <li><a href="work.html">Çalışmalarımız</a></li>
+    <li><a href="about.html" class="active">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Kapat" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Hizmetler</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">&#xC7;al&#x131;&#x15F;malar&#x131;m&#x131;z</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">Hakk&#x131;m&#x131;zda</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">&#x130;leti&#x15F;im</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Dil / Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn active" data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn " data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80" alt="İstanbul" /></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="section-label">Hakkımızda</span>
+    <h1 class="serif-title">50+ yıllık birikimin<br/>gücüyle hizmetinizdeyiz.</h1>
+  </div>
+</div>
+
+<section class="story-section">
+  <div class="story-grid">
+    <div class="story-text reveal-left">
+      <span class="section-label">Hikâyemiz</span>
+      <h2 class="serif-title">1967'den beri.<br/><em>Bugün için yeniden tasarlandı.</em></h2>
+      <p>Emek Ajans, İstanbul'da 1967 yılında kuruldu. Temel inancımız basit ama güçlüydü: Markalar, yaratıcılık, strateji ve uygulama <strong>tek çatı altında birleştiğinde</strong> hedef kitlesine en iyi biçimde ulaşır.</p>
+      <p>Elli yılı aşkın süreçte iletişimin her büyük dönüşümünde var olduk — baskıdan yayıncılığa, dijitalden sosyale, tek yönlü reklamcılıktan <strong>iki yönlü diyaloğa</strong>. Bugün aynı ajansız, ama tamamen yeni araçlarla.</p>
+      <p>8 yıldır <strong>Google Partner</strong> ve <strong>Meta Business Partner</strong> unvanlarımızla, veriye dayalı, sürdürülebilir kampanyalar üretiyoruz.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="services.html" class="btn btn-navy">Hizmetlerimiz</a>
+        <a href="contact.html" class="btn btn-outline">Birlikte Çalışalım</a>
+      </div>
+    </div>
+    <div class="story-img reveal-right">
+      <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=900&q=80" alt="İş ortaklığı" />
+      <div class="story-img-badge"><strong>1967</strong><span>Kuruluş · İstanbul</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <h2 class="serif-title reveal">On yıllar boyunca yolculuğumuz.</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-year">1967</div>
+      <div><div class="timeline-title">İstanbul'da Kuruluş</div><p class="timeline-desc">Emek Ajans, yaratıcı, stratejik ve medya yeteneklerini <strong>tek entegre ajans</strong> modelinde birleştirme vizyonuyla kapılarını açtı.</p></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">1990'lar</div>
+      <div><div class="timeline-title">Büyüme ve Genişleme</div><p class="timeline-desc">TV, radyo ve açıkhava medyasına stratejik genişleme. Türkiye'nin önde gelen markaları ile <strong>uzun vadeli ortaklıklar</strong> kuruldu.</p></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2000'ler</div>
+      <div><div class="timeline-title">Dijital Dönüşüm Başlıyor</div><p class="timeline-desc">Dijital pazarlama kanallarını erken benimsedik. SEO, e-posta pazarlaması ve online reklam hizmetleri için <strong>özel dijital ekip</strong> kuruldu.</p></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2016</div>
+      <div><div class="timeline-title">Google Partner Sertifikası</div><p class="timeline-desc">Arama, Görüntülü Reklam ve Alışveriş kampanyalarındaki uzmanlığımızı belgeleyen <strong>Google Partner</strong> statüsü kazanıldı. 8+ yıldır bu unvana sahibiz.</p></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2020'ler</div>
+      <div><div class="timeline-title">Tam 360° Entegrasyon</div><p class="timeline-desc"><strong>Meta Business Partner</strong> sertifikası. Veri analitiği, programatik medya, sosyal medya, web tasarım, PR ve yaratıcı hizmetler tek entegre çözümde birleştirildi.</p></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">Bugün</div>
+      <div><div class="timeline-title">Stratejik Yaratıcı İletişim Ajansı</div><p class="timeline-desc">Deneyimli stratejistler, yaratıcılar, medya plancıları, web tasarımcıları ve dijital uzmanlardan oluşan ekibimizle <strong>200+ marka ortağımıza</strong> hizmet veriyoruz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="values-header reveal">
+    <span class="section-label light">Bizi Yönlendirenler</span>
+    <h2 class="serif-title">Değerlerimiz &amp; çalışma ilkelerimiz.</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal"><span class="value-num">01</span><div class="value-name">Veriye Dayalı Düşünce</div><p class="value-desc">Her kararımız gerçek hedef kitle verisiyle desteklenir. Sezgi yerli yerindedir; analitik ise temelimizdir.</p></div>
+    <div class="value-card reveal"><span class="value-num">02</span><div class="value-name">Yaratıcı Mükemmeliyet</div><p class="value-desc">En iyi stratejinin olağanüstü yaratıcı uygulama olmadan boşa gideceğine inanıyoruz. Hem güzel hem etkili fikirler üretiyoruz.</p></div>
+    <div class="value-card reveal"><span class="value-num">03</span><div class="value-name">Entegre Vizyon</div><p class="value-desc">En güçlü yanımız büyük resmi görmektir. Dijital, PR, medya, web tasarım, yaratıcı ve etkinlikler — hepsi tek stratejiden beslenir.</p></div>
+    <div class="value-card reveal"><span class="value-num">04</span><div class="value-name">Uzun Vadeli Ortaklık</div><p class="value-desc">Kampanya değil marka düşünürüz. Hedefimiz, kısa vadeli atlamalar değil, zaman içinde bileşen sürdürülebilir değer yaratmaktır.</p></div>
+    <div class="value-card reveal"><span class="value-num">05</span><div class="value-name">Proaktif İletişim</div><p class="value-desc">Müşterilerimiz sormadan önce fikirler ve içgörüler sunuyoruz. Deneyimli ekibimiz trendleri sürekli izleyerek markanızı öncü tutar.</p></div>
+    <div class="value-card reveal"><span class="value-num">06</span><div class="value-name">Sürdürülebilir Etki</div><p class="value-desc">Sadece gösterim ve tıklama değil — hedef kitlenizle duygusal bağ kuran ve kalıcı güven inşa eden iletişim üretiyoruz.</p></div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="team-header reveal">
+    <span class="section-label">Ekibimiz</span>
+    <h2 class="serif-title">Deneyimli stratejistler.<br/>Yeni nesil düşünürler.</h2>
+  </div>
+  <div class="team-img-wide reveal">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80" alt="Emek Ajans ekibi" />
+    <div class="team-overlay">
+      <div class="team-overlay-text">
+        <h3 class="serif-title">Tek ekip. Tek vizyon.</h3>
+        <p>Stratejistler, yaratıcılar, medya plancıları, web tasarımcıları, dijital uzmanlar, PR danışmanları ve etkinlik producerları — her müşteri brifinginde tek entegre ekip olarak çalışır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="certs-section">
+  <div class="certs-inner">
+    <div class="certs-text reveal-left">
+      <span class="section-label">Sertifikalar</span>
+      <h2 class="serif-title">Tanınan ortaklar.<br/>Kanıtlanmış uzmanlık.</h2>
+      <p>Sertifikalarımız birer rozet değil — yıllar içinde <strong>tutarlı performans</strong>, beceriye yatırım ve müşterilerimize en iyi sonuçları sunma taahhüdünün belgesidir.</p>
+    </div>
+    <div class="certs-badges reveal-right">
+      <div class="cert-badge"><div class="cert-badge-title">Google Partner</div><div class="cert-badge-sub">8+ Yıl · Arama, Görüntülü, Alışveriş</div></div>
+      <div class="cert-badge"><div class="cert-badge-title">Meta Business Partner</div><div class="cert-badge-sub">Facebook · Instagram · Audience Network</div></div>
+      <div class="cert-badge"><div class="cert-badge-title">360° Entegre</div><div class="cert-badge-sub">1967'den Beri Tam Hizmet</div></div>
+      <div class="cert-badge"><div class="cert-badge-title">200+ Marka</div><div class="cert-badge-sub">Türkiye Genelinde Müşteri</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="about-cta">
+  <div class="about-cta-bg"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1920&q=80" alt="İş toplantısı" /></div>
+  <div class="about-cta-overlay"></div>
+  <div class="about-cta-content">
+    <h2 class="serif-title reveal">Birlikte çalışmaya hazır mısınız?</h2>
+    <p class="reveal">Markanızı bize anlatın, doğru yaklaşımı birlikte bulalım.</p>
+    <a href="contact.html" class="btn btn-orange reveal">Bize Ulaşın</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Hizmetler</div><hr class="footer-rule"/><div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br/><a href="services.html">Web Tasarım</a><br/><a href="services.html">Kurumsal Kimlik</a><br/><a href="services.html">Halkla İlişkiler</a><br/><a href="services.html">Medya Planlaması</a></div></div>
+    <div><div class="footer-col-title">Kurumsal</div><hr class="footer-rule"/><div class="footer-col-body"><a href="about.html">Hakkımızda</a><br/><a href="work.html">Çalışmalarımız</a><br/><a href="blog.html">Blog</a><br/><a href="contact.html">İletişim</a></div></div>
+    <div><div class="footer-col-title">İstanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / İstanbul</div></div>
+    <div><div class="footer-col-title">Sertifikalar</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Yıl<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Sosyal Medya Yönetimi</div></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p>
+    <ul class="footer-legal"><li><a href="#">KVKK Politikası</a></li><li><a href="#">Çerez Politikası</a></li><li><a href="#">Gizlilik</a></li></ul>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+  <script src="lang.js"></script>
+</body>
+</html>

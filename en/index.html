@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emek Ajans — Strategic Creative Communications Agency</title>
+  <meta name="description" content="Emek Ajans — Istanbul-based 360° integrated communications agency since 1967." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .home-hero {
+      height: 100vh; min-height: 640px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy); padding-top: 68px;
+    }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { opacity: 0.28; transform: scale(1.08); animation: heroScale 14s ease forwards; }
+    @keyframes heroScale { to { transform: scale(1); } }
+    .hero-bg-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(26,26,26,0.15) 0%, rgba(26,26,26,0.68) 100%); }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 5vw; }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 0.6s 0.2s var(--ease) forwards; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:none;} }
+    #heroText { font-family: var(--sans); font-weight: 800; font-size: clamp(3.5rem, 8.5vw, 9.5rem); letter-spacing: -0.045em; color: var(--white); display: block; margin-bottom: 1rem; line-height: 1; white-space: nowrap; }
+    .hero-typewriter-wrap { display: flex; align-items: center; justify-content: center; gap: 0.4em; font-size: clamp(1.05rem, 2.2vw, 1.9rem); font-style: italic; color: rgba(255,255,255,0.8); margin-bottom: 2.75rem; min-height: 2rem; opacity: 0; animation: fadeUp 0.6s 1.6s var(--ease) forwards; }
+    .tw-prefix { color: rgba(255,255,255,0.35); }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 1.85s var(--ease) forwards; }
+    .intro-strip { background: var(--navy); color: var(--white); padding: 5.5rem 5vw; text-align: center; }
+    .intro-strip h2 { font-family: var(--sans); font-size: clamp(1.7rem, 3.2vw, 2.8rem); font-weight: 800; line-height: 1.2; max-width: 860px; margin: 0 auto 1.25rem; color: var(--white); }
+    .intro-strip h2 strong { color: var(--orange); }
+    .intro-strip p { font-size: 0.9rem; color: rgba(255,255,255,0.45); max-width: 55ch; margin: 0 auto; line-height: 1.9; }
+    .services-section { background: var(--beige); padding: 7rem 5vw; }
+    .services-section-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-section-header .serif-title { font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
+    .services-section-header .section-desc { font-size: 0.9rem; color: var(--text-m); max-width: 52ch; margin: 1rem auto 0; line-height: 1.9; }
+    .services-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .svc-card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 2px; overflow: hidden; transition: transform 0.4s var(--ease), box-shadow 0.4s; }
+    .svc-card:hover { transform: translateY(-7px); box-shadow: 0 20px 48px rgba(0,0,0,0.09); }
+    .svc-card-img { width: 100%; height: 190px; overflow: hidden; }
+    .svc-card-img img { transition: transform 0.6s var(--ease); }
+    .svc-card:hover .svc-card-img img { transform: scale(1.06); }
+    .svc-card-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .svc-card-icon { font-size: 1.4rem; margin-bottom: 0.75rem; display: block; }
+    .svc-card-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .svc-card-desc { font-size: 0.8rem; color: var(--text-m); line-height: 1.75; margin-bottom: 1.1rem; }
+    .svc-card-link { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 0.3em; transition: gap .2s; }
+    .svc-card-link:hover { gap: 0.6em; }
+    .services-footer { text-align: center; margin-top: 3rem; }
+    .about-strip { background: var(--beige-d); padding: 7rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-strip-img { aspect-ratio: 4/5; overflow: hidden; border-radius: 2px; position: relative; }
+    .about-strip-img img { transition: transform 0.8s var(--ease); }
+    .about-strip:hover .about-strip-img img { transform: scale(1.04); }
+    .about-strip-badge { position: absolute; bottom: 2rem; left: 2rem; background: var(--orange); color: #fff; padding: 1.25rem 1.5rem; border-radius: 2px; text-align: center; }
+    .about-strip-badge strong { display: block; font-size: 2rem; font-weight: 800; }
+    .about-strip-badge span { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
+    .about-strip-text .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 1.5rem; }
+    .about-strip-text p { font-size: 0.9rem; color: var(--text-m); line-height: 1.9; margin-bottom: 1.25rem; }
+    .about-strip-text strong { color: var(--navy); font-weight: 600; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .about-stat { background: var(--white); border-radius: 2px; padding: 1.25rem; border: 1px solid rgba(0,0,0,0.06); }
+    .about-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--navy); line-height: 1; display: block; }
+    .about-stat-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-l); margin-top: 0.35rem; display: block; }
+    .portfolio-preview { background: var(--beige); padding: 7rem 5vw 0; }
+    .portfolio-preview-header { text-align: center; margin-bottom: 3.5rem; }
+    .portfolio-preview-header .serif-title { font-size: clamp(2rem, 3.5vw, 3rem); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 280px; gap: 3px; }
+    .p-item { position: relative; overflow: hidden; cursor: pointer; background: var(--beige-dd); }
+    .p-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .p-item:nth-child(5) { grid-column: span 2; }
+    .p-item img { transition: transform 0.7s var(--ease); }
+    .p-item:hover img { transform: scale(1.07); }
+    .p-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,26,0.65), transparent 55%); opacity: 0; transition: opacity 0.4s; }
+    .p-item:hover .p-overlay { opacity: 1; }
+    .p-label { position: absolute; bottom: 1.5rem; left: 1.5rem; color: #fff; font-size: 1.05rem; font-weight: 700; opacity: 0; transform: translateY(10px); transition: opacity 0.4s, transform 0.4s; }
+    .p-item:hover .p-label { opacity: 1; transform: none; }
+    .portfolio-cta { text-align: center; padding: 4rem 0; }
+    .testimonial-section { background: var(--orange); color: #fff; padding: 7rem 5vw; text-align: center; position: relative; overflow: hidden; }
+    .t-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: clamp(5rem, 18vw, 15rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.04em; opacity: 0.08; line-height: 1; white-space: nowrap; pointer-events: none; }
+    .t-quote { position: relative; z-index: 1; font-size: clamp(1.1rem, 2vw, 1.55rem); font-style: italic; font-weight: 600; max-width: 800px; margin: 0 auto 2rem; line-height: 1.55; }
+    .t-author { position: relative; z-index: 1; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+    .t-author strong { display: block; color: #fff; margin-bottom: 0.2rem; font-size: 0.85rem; }
+    .blog-preview { background: var(--navy); padding: 7rem 5vw; }
+    .blog-preview-header { text-align: center; margin-bottom: 4rem; }
+    .blog-preview-header .serif-title { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--white); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blog-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; text-decoration: none; display: block; transition: transform 0.4s var(--ease), background 0.3s; }
+    .blog-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.07); }
+    .blog-card-img { width: 100%; height: 180px; overflow: hidden; }
+    .blog-card-img img { transition: transform 0.6s var(--ease); }
+    .blog-card:hover .blog-card-img img { transform: scale(1.07); }
+    .blog-card-body { padding: 1.5rem; }
+    .blog-cat { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; display: block; }
+    .blog-title { font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 0.6rem; }
+    .blog-excerpt { font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.7; }
+    .blog-footer-cta { text-align: center; margin-top: 3.5rem; }
+    .cta-section { position: relative; overflow: hidden; height: 460px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .cta-bg { position: absolute; inset: 0; }
+    .cta-bg img { opacity: 0.35; }
+    .cta-overlay { position: absolute; inset: 0; background: rgba(26,26,26,0.7); }
+    .cta-content { position: relative; z-index: 1; padding: 2rem 5vw; }
+    .cta-content .serif-title { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-content p { color: rgba(255,255,255,0.55); font-size: 0.9rem; max-width: 44ch; margin: 0 auto 2rem; line-height: 1.8; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    @media(max-width:1024px){.services-cards-grid{grid-template-columns:1fr 1fr;}.about-strip{grid-template-columns:1fr;gap:3rem;}.portfolio-grid{grid-template-columns:1fr 1fr;grid-auto-rows:240px;}.p-item:nth-child(1){grid-column:span 1;grid-row:span 1;}.p-item:nth-child(5){grid-column:span 1;}.blog-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){#heroText{font-size:clamp(2.5rem,10vw,5rem);white-space:normal;}}
+    @media(max-width:640px){.services-cards-grid{grid-template-columns:1fr;}.about-stats{grid-template-columns:1fr 1fr;}.portfolio-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px;}.blog-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <a href="../index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="../services.html">Services</a></li>
+    <li><a href="../work.html">Our Work</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../blog.html">Blog</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇬🇧 EN</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Close" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../services.html" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="../work.html" onclick="closeMobileNav()">Our Work</a></li>
+      <li><a href="../about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="../blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="../contact.html" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn " data-lang="tr" onclick="setLang('tr')">&#x1F1F9;&#x1F1F7; T&#xFC;rk&#xE7;e</button>
+      <button class="mobile-lang-btn active" data-lang="en" onclick="setLang('en')">&#x1F1EC;&#x1F1E7; English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="../index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<section class="home-hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80" alt="Digital marketing agency" />
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">360° Integrated Agency · Since 1967 · Istanbul</p>
+    <span id="heroText" aria-label="Emek Ajans"></span>
+    <div class="hero-typewriter-wrap">
+      <span class="tw-prefix">—</span>
+      <span id="typewriter"></span><span class="tw-cursor"></span>
+    </div>
+    <div class="hero-actions">
+      <a href="../services.html" class="btn btn-orange">Explore Services</a>
+      <a href="../about.html" class="btn btn-outline-white">Our Story</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <h2 class="reveal">The <strong>ideal partner</strong> for brands seeking a <strong>360° integrated</strong> communications solution under one roof.</h2>
+  <p class="reveal">We blend 50+ years of deep market expertise with next-generation digital capabilities — making your brand stand out across every channel.</p>
+</div>
+
+<section class="services-section">
+  <div class="services-section-header reveal">
+    <span class="section-label">Our Services</span>
+    <h2 class="serif-title">360° integrated<br/>communications solutions.</h2>
+    <p class="section-desc">From digital marketing to media planning, from web design to event management — we deliver the full spectrum of communications services under one roof.</p>
+  </div>
+  <div class="services-cards-grid">
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Digital Marketing" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">📊</span><div class="svc-card-title">Digital Marketing</div><p class="svc-card-desc">Data-driven campaigns across Google Ads, social media, SEO and performance channels for measurable ROI.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt="Web Design" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">💻</span><div class="svc-card-title">Web Design & Digital Experience</div><p class="svc-card-desc">User-centric corporate websites, landing pages and e-commerce solutions built for performance.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=700&q=80" alt="Brand Identity" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">🎨</span><div class="svc-card-title">Brand Identity & Creative</div><p class="svc-card-desc">Brand strategy, logo, visual identity systems and campaign creation — end-to-end brand building.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="PR" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">📣</span><div class="svc-card-title">Public Relations & Communications</div><p class="svc-card-desc">Press relations, reputation management, crisis communications and stakeholder engagement consultancy.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=700&q=80" alt="Media Planning" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">📺</span><div class="svc-card-title">Media Planning & Buying</div><p class="svc-card-desc">Multi-channel media strategy and buying across TV, radio, out-of-home, print and digital channels.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" alt="Events" /></div>
+      <div class="svc-card-body"><span class="svc-card-icon">🎤</span><div class="svc-card-title">Event & Experiential Management</div><p class="svc-card-desc">From venue selection to production, logistics to brand activation — full-service event management.</p><a href="../services.html" class="svc-card-link">Details →</a></div>
+    </div>
+  </div>
+  <div class="services-footer reveal">
+    <a href="../services.html" class="btn btn-navy">All Service Details</a>
+  </div>
+</section>
+
+<section class="about-strip">
+  <div class="about-strip-img reveal-left">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Team collaboration" />
+    <div class="about-strip-badge"><strong>1967</strong><span>Founded</span></div>
+  </div>
+  <div class="about-strip-text reveal-right">
+    <span class="section-label">About Us</span>
+    <h2 class="serif-title">Since 1967.<br/>Reimagined for today.</h2>
+    <p>Emek Ajans is an Istanbul-based <strong>360° integrated</strong> communications agency that blends <strong>55+ years</strong> of deep market knowledge with next-generation digital capabilities.</p>
+    <p>With <strong>8 years as a Google Partner</strong> and <strong>Meta Business Partner</strong>, we deliver measurable, sustainable results for your brand.</p>
+    <div class="about-stats">
+      <div class="about-stat"><span class="about-stat-num">50+</span><span class="about-stat-lbl">Years of Experience</span></div>
+      <div class="about-stat"><span class="about-stat-num">200+</span><span class="about-stat-lbl">Brand Partners</span></div>
+      <div class="about-stat"><span class="about-stat-num">8 Yrs</span><span class="about-stat-lbl">Google Partner</span></div>
+      <div class="about-stat"><span class="about-stat-num">360°</span><span class="about-stat-lbl">Integrated Services</span></div>
+    </div>
+    <div style="margin-top:2rem;"><a href="../about.html" class="btn btn-navy">Read Our Story</a></div>
+  </div>
+</section>
+
+<section class="portfolio-preview">
+  <div class="portfolio-preview-header reveal">
+    <span class="section-label">Our Work</span>
+    <h2 class="serif-title">Stories worth sharing.</h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80" alt="Brand Campaign" /><div class="p-overlay"></div><div class="p-label">Brand Campaign</div></div>
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt="Social Media" /><div class="p-overlay"></div><div class="p-label">Social Media</div></div>
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="Media Planning" /><div class="p-overlay"></div><div class="p-label">Media Planning</div></div>
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Event Management" /><div class="p-overlay"></div><div class="p-label">Event Management</div></div>
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Web Design" /><div class="p-overlay"></div><div class="p-label">Web Design</div></div>
+    <div class="p-item"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="PR" /><div class="p-overlay"></div><div class="p-label">Public Relations</div></div>
+  </div>
+  <div class="portfolio-cta reveal"><a href="../work.html" class="btn btn-outline">View More Work</a></div>
+</section>
+
+<section class="testimonial-section">
+  <div class="t-bg-text" aria-hidden="true">SHARE</div>
+  <p class="t-quote reveal">"Brands and institutions now expect 360° integrated service — more efficient, more effective, sustainable communications that create an emotional connection with their target audience."</p>
+  <div class="t-author reveal"><strong>Emek Ajans</strong>360° Integrated Communications · Since 1967</div>
+</section>
+
+<section class="blog-preview">
+  <div class="blog-preview-header reveal">
+    <span class="section-label light">From Our Blog</span>
+    <h2 class="serif-title light">Insights & perspectives.</h2>
+  </div>
+  <div class="blog-grid">
+    <a href="../blog.html" class="blog-card reveal">
+      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=700&q=80" alt="GEO" /></div>
+      <div class="blog-card-body"><span class="blog-cat">GEO · Strategy</span><div class="blog-title">Capturing the Future with GEO (Generative Engine Optimisation)</div><div class="blog-excerpt">The rise of AI assistants is fundamentally changing how brands are discovered.</div></div>
+    </a>
+    <a href="../blog.html" class="blog-card reveal">
+      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80" alt="Google Ads" /></div>
+      <div class="blog-card-body"><span class="blog-cat">Google Ads · Performance</span><div class="blog-title">The Complete Brand Guide to Google Search Ads</div><div class="blog-excerpt">The clearest signal of purchase intent and the channel that delivers the highest ROI.</div></div>
+    </a>
+    <a href="../blog.html" class="blog-card reveal">
+      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=700&q=80" alt="Web Design" /></div>
+      <div class="blog-card-body"><span class="blog-cat">Web Design · UX</span><div class="blog-title">Web Design Trends That Set Brands Apart in 2026</div><div class="blog-excerpt">User experience, speed and conversion optimisation — the three pillars of modern web design.</div></div>
+    </a>
+  </div>
+  <div class="blog-footer-cta reveal"><a href="../blog.html" class="btn btn-outline-white">All Articles</a></div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg"><img src="https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1920&q=80" alt="Istanbul" /></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2 class="serif-title reveal">Let's create<br/><em>great things</em> together.</h2>
+    <p class="reveal">Based in Istanbul, working globally. Let's start a conversation.</p>
+    <div class="cta-btns reveal">
+      <a href="../contact.html" class="btn btn-orange">Get in Touch</a>
+      <a href="../work.html" class="btn btn-outline-white">Our Work</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="../index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">strategic · creative · communications agency<br/>Serving brands across Turkey and globally since 1967.</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div><div class="footer-col-title">Services</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../services.html">Digital Marketing</a><br/><a href="../services.html">Web Design</a><br/><a href="../services.html">Brand Identity</a><br/><a href="../services.html">Public Relations</a><br/><a href="../services.html">Media Planning</a><br/><a href="../services.html">Events</a></div></div>
+    <div><div class="footer-col-title">Company</div><hr class="footer-rule"/><div class="footer-col-body"><a href="../about.html">About Us</a><br/><a href="../work.html">Our Work</a><br/><a href="../blog.html">Blog</a><br/><a href="../contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Istanbul</div><hr class="footer-rule"/><div class="footer-col-body">+90 212 230 09 79<br/>info@emekajans.com<br/>Etiler, Nispetiye Cd. No:40/10<br/>Beşiktaş / Istanbul</div></div>
+    <div><div class="footer-col-title">Certifications</div><hr class="footer-rule"/><div class="footer-col-body">✓ Google Partner · 8 Years<br/>✓ Meta Business Partner<br/>SEO · Google Ads<br/>Social Media Management</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. All rights reserved.</p><ul class="footer-legal"><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  (function() {
+    const container = document.getElementById('heroText');
+    const text = 'Emek Ajans';
+    const wordEl = document.createElement('span');
+    wordEl.className = 'word';
+    let delay = 0.3;
+    text.split('').forEach(char => {
+      const s = document.createElement('span');
+      s.className = 'hero-letter';
+      s.style.animationDelay = delay + 's';
+      s.textContent = char === ' ' ? '\u00A0' : char;
+      wordEl.appendChild(s);
+      delay += char === ' ' ? 0.05 : 0.07;
+    });
+    container.appendChild(wordEl);
+  })();
+  (function() {
+    const words = ['strategic', 'creative', 'integrated', 'digital', 'web design', '360° communications'];
+    const el = document.getElementById('typewriter');
+    let wi = 0, ci = 0, isDeleting = false;
+    function type() {
+      const word = words[wi];
+      if (isDeleting) { el.textContent = word.substring(0, ci - 1); ci--; }
+      else { el.textContent = word.substring(0, ci + 1); ci++; }
+      let speed = isDeleting ? 42 : 88;
+      if (!isDeleting && ci === word.length) { speed = 1900; isDeleting = true; }
+      else if (isDeleting && ci === 0) { isDeleting = false; wi = (wi + 1) % words.length; speed = 380; }
+      setTimeout(type, speed);
+    }
+    setTimeout(type, 1900);
+  })();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+<script src="../lang.js"></script>
+</body>
+</html>
