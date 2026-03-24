@@ -55,6 +55,9 @@
       <li><a href="#" data-panel="images">
         <span class="nav-icon">🖼️</span> Görsel Yöneticisi
       </a></li>
+      <li><a href="#" data-panel="blog">
+        <span class="nav-icon">📝</span> Blog Yöneticisi
+      </a></li>
     </ul>
 
     <div class="sidebar-section-title">Sistem</div>
@@ -202,16 +205,34 @@
       <div class="panel" id="panel-images">
         <div class="card" style="margin-bottom:1rem">
           <div class="card-title">Görsel Yöneticisi</div>
-          <p style="font-size:.82rem;color:var(--grey)">Sayfalardaki görsellerin URL'lerini güncelleyin. Unsplash, CDN veya kendi hosting URL'nizi kullanabilirsiniz.</p>
+          <p style="font-size:.82rem;color:var(--grey)">Sayfalardaki görsellerin URL'lerini güncelleyin. Sayfaya göre gruplandırılmıştır.</p>
         </div>
-        <div class="img-grid" id="imagesGrid"></div>
+        <div id="imagesGridWraps"></div>
+      </div>
+
+      <!-- ── BLOG ── -->
+      <div class="panel" id="panel-blog">
+        <div class="card" style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div class="card-title" style="margin:0">Blog Yazıları</div>
+              <p style="font-size:.82rem;color:var(--grey);margin-top:.2rem">Yeni yazılar ekleyin veya mevcutları düzenleyin.</p>
+            </div>
+            <button class="btn btn-primary" onclick="editBlogPost('new')">➕ Yeni Yazı</button>
+          </div>
+        </div>
+        <div id="blogListContainer"></div>
       </div>
 
       <!-- ── SETTINGS ── -->
       <div class="panel" id="panel-settings">
         <div class="settings-grid">
           <div class="card">
-            <div class="card-title">Şifre Değiştir</div>
+            <div class="card-title">Güvenlik (Kullanıcı & Şifre)</div>
+            <div class="field-group">
+              <label class="field-label">Kullanıcı Adı</label>
+              <input class="field-input" id="currUser" type="text" placeholder="admin"/>
+            </div>
             <div class="field-group">
               <label class="field-label">Mevcut Şifre</label>
               <input class="field-input" id="currPass" type="password" placeholder="••••••••"/>
@@ -279,6 +300,43 @@
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /app -->
+
+<!-- ── BLOG EDIT MODAL ── -->
+<div class="modal-backdrop" id="blogModal">
+  <div class="modal" style="max-width:600px;width:90%">
+    <h3>📝 Blog Yazısı Düzenle</h3>
+    <div class="field-group mt-1">
+      <label class="field-label">Başlık</label>
+      <input class="field-input" id="blogModalTitle" type="text" placeholder="Örn: 2025 SEO Trendleri"/>
+    </div>
+    <div class="grid-2">
+      <div class="field-group">
+        <label class="field-label">Etiket / Kategori</label>
+        <input class="field-input" id="blogModalTag" type="text" placeholder="Örn: Dijital Pazarlama"/>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Tarih</label>
+        <input class="field-input" id="blogModalDate" type="text" placeholder="Örn: 15 Mart 2025"/>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Kısa Açıklama</label>
+      <textarea class="field-textarea" id="blogModalDesc" rows="2" placeholder="Blog kartında görünecek kısa açıklama"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Kapak Görseli URL</label>
+      <input class="field-input" id="blogModalImg" type="url" placeholder="https://..."/>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Tam İçerik (HTML destekler)</label>
+      <textarea class="field-textarea" id="blogModalContent" rows="6" placeholder="Yazının tamamı..."></textarea>
+    </div>
+    <div class="modal-footer mt-2">
+      <button class="btn btn-ghost" id="blogModalClose">İptal</button>
+      <button class="btn btn-primary" id="blogSaveBtn">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
 
 <!-- ── IMAGE EDIT MODAL ── -->
 <div class="modal-backdrop" id="imgModal">

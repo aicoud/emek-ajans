@@ -13,17 +13,23 @@ let state = {
   currentPanel: 'dashboard',
   selectedPageId: 'tr-index',
   contentTab: 'content',  // content | seo | images
-  data: {}  // keyed by page id
+  data: {}, // keyed by page id
+  blogs: [] // custom blog data
 };
 
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
-    state.data = saved;
-  } catch(e) { state.data = {}; }
+    state.data = saved.pages || saved; // geriye dönük uyumluluk
+    if (saved.blogs) state.blogs = saved.blogs;
+    else state.blogs = JSON.parse(JSON.stringify(BLOG_POSTS || [])); // data.js'den init
+  } catch(e) { state.data = {}; state.blogs = []; }
 }
 function saveState() {
-  localStorage.setItem('ea_dashboard_data', JSON.stringify(state.data));
+  localStorage.setItem('ea_dashboard_data', JSON.stringify({
+    pages: state.data,
+    blogs: state.blogs
+  }));
 }
 function getCredentials() {
   return JSON.parse(localStorage.getItem('ea_credentials') || JSON.stringify({ user: DEFAULT_USER, pass: DEFAULT_PASS }));
@@ -116,11 +122,12 @@ function showPanel(id) {
   const navLink = document.querySelector(`[data-panel="${id}"]`);
   if (navLink) navLink.classList.add('active');
   // topbar title
-  const titles = { dashboard: 'Dashboard', content: 'İçerik Editörü', seo: 'SEO Yöneticisi', images: 'Görsel Yöneticisi', settings: 'Ayarlar' };
+  const titles = { dashboard: 'Dashboard', content: 'İçerik Editörü', seo: 'SEO Yöneticisi', images: 'Görsel Yöneticisi', settings: 'Ayarlar', blog: 'Blog Yöneticisi' };
   $('topbarTitle').textContent = titles[id] || '';
   if (id === 'content') renderContentEditor();
   if (id === 'seo') renderSEOPanel();
   if (id === 'images') renderImagesPanel();
+  if (id === 'blog') renderBlogPanel();
 }
 document.querySelectorAll('[data-panel]').forEach(a => {
   a.addEventListener('click', e => { e.preventDefault(); showPanel(a.dataset.panel); });
@@ -346,11 +353,20 @@ function goToPageSEO(pageId) {
 
 // ── IMAGES PANEL ─────────────────────────────────────────────
 function renderImagesPanel() {
-  const grid = $('imagesGrid');
-  grid.innerHTML = '';
+  const wrap = $('imagesGridWraps');
+  wrap.innerHTML = '';
   SITE_PAGES.forEach(page => {
     const data = getPageData(page.id);
     if (!data.images || !data.images.length) return;
+    
+    // Create section for this page
+    const sec = document.createElement('div');
+    sec.style.marginBottom = '2rem';
+    sec.innerHTML = `<h3 style="font-size:1rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)">${page.icon} ${page.name} <span class="page-item-badge badge-${page.lang.toLowerCase()}">${page.lang}</span></h3>`;
+    
+    const grid = document.createElement('div');
+    grid.className = 'img-grid';
+    
     data.images.forEach(img => {
       const card = document.createElement('div');
       card.className = 'img-card';
@@ -358,12 +374,14 @@ function renderImagesPanel() {
         <img class="img-card-thumb" src="${img.url}" onerror="this.style.background='var(--grey-light)'" alt="${img.label}"/>
         <div class="img-card-body">
           <div class="img-card-name">${img.label}</div>
-          <div style="font-size:.62rem;color:var(--grey);margin-bottom:.25rem">${page.name} (${page.lang})</div>
           <div class="img-card-url">${img.url}</div>
           <button class="img-edit-btn" style="margin-top:.4rem" onclick="editImage('${page.id}','${img.id}','${img.label}')">✏️ URL Değiştir</button>
         </div>`;
       grid.appendChild(card);
     });
+    
+    sec.appendChild(grid);
+    wrap.appendChild(sec);
   });
 }
 
@@ -394,18 +412,106 @@ function editImage(pageId, imgId, label) {
 }
 $('imgModalClose').onclick = () => $('imgModal').classList.remove('open');
 
+// ── BLOG PANEL ───────────────────────────────────────────────
+function renderBlogPanel() {
+  const container = $('blogListContainer');
+  container.innerHTML = '';
+  if (!state.blogs.length) {
+    container.innerHTML = '<div class="card"><p style="color:var(--grey)">Henüz blog yazısı eklenmemiş.</p></div>';
+    return;
+  }
+  
+  state.blogs.forEach(blog => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '1rem';
+    card.innerHTML = `
+      <div style="display:flex;gap:1.5rem">
+        <img src="${blog.img || ''}" onerror="this.style.background='var(--bg)'" style="width:120px;height:90px;object-fit:cover;border-radius:6px;flex-shrink:0" alt=""/>
+        <div style="flex-grow:1">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <h3 style="margin:0 0 .25rem 0;font-size:1.1rem">${blog.title}</h3>
+            <button class="btn btn-ghost" style="padding:.25rem .5rem" onclick="editBlogPost('${blog.id}')">✏️ Düzenle</button>
+          </div>
+          <div style="font-size:.78rem;color:var(--grey);margin-bottom:.5rem">
+            <span style="background:var(--bg);padding:.15rem .4rem;border-radius:4px;margin-right:.5rem">${blog.tag}</span>
+            <span>📅 ${blog.date}</span>
+          </div>
+          <p style="margin:0;font-size:.85rem;color:var(--text)">${blog.desc}</p>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function editBlogPost(id) {
+  let blog = state.blogs.find(b => b.id === id);
+  if (!blog) {
+    blog = { id: 'new', title: '', slug: '', tag: '', date: '', desc: '', img: '', content: '' };
+  }
+  
+  $('blogModalTitle').value = blog.title;
+  $('blogModalTag').value = blog.tag;
+  $('blogModalDate').value = blog.date;
+  $('blogModalDesc').value = blog.desc;
+  $('blogModalImg').value = blog.img;
+  $('blogModalContent').value = blog.content;
+  
+  $('blogModal').classList.add('open');
+  
+  $('blogSaveBtn').onclick = () => {
+    const newBlog = {
+      id: blog.id === 'new' ? 'post-' + Date.now() : blog.id,
+      title: $('blogModalTitle').value.trim(),
+      slug: $('blogModalTitle').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      tag: $('blogModalTag').value.trim(),
+      date: $('blogModalDate').value.trim(),
+      desc: $('blogModalDesc').value.trim(),
+      img: $('blogModalImg').value.trim(),
+      content: $('blogModalContent').value.trim()
+    };
+    
+    if (!newBlog.title) { toast('Başlık zorunludur', 'error'); return; }
+    
+    if (blog.id === 'new') {
+      state.blogs.unshift(newBlog);
+    } else {
+      const idx = state.blogs.findIndex(b => b.id === blog.id);
+      if (idx !== -1) state.blogs[idx] = newBlog;
+    }
+    
+    saveState();
+    $('blogModal').classList.remove('open');
+    toast('Blog yazısı kaydedildi ✓');
+    renderBlogPanel();
+  };
+}
+$('blogModalClose').onclick = () => $('blogModal').classList.remove('open');
+
 // ── SETTINGS ─────────────────────────────────────────────────
+$('currUser').value = getCredentials().user; // Init UI username with actual credential
 $('savePasswordBtn').addEventListener('click', () => {
+  const newu = $('currUser').value.trim() || DEFAULT_USER;
   const curr = $('currPass').value;
   const newp = $('newPass').value;
   const conf = $('confPass').value;
   const creds = getCredentials();
+  
   if (curr !== creds.pass) { toast('Mevcut şifre hatalı', 'error'); return; }
-  if (newp.length < 6) { toast('Şifre en az 6 karakter olmalı', 'error'); return; }
-  if (newp !== conf) { toast('Şifreler eşleşmiyor', 'error'); return; }
-  setCredentials(creds.user, newp);
+  
+  let finalPass = creds.pass;
+  if (newp) {
+    if (newp.length < 6) { toast('Şifre en az 6 karakter olmalı', 'error'); return; }
+    if (newp !== conf) { toast('Şifreler eşleşmiyor', 'error'); return; }
+    finalPass = newp;
+  }
+  
+  setCredentials(newu, finalPass);
+  $('sidebarUserName').textContent = newu;
+  $('sidebarUserAvatar').textContent = newu[0].toUpperCase();
   $('currPass').value = $('newPass').value = $('confPass').value = '';
-  toast('Şifre güncellendi ✓');
+  toast('Güvenlik ayarları güncellendi ✓');
 });
 
 $('saveSiteInfoBtn').addEventListener('click', () => {
@@ -413,7 +519,9 @@ $('saveSiteInfoBtn').addEventListener('click', () => {
 });
 
 $('exportAllBtn').addEventListener('click', () => {
-  const data = JSON.stringify(state.data, null, 2);
+  // export both pages & blogs
+  const exportData = { pages: state.data, blogs: state.blogs };
+  const data = JSON.stringify(exportData, null, 2);
   const blob = new Blob([data], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -429,7 +537,13 @@ $('importBtn').addEventListener('click', () => {
     const reader = new FileReader();
     reader.onload = ev => {
       try {
-        state.data = JSON.parse(ev.target.result);
+        const imported = JSON.parse(ev.target.result);
+        if (imported.pages) {
+          state.data = imported.pages;
+          state.blogs = imported.blogs || [];
+        } else {
+          state.data = imported; // legacy support
+        }
         saveState();
         toast('Veri içe aktarıldı ✓');
         location.reload();

@@ -411,3 +411,37 @@ const SITE_PAGES = [
   ]
 }
 ];
+
+// ─── BLOG POSTS ─────────────────────────────────────────────
+const BLOG_POSTS = [
+  {
+    id: 'post-1',
+    title: 'GEO ve Yapay Zeka: Yeni SEO Paradigması',
+    slug: 'geo-ve-yapay-zeka',
+    tag: 'Dijital Pazarlama',
+    date: '15 Mart 2025',
+    desc: 'Generative Engine Optimization nedir ve markanız için ne anlam ifade ediyor?',
+    img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=80',
+    content: '<p>Yapay zeka arama motorlarını değiştiriyor. GEO (Generative Engine Optimization) dönemi başladı.</p>'
+  },
+  {
+    id: 'post-2',
+    title: 'Google Ads 2025: Performans Max Kampanyaları',
+    slug: 'google-ads-2025',
+    tag: 'Google Ads',
+    date: '10 Mart 2025',
+    desc: 'Performans Max kampanyaları neden vazgeçilmez hale geldi?',
+    img: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80',
+    content: '<p>PMax kampanyaları makine öğrenimini kullanarak reklam performansını maksimize ediyor.</p>'
+  },
+  {
+    id: 'post-3',
+    title: 'PR Kriz Yönetimi Rehberi',
+    slug: 'pr-kriz-yonetimi',
+    tag: 'Halkla İlişkiler',
+    date: '5 Mart 2025',
+    desc: 'Dijital çağda kurumsal itibarı korumak için 8 kritik adım.',
+    img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80',
+    content: '<p>Kriz anlarında şeffaflık, hız ve doğru kanal kullanımı en önemli faktörlerdir.</p>'
+  }
+];
