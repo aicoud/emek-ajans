@@ -3,7 +3,7 @@
    ============================================================ */
 
 // ── CREDENTIALS ─────────────────────────────────────────────
-const DEFAULT_USER = 'admin';
+const DEFAULT_USER = 'aykutadmin';
 const DEFAULT_PASS = 'EmekAjans2024';
 
 // ── STATE ────────────────────────────────────────────────────
@@ -161,7 +161,9 @@ function renderContentEditor() {
       <span class="page-item-badge badge-${page.lang.toLowerCase()}">${page.lang}</span>`;
     li.addEventListener('click', () => {
       state.selectedPageId = page.id;
-      renderContentEditor();
+      // Sayfa değiştiğinde mevcut tab statesini koruyarak yeniden render et
+      renderEditorFields();
+      renderContentEditor(); // menüdeki active state'i güncellemek için
     });
     list.appendChild(li);
   });
@@ -178,7 +180,8 @@ function renderEditorFields() {
   $('tabSEO').onclick = () => { state.contentTab = 'seo'; renderEditorFields(); };
   $('tabImages').onclick = () => { state.contentTab = 'images'; renderEditorFields(); };
   ['tabContent','tabSEO','tabImages'].forEach(id => $(`${id}`).classList.remove('active'));
-  $(`tab${state.contentTab.charAt(0).toUpperCase()+state.contentTab.slice(1)}`).classList.add('active');
+  const activeTabId = state.contentTab === 'seo' ? 'tabSEO' : `tab${state.contentTab.charAt(0).toUpperCase()+state.contentTab.slice(1)}`;
+  if ($(activeTabId)) $(activeTabId).classList.add('active');
 
   const badge = page.lang === 'TR' ? '<span class="section-tag">TR</span>' : '<span class="section-tag" style="background:rgba(37,99,235,.08);color:#2563eb">EN</span>';
 
@@ -486,6 +489,10 @@ function editBlogPost(id) {
     toast('Blog yazısı kaydedildi ✓');
     renderBlogPanel();
   };
+  
+  $('blogModalImg').addEventListener('input', () => {
+    $('blogModalPreview').src = $('blogModalImg').value;
+  });
 }
 $('blogModalClose').onclick = () => $('blogModal').classList.remove('open');
 
