@@ -1,217 +1,10 @@
 /* ============================================================
-   Emek Ajans — Admin Dashboard App
+   Emek Ajans — Admin Dashboard App Logic
    ============================================================ */
 
 // ── CREDENTIALS ─────────────────────────────────────────────
 const DEFAULT_USER = 'admin';
 const DEFAULT_PASS = 'EmekAjans2024';
-
-// ── SITE DATA MODEL ──────────────────────────────────────────
-const SITE_PAGES = [
-  {
-    id: 'tr-index', lang: 'TR', name: 'Ana Sayfa', path: '../index.html', icon: '🏠',
-    seo: {
-      title: 'Emek Ajans — Stratejik Yaratıcı İletişim Ajansı',
-      description: '1967\'den bu yana İstanbul merkezli 360° entegre iletişim ajansı. Dijital pazarlama, web tasarım, halkla ilişkiler, medya planlaması.',
-      keywords: 'reklam ajansı, dijital pazarlama, halkla ilişkiler, medya planlaması, istanbul',
-      ogTitle: 'Emek Ajans — 360° İletişim Ajansı',
-      ogDesc: '1967\'den beri stratejik iletişim çözümleri.',
-      ogImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',
-      canonical: 'https://emekajans.com/',
-      hreflangTR: 'https://emekajans.com/', hreflangEN: 'https://emekajans.com/en/'
-    },
-    content: {
-      heroHeadline: 'Emek Ajans',
-      heroTaglines: 'stratejik, yaratıcı, iletişim ajansı, 1967\'den beri',
-      heroCtaPrimary: 'HİZMETLERİ KEŞFET', heroCtaSecondary: 'HİKÂYEMİZ',
-      servicesTitle: 'Hizmetlerimiz', servicesSubtitle: 'Dijital pazarlamadan medya planlamasına, web tasarımdan etkinlik yönetimine kadar tüm iletişim hizmetlerini tek çatı altında sunuyoruz.',
-      aboutTitle: '1967\'den beri.\nGünümüz için yeniden.', aboutP1: '1967\'den bu yana İstanbul\'dan dünyaya uzanan Emek Ajans; köklü pazar deneyimini yeni nesil dijital yeteneklerle harmanlayan 360° entegre iletişim ajansıdır.',
-      aboutP2: 'Google Partner ve Meta Business Partner sertifikalarımızla, markanız için her kanalda ölçülebilir sonuçlar üretiyoruz.',
-      ctaTitle: 'Markanızı birlikte büyütelim.', ctaSubtitle: 'Projenizi konuşmak ister misiniz?',
-      footerTagline: 'stratejik · yaratıcı · iletişim ajansı · 1967\'den Beri · İstanbul'
-    },
-    images: [
-      { id: 'hero-bg', label: 'Hero Arka Plan', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80' },
-      { id: 'about-img', label: 'Hakkımızda Fotoğraf', url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80' },
-    ]
-  },
-  {
-    id: 'tr-services', lang: 'TR', name: 'Hizmetler', path: '../services.html', icon: '⚙️',
-    seo: {
-      title: 'Hizmetler — Emek Ajans', description: 'Dijital pazarlama, web tasarım, kurumsal kimlik, halkla ilişkiler, medya planlaması ve etkinlik yönetimi hizmetleri.',
-      keywords: 'dijital pazarlama, web tasarım, halkla ilişkiler, medya planlaması, etkinlik yönetimi',
-      ogTitle: 'Hizmetler — Emek Ajans', ogDesc: 'Ölçülebilir sonuçlar üreten entegre hizmetler.',
-      ogImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200',
-      canonical: 'https://emekajans.com/services.html',
-      hreflangTR: 'https://emekajans.com/services.html', hreflangEN: 'https://emekajans.com/en/services.html'
-    },
-    content: {
-      heroTitle: 'Ölçülebilir sonuçlar\nüreten entegre hizmetler.',
-      s01Title: 'Veri Odaklı Dijital Pazarlama', s01Desc: 'Hedef kitle analizinden ölçülebilir ROI\'ye, her dijital kanalda hassas kampanyalar.',
-      s02Title: 'Web Tasarım & Dijital Deneyim', s02Desc: 'Markanızı en etkili şekilde temsil eden, hızlı, SEO uyumlu ve kullanıcı odaklı siteler.',
-      s03Title: 'Kurumsal Kimlik & Yaratıcı', s03Desc: 'Marka stratejisi, logo ve görsel kimlik sistemleri.',
-      s04Title: 'Halkla İlişkiler & Kurumsal İletişim', s04Desc: 'Stratejik itibar yönetimi ve paydaş iletişimi.',
-      s05Title: 'Medya Planlaması & Satın Alma', s05Desc: 'TV, radyo, açıkhava, baskı ve dijitalde çok kanallı strateji.',
-      s06Title: 'Etkinlik & Organizasyon Yönetimi', s06Desc: 'Mekân seçiminden prodüksiyona tam etkinlik yönetimi.',
-    },
-    images: []
-  },
-  {
-    id: 'tr-about', lang: 'TR', name: 'Hakkımızda', path: '../about.html', icon: '👥',
-    seo: {
-      title: 'Hakkımızda — Emek Ajans', description: '1967\'den bu yana İstanbul merkezli 360° entegre iletişim ajansı.',
-      keywords: 'emek ajans hakkında, iletişim ajansı tarihçe, istanbul reklam ajansı',
-      ogTitle: 'Hakkımızda — Emek Ajans', ogDesc: '1967\'den bu yana güven üzerine kurulu bir miras.',
-      ogImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200',
-      canonical: 'https://emekajans.com/about.html',
-      hreflangTR: 'https://emekajans.com/about.html', hreflangEN: 'https://emekajans.com/en/about.html'
-    },
-    content: {
-      heroTitle: '1967\'den bu yana.\nGüven üzerine kurulu bir miras.',
-      storyTitle: 'Hikayemiz', storyP1: 'Emek Ajans, 1967 yılında İstanbul\'da kuruldu. Yarım asrı aşkın süreçte tam hizmet 360° entegre iletişim ajansına dönüştük.',
-      storyP2: 'Derin pazar bilgimizi yeni nesil dijital yeteneklerle harmanlıyoruz.',
-    },
-    images: [
-      { id: 'about-hero', label: 'About Hero', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80' },
-      { id: 'about-story', label: 'Ekip Fotoğrafı', url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80' },
-    ]
-  },
-  {
-    id: 'tr-work', lang: 'TR', name: 'Çalışmalarımız', path: '../work.html', icon: '💼',
-    seo: {
-      title: 'Çalışmalarımız — Emek Ajans', description: 'Emek Ajans portföyü — kampanyalar, web, PR, etkinlikler.',
-      keywords: 'emek ajans portföy, çalışmalar, kampanya örnekleri',
-      ogTitle: 'Çalışmalarımız — Emek Ajans', ogDesc: 'Paylaşmaya değer hikayeler.',
-      ogImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200',
-      canonical: 'https://emekajans.com/work.html',
-      hreflangTR: 'https://emekajans.com/work.html', hreflangEN: 'https://emekajans.com/en/work.html'
-    },
-    content: { heroTitle: 'Paylaşmaya değer\nhikayeler.' },
-    images: []
-  },
-  {
-    id: 'tr-blog', lang: 'TR', name: 'Blog', path: '../blog.html', icon: '📝',
-    seo: {
-      title: 'Blog — Emek Ajans', description: 'Dijital pazarlama, SEO, PR ve iletişim dünyasından içgörüler.',
-      keywords: 'dijital pazarlama blogu, seo ipuçları, pr stratejisi, iletişim trendleri',
-      ogTitle: 'Blog — Emek Ajans', ogDesc: 'Sektörden içgörüler ve perspektifler.',
-      ogImage: 'https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?w=1200',
-      canonical: 'https://emekajans.com/blog.html',
-      hreflangTR: 'https://emekajans.com/blog.html', hreflangEN: 'https://emekajans.com/en/blog.html'
-    },
-    content: { heroTitle: 'İçgörüler &\nperspektifler.' },
-    images: []
-  },
-  {
-    id: 'tr-contact', lang: 'TR', name: 'İletişim', path: '../contact.html', icon: '✉️',
-    seo: {
-      title: 'İletişim — Emek Ajans', description: 'Emek Ajans ile iletişime geçin. İstanbul Etiler, Nispetiye Caddesi.',
-      keywords: 'emek ajans iletişim, reklam ajansı istanbul, iletişim formu',
-      ogTitle: 'İletişim — Emek Ajans', ogDesc: 'Markanızı konuşmak ister misiniz?',
-      ogImage: 'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200',
-      canonical: 'https://emekajans.com/contact.html',
-      hreflangTR: 'https://emekajans.com/contact.html', hreflangEN: 'https://emekajans.com/en/contact.html'
-    },
-    content: {
-      heroTitle: 'Markanız için\nbir konuşma başlatalım.', contactIntro: 'Aklınızda belirli bir proje var mı ya da henüz keşif aşamasındanız? Her iki durumda da konuşmaya her zaman açığız.',
-      address: 'Etiler, Nispetiye Cd. No:40/10\nGürel Apt., D:B, 34340\nBeşiktaş / İstanbul',
-      phone: '+90 212 230 09 79', email: 'info@emekajans.com',
-      hours: 'Pzt–Cum: 09:00–18:00'
-    },
-    images: []
-  },
-  {
-    id: 'en-index', lang: 'EN', name: 'Homepage', path: '../en/index.html', icon: '🏠',
-    seo: {
-      title: 'Emek Ajans — Strategic Creative Communications Agency',
-      description: 'Istanbul-based 360° integrated communications agency founded in 1967. Digital marketing, web design, PR, media planning.',
-      keywords: 'advertising agency istanbul, digital marketing turkey, pr agency, media planning',
-      ogTitle: 'Emek Ajans — 360° Communications Agency', ogDesc: 'Strategic communications since 1967.',
-      ogImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',
-      canonical: 'https://emekajans.com/en/',
-      hreflangTR: 'https://emekajans.com/', hreflangEN: 'https://emekajans.com/en/'
-    },
-    content: {
-      heroHeadline: 'Emek Ajans', heroTaglines: 'strategic, creative, communications agency, Since 1967',
-      heroCtaPrimary: 'EXPLORE SERVICES', heroCtaSecondary: 'OUR STORY',
-      servicesTitle: 'Our Services', servicesSubtitle: 'Communications that create real impact, delivered under one roof.',
-      aboutTitle: 'Since 1967.\nReimagined for today.', aboutP1: 'Founded in 1967 in Istanbul, Emek Ajans has evolved into a full-service 360° integrated communications agency.',
-      aboutP2: 'As a Google Partner and Meta Business Partner, we deliver measurable results across every channel.',
-    },
-    images: []
-  },
-  {
-    id: 'en-services', lang: 'EN', name: 'Services', path: '../en/services.html', icon: '⚙️',
-    seo: {
-      title: 'Services — Emek Ajans', description: 'Digital marketing, web design, brand identity, PR, media planning and event management.',
-      keywords: 'digital marketing agency, web design turkey, public relations istanbul',
-      ogTitle: 'Services — Emek Ajans', ogDesc: 'Results-driven integrated services.',
-      ogImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200',
-      canonical: 'https://emekajans.com/en/services.html',
-      hreflangTR: 'https://emekajans.com/services.html', hreflangEN: 'https://emekajans.com/en/services.html'
-    },
-    content: { heroTitle: 'Integrated services\nthat deliver results.' },
-    images: []
-  },
-  {
-    id: 'en-about', lang: 'EN', name: 'About', path: '../en/about.html', icon: '👥',
-    seo: {
-      title: 'About — Emek Ajans', description: 'Istanbul-based 360° integrated communications agency since 1967.',
-      keywords: 'emek ajans about, communications agency history, istanbul advertising',
-      ogTitle: 'About — Emek Ajans', ogDesc: 'A legacy built on trust since 1967.',
-      ogImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200',
-      canonical: 'https://emekajans.com/en/about.html',
-      hreflangTR: 'https://emekajans.com/about.html', hreflangEN: 'https://emekajans.com/en/about.html'
-    },
-    content: { heroTitle: 'Building brands\nsince 1967.' },
-    images: []
-  },
-  {
-    id: 'en-work', lang: 'EN', name: 'Our Work', path: '../en/work.html', icon: '💼',
-    seo: {
-      title: 'Our Work — Emek Ajans', description: 'Emek Ajans portfolio — campaigns, web design, PR, events.',
-      keywords: 'emek ajans portfolio, campaign examples, work',
-      ogTitle: 'Our Work — Emek Ajans', ogDesc: 'Stories worth sharing.',
-      ogImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200',
-      canonical: 'https://emekajans.com/en/work.html',
-      hreflangTR: 'https://emekajans.com/work.html', hreflangEN: 'https://emekajans.com/en/work.html'
-    },
-    content: { heroTitle: 'Stories worth\nsharing.' },
-    images: []
-  },
-  {
-    id: 'en-blog', lang: 'EN', name: 'Blog', path: '../en/blog.html', icon: '📝',
-    seo: {
-      title: 'Blog — Emek Ajans', description: 'Insights and perspectives from the Emek Ajans team.',
-      keywords: 'digital marketing blog, seo tips, pr strategy, communications trends',
-      ogTitle: 'Blog — Emek Ajans', ogDesc: 'Industry insights and perspectives.',
-      ogImage: 'https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?w=1200',
-      canonical: 'https://emekajans.com/en/blog.html',
-      hreflangTR: 'https://emekajans.com/blog.html', hreflangEN: 'https://emekajans.com/en/blog.html'
-    },
-    content: { heroTitle: 'Insights &\nperspectives.' },
-    images: []
-  },
-  {
-    id: 'en-contact', lang: 'EN', name: 'Contact', path: '../en/contact.html', icon: '✉️',
-    seo: {
-      title: 'Contact — Emek Ajans', description: 'Get in touch with Emek Ajans. Istanbul Etiler, Nispetiye Caddesi.',
-      keywords: 'emek ajans contact, advertising agency istanbul, contact form',
-      ogTitle: 'Contact — Emek Ajans', ogDesc: 'Let\'s have a conversation about your brand.',
-      ogImage: 'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200',
-      canonical: 'https://emekajans.com/en/contact.html',
-      hreflangTR: 'https://emekajans.com/contact.html', hreflangEN: 'https://emekajans.com/en/contact.html'
-    },
-    content: {
-      heroTitle: "Let's start\na conversation.",
-      contactIntro: "Whether you have a specific project in mind or just want to explore possibilities, we are always open to a conversation.",
-      address: 'Etiler, Nispetiye Cd. No:40/10\nGürel Apt., D:B, 34340\nBeşiktaş / Istanbul',
-      phone: '+90 212 230 09 79', email: 'info@emekajans.com',
-      hours: 'Mon–Fri: 09:00–18:00'
-    },
-    images: []
-  },
-];
 
 // ── STATE ────────────────────────────────────────────────────
 let state = {
@@ -272,8 +65,8 @@ function charCount(el, max) {
 }
 function seoScore(seo) {
   let score = 0;
-  if (seo.title && seo.title.length > 20 && seo.title.length < 60) score += 25;
-  if (seo.description && seo.description.length > 50 && seo.description.length < 160) score += 25;
+  if (seo.title && seo.title.length >= 20 && seo.title.length <= 60) score += 25;
+  if (seo.description && seo.description.length >= 50 && seo.description.length <= 160) score += 25;
   if (seo.keywords && seo.keywords.length > 5) score += 15;
   if (seo.ogTitle) score += 10;
   if (seo.ogDesc) score += 10;
@@ -335,9 +128,9 @@ document.querySelectorAll('[data-panel]').forEach(a => {
 
 // ── DASHBOARD ────────────────────────────────────────────────
 function renderDashboard() {
-  $('statPageCount').textContent = '12';
-  $('statTRPages').textContent = '6';
-  $('statENPages').textContent = '6';
+  $('statPageCount').textContent = SITE_PAGES.length.toString();
+  $('statTRPages').textContent = SITE_PAGES.filter(p => p.lang === 'TR').length.toString();
+  $('statENPages').textContent = SITE_PAGES.filter(p => p.lang === 'EN').length.toString();
   const allSEO = SITE_PAGES.map(p => seoScore(getPageData(p.id).seo));
   const avg = Math.round(allSEO.reduce((a, b) => a + b, 0) / allSEO.length);
   $('statSEOScore').textContent = avg + '%';
@@ -397,7 +190,7 @@ function renderEditorFields() {
         </div>`;
       }).join('') +
       `<button class="btn btn-primary" onclick="saveContentFields('${page.id}')">💾 Kaydet</button>
-       <button class="btn btn-ghost" style="margin-left:.5rem" onclick="exportPageHint()">📤 Dışa Aktar</button>`;
+       <button class="btn btn-ghost" style="margin-left:.5rem" onclick="exportPageHint('${page.id}')">📤 HTML Görüntüle</button>`;
 
   } else if (state.contentTab === 'seo') {
     const s = data.seo;
@@ -456,7 +249,7 @@ function renderEditorFields() {
   } else {
     // Images tab
     const imgs = data.images;
-    if (!imgs.length) {
+    if (!imgs || !imgs.length) {
       wrap.innerHTML = `<div class="section-header"><h2>${page.icon} ${page.name} — Görseller</h2>${badge}</div>
         <p style="color:var(--grey);font-size:.85rem;">Bu sayfa için düzenlenebilir görsel tanımlanmamış.</p>`;
     } else {
@@ -506,8 +299,10 @@ function saveSEOFields(pageId) {
   setTimeout(() => renderEditorFields(), 300);
 }
 
-function exportPageHint() {
-  toast('💡 Değişiklikler localStorage\'a kaydedildi. Sitenizi production\'a taşırken export özelliğini kullanın.', 'success');
+function exportPageHint(pageId) {
+  const page = SITE_PAGES.find(p => p.id === pageId);
+  window.open(page.path, '_blank');
+  toast('💡 Değişiklikler localStorage\'a kaydedildi. Sitenizi yayına alırken "İndir" butonunu kullanın.', 'success');
 }
 
 // ── SEO PANEL ────────────────────────────────────────────────
@@ -555,7 +350,7 @@ function renderImagesPanel() {
   grid.innerHTML = '';
   SITE_PAGES.forEach(page => {
     const data = getPageData(page.id);
-    if (!data.images.length) return;
+    if (!data.images || !data.images.length) return;
     data.images.forEach(img => {
       const card = document.createElement('div');
       card.className = 'img-card';
@@ -637,6 +432,7 @@ $('importBtn').addEventListener('click', () => {
         state.data = JSON.parse(ev.target.result);
         saveState();
         toast('Veri içe aktarıldı ✓');
+        location.reload();
       } catch(e) { toast('Geçersiz dosya', 'error'); }
     };
     reader.readAsText(e.target.files[0]);
@@ -646,3 +442,4 @@ $('importBtn').addEventListener('click', () => {
 
 // ── INIT ─────────────────────────────────────────────────────
 loadState();
+
