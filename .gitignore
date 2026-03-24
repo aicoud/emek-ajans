@@ -9,8 +9,11 @@
 *.swp
 *.swo
 
-# Temp scripts
-/tmp/
+# Temp / crawl data
+Firecrawl*/
+*.json
+*.md
+*.avif
 
 # Node (just in case)
 node_modules/
