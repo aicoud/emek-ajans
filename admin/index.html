@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin — Emek Ajans Dashboard</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">Emek<span>.</span></div>
+    <div class="login-sub">Admin Dashboard</div>
+    <label class="login-label" for="loginUser">Kullanıcı Adı</label>
+    <input class="login-input" id="loginUser" type="text" placeholder="admin" autocomplete="username"/>
+    <label class="login-label" for="loginPass">Şifre</label>
+    <input class="login-input" id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password"/>
+    <button class="login-btn" id="loginBtn">Giriş Yap →</button>
+    <div class="login-error" id="loginError">❌ Kullanıcı adı veya şifre hatalı.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DASHBOARD APP
+══════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div>
+        <div class="sidebar-logo-text">Emek<span>.</span></div>
+      </div>
+      <span class="sidebar-badge">Admin</span>
+    </div>
+
+    <div class="sidebar-section-title">Ana Menü</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" data-panel="dashboard" class="active">
+        <span class="nav-icon">📊</span> Dashboard
+      </a></li>
+      <li><a href="#" data-panel="content">
+        <span class="nav-icon">✏️</span> İçerik Editörü
+      </a></li>
+      <li><a href="#" data-panel="seo">
+        <span class="nav-icon">🔍</span> SEO Yöneticisi
+      </a></li>
+      <li><a href="#" data-panel="images">
+        <span class="nav-icon">🖼️</span> Görsel Yöneticisi
+      </a></li>
+    </ul>
+
+    <div class="sidebar-section-title">Sistem</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" data-panel="settings">
+        <span class="nav-icon">⚙️</span> Ayarlar
+      </a></li>
+      <li><a href="../index.html" target="_blank">
+        <span class="nav-icon">🌐</span> Siteyi Görüntüle
+      </a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="sidebarUserAvatar">A</div>
+        <div>
+          <div class="sidebar-user-name" id="sidebarUserName">admin</div>
+          <div class="sidebar-user-role">Yönetici</div>
+        </div>
+        <button class="logout-btn" title="Çıkış" onclick="logout()">⏻</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-title" id="topbarTitle">Dashboard</div>
+      <div class="topbar-actions">
+        <a href="../index.html" target="_blank" class="btn btn-ghost">🌐 Siteyi Aç</a>
+        <a href="https://github.com/aicoud/emek-ajans" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Toplam Sayfa</div>
+            <div class="stat-icon">📄</div>
+            <div class="stat-value" id="statPageCount">12</div>
+            <div class="stat-sub">TR + EN</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">TR Sayfaları</div>
+            <div class="stat-icon">🇹🇷</div>
+            <div class="stat-value" id="statTRPages">6</div>
+            <div class="stat-sub">Türkçe</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">EN Sayfaları</div>
+            <div class="stat-icon">🇬🇧</div>
+            <div class="stat-value" id="statENPages">6</div>
+            <div class="stat-sub">İngilizce</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Ortalama SEO Skoru</div>
+            <div class="stat-icon">🔍</div>
+            <div class="stat-value" id="statSEOScore">—</div>
+            <div class="stat-sub">Tüm sayfalar</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+          <div class="card">
+            <div class="card-title">Hızlı Erişim</div>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+              <button class="btn btn-primary" onclick="showPanel('content')">✏️ İçerik Düzenle</button>
+              <button class="btn btn-ghost" onclick="showPanel('seo')">🔍 SEO Yönet</button>
+              <button class="btn btn-ghost" onclick="showPanel('images')">🖼️ Görsel Değiştir</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Site Bilgileri</div>
+            <table style="width:100%;font-size:.8rem;border-collapse:collapse">
+              <tr><td style="padding:.4rem 0;color:var(--grey);width:50%">Domain</td><td>emekajans.com</td></tr>
+              <tr><td style="padding:.4rem 0;color:var(--grey)">Dil</td><td>TR / EN</td></tr>
+              <tr><td style="padding:.4rem 0;color:var(--grey)">Toplam Sayfa</td><td>12</td></tr>
+              <tr><td style="padding:.4rem 0;color:var(--grey)">Stack</td><td>HTML · CSS · JS</td></tr>
+              <tr><td style="padding:.4rem 0;color:var(--grey)">GitHub</td><td><a href="https://github.com/aicoud/emek-ajans" target="_blank" style="color:var(--red);text-decoration:none">aicoud/emek-ajans</a></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card mt-2">
+          <div class="card-title">SEO Durum Özeti</div>
+          <table class="seo-table" id="dashSEOTable">
+            <thead><tr>
+              <th>Sayfa</th><th>Dil</th><th>Başlık</th><th>Açıklama</th><th>Skor</th><th></th>
+            </tr></thead>
+            <tbody id="seoTableBodyDash"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── CONTENT EDITOR ── -->
+      <div class="panel" id="panel-content">
+        <div class="editor-layout">
+          <div class="editor-sidebar card">
+            <div class="card-title">Sayfalar</div>
+            <ul class="page-list" id="pageList"></ul>
+          </div>
+          <div class="card" style="min-height:500px">
+            <div class="tabs">
+              <button class="tab-btn active" id="tabContent">📝 İçerik</button>
+              <button class="tab-btn" id="tabSEO">🔍 SEO</button>
+              <button class="tab-btn" id="tabImages">🖼️ Görseller</button>
+            </div>
+            <div id="editorFields"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SEO MANAGER ── -->
+      <div class="panel" id="panel-seo">
+        <div class="card" style="margin-bottom:1.5rem">
+          <div class="card-title">SEO Skorlama Kriterleri</div>
+          <div style="display:flex;gap:2rem;font-size:.78rem;color:var(--grey)">
+            <span>🟢 Başlık: 20-60 karakter</span>
+            <span>🟢 Açıklama: 50-155 karakter</span>
+            <span>🟢 OG taglar tanımlı</span>
+            <span>🟢 Canonical URL</span>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+            <div class="card-title" style="margin:0">Tüm Sayfalar — SEO Durumu</div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="seo-table">
+              <thead><tr>
+                <th>Sayfa</th><th>Dil</th><th>Title</th><th>Description</th><th>Skor</th><th>İşlem</th>
+              </tr></thead>
+              <tbody id="seoTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IMAGES ── -->
+      <div class="panel" id="panel-images">
+        <div class="card" style="margin-bottom:1rem">
+          <div class="card-title">Görsel Yöneticisi</div>
+          <p style="font-size:.82rem;color:var(--grey)">Sayfalardaki görsellerin URL'lerini güncelleyin. Unsplash, CDN veya kendi hosting URL'nizi kullanabilirsiniz.</p>
+        </div>
+        <div class="img-grid" id="imagesGrid"></div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="panel" id="panel-settings">
+        <div class="settings-grid">
+          <div class="card">
+            <div class="card-title">Şifre Değiştir</div>
+            <div class="field-group">
+              <label class="field-label">Mevcut Şifre</label>
+              <input class="field-input" id="currPass" type="password" placeholder="••••••••"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Yeni Şifre</label>
+              <input class="field-input" id="newPass" type="password" placeholder="En az 6 karakter"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Yeni Şifre (Tekrar)</label>
+              <input class="field-input" id="confPass" type="password" placeholder="••••••••"/>
+            </div>
+            <button class="btn btn-primary" id="savePasswordBtn">🔒 Şifreyi Güncelle</button>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Site Genel Bilgileri</div>
+            <div class="field-group">
+              <label class="field-label">Site Adı</label>
+              <input class="field-input" value="Emek Ajans"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Ana Domain</label>
+              <input class="field-input" value="https://emekajans.com"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label">İletişim E-posta</label>
+              <input class="field-input" value="info@emekajans.com"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Telefon</label>
+              <input class="field-input" value="+90 212 230 09 79"/>
+            </div>
+            <button class="btn btn-primary" id="saveSiteInfoBtn">💾 Kaydet</button>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Veri Yönetimi</div>
+            <p style="font-size:.8rem;color:var(--grey);margin-bottom:1rem">Tüm içerik değişikliklerinizi JSON dosyası olarak yedekleyin veya yükleyin.</p>
+            <div style="display:flex;flex-direction:column;gap:.65rem">
+              <button class="btn btn-green" id="exportAllBtn">📥 Tüm Veriyi İndir (JSON)</button>
+              <button class="btn btn-ghost" id="importBtn">📤 JSON'dan İçe Aktar</button>
+            </div>
+            <div class="divider"></div>
+            <div class="card-title">Varsayılan Giriş Bilgileri</div>
+            <table style="font-size:.78rem;width:100%;border-collapse:collapse">
+              <tr><td style="color:var(--grey);padding:.3rem 0;width:40%">Kullanıcı</td><td><code style="background:var(--bg);padding:.15rem .4rem;border-radius:4px">admin</code></td></tr>
+              <tr><td style="color:var(--grey);padding:.3rem 0">Şifre</td><td><code style="background:var(--bg);padding:.15rem .4rem;border-radius:4px">EmekAjans2024</code></td></tr>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Hızlı Linkler</div>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+              <a href="../index.html" target="_blank" class="btn btn-ghost">🏠 Ana Sayfa</a>
+              <a href="../en/index.html" target="_blank" class="btn btn-ghost">🇬🇧 EN Ana Sayfa</a>
+              <a href="https://github.com/aicoud/emek-ajans" target="_blank" class="btn btn-ghost">GitHub Repo ↗</a>
+              <a href="https://search.google.com/search-console" target="_blank" class="btn btn-ghost">Google Search Console ↗</a>
+              <a href="https://pagespeed.web.dev" target="_blank" class="btn btn-ghost">PageSpeed Insights ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ── IMAGE EDIT MODAL ── -->
+<div class="modal-backdrop" id="imgModal">
+  <div class="modal">
+    <h3>🖼️ Görsel URL Güncelle</h3>
+    <p style="font-size:.8rem;color:var(--grey);margin-bottom:1rem" id="imgModalLabel"></p>
+    <div class="field-group">
+      <label class="field-label">Görsel URL</label>
+      <input class="field-input" id="imgModalUrl" type="url" placeholder="https://..."/>
+      <div class="field-hint">Unsplash, CDN veya kendi sunucunuzdaki görsel URL'si</div>
+    </div>
+    <img id="imgModalPreview" src="" alt="Önizleme"
+         style="width:100%;height:160px;object-fit:cover;border-radius:8px;background:var(--bg);margin-top:.5rem;display:block"/>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="imgModalClose">İptal</button>
+      <button class="btn btn-primary" id="imgSaveBtn">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST CONTAINER ── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="app.js"></script>
+<script>
+  // Also render SEO table in dashboard after init
+  window.addEventListener('load', () => {
+    if (typeof renderSEOPanel === 'function') {
+      // Populate dashboard SEO mini-table
+      const tbody = document.getElementById('seoTableBodyDash');
+      if (tbody && typeof SITE_PAGES !== 'undefined') {
+        SITE_PAGES.slice(0,6).forEach(page => {
+          const data = getPageData(page.id);
+          const s = data.seo;
+          const score = seoScore(s);
+          const scoreClass = score >= 70 ? 'score-good' : score >= 40 ? 'score-warn' : 'score-bad';
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td><strong>${page.name}</strong></td>
+            <td><span class="page-item-badge badge-${page.lang.toLowerCase()}">${page.lang}</span></td>
+            <td style="font-size:.78rem">${s.title ? s.title.substring(0,40)+'…' : '—'}</td>
+            <td style="font-size:.78rem">${s.description ? s.description.substring(0,45)+'…' : '—'}</td>
+            <td><span class="seo-score ${scoreClass}">${score}%</span></td>
+            <td><button class="btn btn-ghost" style="padding:.3rem .65rem;font-size:.65rem" onclick="goToPageSEO('${page.id}')">SEO Düzenle</button></td>`;
+          tbody.appendChild(tr);
+        });
+      }
+    }
+  });
+</script>
+</body>
+</html>
