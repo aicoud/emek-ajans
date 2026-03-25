@@ -93,7 +93,7 @@
     const pageData = data[pageId];
     if (!pageData) return;
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function applyPreview() {
       // Admin klasörü içinde değilsek çalışsın
       if (window.location.pathname.includes('/admin')) return;
 
@@ -102,7 +102,7 @@
         Object.entries(pageData.content).forEach(([key, val]) => {
           if(!val) return;
           const el = document.querySelector(`[data-cms="${key}"]`);
-          if (el) { el.innerHTML = val; previewCount++; }
+          if (el) { el.innerHTML = val; }
         });
       }
       
@@ -127,7 +127,13 @@
       badge.innerHTML = `<span>👀 Önizleme Modu (Canlı Değil)</span>`;
       badge.style.cssText = 'position:fixed;bottom:24px;left:24px;background:#C8102E;color:#fff;padding:8px 16px;border-radius:24px;font-size:12px;font-weight:bold;z-index:999999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
       document.body.appendChild(badge);
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyPreview);
+    } else {
+      applyPreview();
+    }
 
   } catch(e) { console.error('Preview error:', e); }
 })();
