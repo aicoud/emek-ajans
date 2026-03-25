@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="admin/data.js"></script>
   <style>
     .featured-post { background: var(--beige); padding: 5rem 5vw; }
     .featured-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; border: 1px solid rgba(0,0,0,0.07); border-radius: 2px; overflow: hidden; background: var(--white); }
@@ -104,6 +105,7 @@
     </div>
   </div>
 </div></div>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?auto=format&fit=crop&w=1920&q=80" alt="İçerik üretimi" /></div>
@@ -114,76 +116,24 @@
   </div>
 </div>
 
-<section class="featured-post">
-  <div class="featured-inner reveal">
-    <div class="featured-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=80" alt="Yapay Zeka GEO" /></div>
+<section class="featured-post" id="featuredPostSection">
+  <div class="featured-inner reveal" id="featuredBlogArea">
+    <!-- Statik yedek JS ile güncellenecek -->
+    <div class="featured-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Yapay Zeka GEO" /></div>
     <div class="featured-body">
       <span class="featured-tag">Öne Çıkan · GEO · Strateji</span>
       <h2 class="featured-title">GEO ile Geleceği Yakalamak (Generative Engine Optimisation)</h2>
-      <p class="featured-excerpt">Emek Ajans olarak 20 yılı aşkın süredir markaların <strong>dijital görünürlüğünü</strong> maksimize etmek için çalışıyoruz. Bu yolculuk, Google ve Yandex'in mantığına odaklanan SEO ile başladı. Ancak oyunun kuralları değişti. ChatGPT, Gemini ve Claude gibi <strong>üretken yapay zeka asistanlarının</strong> yükselişi, dijital pazarlamanın yeni bir çağa girdiğini gösteriyor.</p>
+      <p class="featured-excerpt">Yapay zeka asistanlarının yükselişi dijital pazarlamanın yeni bir çağa girdiğini gösteriyor.</p>
       <div class="featured-meta">Mart 2026 · 8 dk okuma</div>
-      <a href="#" class="btn btn-navy">Yazıyı Oku</a>
+      <a href="blog-detay.html?id=post-1" class="btn btn-navy">Yazıyı Oku</a>
     </div>
   </div>
 </section>
 
 <section class="blog-section">
   <h2 class="blog-section-title reveal">Son yazılar.</h2>
-  <div class="blog-list">
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80" alt="Google Ads" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Google Ads · Performans</span>
-        <div class="blog-post-title">Markalar İçin Google Arama Reklamları Rehberi</div>
-        <div class="blog-post-excerpt">Kullanıcının satın alma niyetinin en net göstergesi ve <strong>en yüksek ROI'yi</strong> sunan kanal olan Google Ads'i doğru kullanın.</div>
-        <div class="blog-post-meta">Şubat 2026 · 6 dk okuma</div>
-      </div>
-    </a>
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="PR" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Halkla İlişkiler · İletişim</span>
-        <div class="blog-post-title">Halkla İlişkiler ve Kurumsal İletişimin Gücü</div>
-        <div class="blog-post-excerpt">Hızla değişen rekabetçi iş dünyasında <strong>güçlü iletişim stratejisi</strong> uzun vadeli marka değerini nasıl açığa çıkarır?</div>
-        <div class="blog-post-meta">Ocak 2026 · 5 dk okuma</div>
-      </div>
-    </a>
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt="Web Tasarım" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Web Tasarım · UX</span>
-        <div class="blog-post-title">2026'da Markanızı Öne Çıkaran Web Tasarım Trendleri</div>
-        <div class="blog-post-excerpt">Kullanıcı deneyimi, hız ve <strong>dönüşüm optimizasyonu</strong> — modern web tasarımın üç temel sacayağı.</div>
-        <div class="blog-post-meta">Aralık 2025 · 7 dk okuma</div>
-      </div>
-    </a>
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80" alt="Veri analitiği" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Veri · Analitik</span>
-        <div class="blog-post-title">Birinci Taraf Verisi Neden En Değerli Pazarlama Varlığınızdır?</div>
-        <div class="blog-post-excerpt">Üçüncü taraf çerezler tarihe karışırken, <strong>birinci taraf veri stratejisi</strong>ne yatırım yapan markalar rekabet avantajı kazanıyor.</div>
-        <div class="blog-post-meta">Kasım 2025 · 9 dk okuma</div>
-      </div>
-    </a>
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" alt="Canlı etkinlik" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Etkinlikler · Deneyimsel</span>
-        <div class="blog-post-title">Canlı Etkinliklerin Geri Dönüşü: Markaların Bilmesi Gerekenler</div>
-        <div class="blog-post-excerpt">2025'te 50+ kurumsal etkinlik yönetiminden çıkardığımız <strong>stratejik ve lojistik dersler</strong>.</div>
-        <div class="blog-post-meta">Ekim 2025 · 6 dk okuma</div>
-      </div>
-    </a>
-    <a href="#" class="blog-post reveal">
-      <div class="blog-post-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=700&q=80" alt="Sosyal medya" /></div>
-      <div class="blog-post-body">
-        <span class="blog-post-cat">Sosyal Medya · Strateji</span>
-        <div class="blog-post-title">2026'da Sosyal Medyada Topluluk Oluşturmak</div>
-        <div class="blog-post-excerpt">Yayın yapmaktan <strong>topluluk inşa etmeye</strong> geçiş: lider markaların bu zorluğu nasıl aştığı.</div>
-        <div class="blog-post-meta">Eylül 2025 · 5 dk okuma</div>
-      </div>
-    </a>
+  <div class="blog-list" id="blogList">
+    <!-- Diğer yazılar buraya gelecek -->
   </div>
 </section>
 
@@ -235,5 +185,66 @@
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 </script>
   <script src="lang.js"></script>
+  <script>
+    // Blog Render Mantığı
+    function renderBlogs() {
+      const featuredArea = document.getElementById('featuredBlogArea');
+      const listGrid = document.getElementById('blogList');
+      
+      // 1. Veri Kaynağı (Dashboard (localStorage) > Fallback (BLOG_POSTS))
+      let blogs = [];
+      try {
+        const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
+        blogs = saved.blogs || [];
+      } catch(e) {}
+      
+      if (!blogs.length && typeof BLOG_POSTS !== 'undefined') {
+        blogs = BLOG_POSTS;
+      }
+      
+      // TR dilli yazıları filtrele (varsayılan TR olduğu için hepsini veya dile göre alabiliriz)
+      const trBlogs = blogs.filter(b => b.lang === 'TR');
+      if (trBlogs.length === 0) return;
+
+      // 2. Öne Çıkan Yazı (En sonuncu)
+      const featured = trBlogs[0];
+      if (featured && featuredArea) {
+        featuredArea.innerHTML = `
+          <div class="featured-img"><img src="${featured.img}" alt="${featured.title}" /></div>
+          <div class="featured-body">
+            <span class="featured-tag">Öne Çıkan · ${featured.tag || 'Blog'}</span>
+            <h2 class="featured-title">${featured.title}</h2>
+            <p class="featured-excerpt">${featured.desc || ''}</p>
+            <div class="featured-meta">${featured.date} · ${featured.author || 'Emek Ajans'}</div>
+            <a href="blog-detay.html?id=${featured.id}" class="btn btn-navy">Yazıyı Oku</a>
+          </div>
+        `;
+      }
+
+      // 3. Diğer Yazılar (Liste)
+      const others = trBlogs.slice(1);
+      if (listGrid) {
+        listGrid.innerHTML = others.map(post => `
+          <a href="blog-detay.html?id=${post.id}" class="blog-post reveal up">
+            <div class="blog-post-img"><img src="${post.img}" alt="${post.title}" /></div>
+            <div class="blog-post-body">
+              <span class="blog-post-cat">${post.tag || 'Blog'}</span>
+              <div class="blog-post-title">${post.title}</div>
+              <div class="blog-post-excerpt">${post.desc ? post.desc.substring(0, 100) + '...' : ''}</div>
+              <div class="blog-post-meta">${post.date} · ${post.author || 'Emek Ajans'}</div>
+            </div>
+          </a>
+        `).join('');
+      }
+    }
+
+    window.addEventListener('load', () => {
+      renderBlogs();
+      // Scroll ve Intersection Observer tetiklemesi için mini bir gecikme gerekebilir
+      setTimeout(() => {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+      }, 100);
+    });
+  </script>
 </body>
 </html>

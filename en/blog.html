@@ -87,35 +87,89 @@
       </div>
     </div>
   </div>
-</div></div>
+</div>
 <div class="page-hero">
   <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?auto=format&fit=crop&w=1920&q=80" alt="Blog"/></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content"><span class="section-label">Blog</span><h1 class="serif-title">Insights &<br/>perspectives.</h1></div>
 </div>
-<section class="featured-post">
-  <div class="featured-inner reveal">
-    <div class="featured-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=80" alt="GEO"/></div>
+<section class="featured-post" id="featuredPostSection">
+  <div class="featured-inner reveal" id="featuredBlogArea">
+    <!-- Static fallback JS updated -->
+    <div class="featured-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Yapay Ayna GEO" /></div>
     <div class="featured-body">
-      <span class="featured-tag">Featured · GEO · Strategy</span>
+      <span class="featured-tag">Featured · SEO · Strategy</span>
       <h2 class="featured-title">Capturing the Future with GEO (Generative Engine Optimisation)</h2>
-      <p class="featured-excerpt">The rise of AI assistants like ChatGPT, Gemini and Claude is fundamentally changing how brands are discovered — and how digital marketing must evolve.</p>
+      <p class="featured-excerpt">The rise of AI assistants marks a new era in digital marketing.</p>
       <div class="featured-meta">March 2026 · 8 min read</div>
-      <a href="#" class="btn btn-navy">Read Article</a>
+      <a href="blog-detail.html?id=post-1" class="btn btn-navy">Read Article</a>
     </div>
   </div>
 </section>
+
 <section class="blog-section">
   <h2 class="blog-section-title reveal">Latest articles.</h2>
-  <div class="blog-list">
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Google Ads · Performance</span><div class="blog-post-title">The Complete Brand Guide to Google Search Ads</div><div class="blog-post-excerpt">The clearest signal of purchase intent and the channel that delivers the highest ROI.</div><div class="blog-post-meta">February 2026 · 6 min read</div></div></a>
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Public Relations</span><div class="blog-post-title">The Power of PR and Corporate Communications</div><div class="blog-post-excerpt">A strong communications strategy unlocks long-term brand value in a fast-changing landscape.</div><div class="blog-post-meta">January 2026 · 5 min read</div></div></a>
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Web Design · UX</span><div class="blog-post-title">Web Design Trends That Set Brands Apart in 2026</div><div class="blog-post-excerpt">UX, speed and conversion optimisation — the three pillars of modern web design.</div><div class="blog-post-meta">December 2025 · 7 min read</div></div></a>
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Data · Analytics</span><div class="blog-post-title">Why First-Party Data is Your Most Valuable Marketing Asset</div><div class="blog-post-excerpt">Brands investing in first-party data strategies gain competitive advantage as third-party cookies disappear.</div><div class="blog-post-meta">November 2025 · 9 min read</div></div></a>
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Events</span><div class="blog-post-title">The Return of Live Events: What Brands Need to Know</div><div class="blog-post-excerpt">Strategic and logistical lessons from managing 50+ corporate events in 2025.</div><div class="blog-post-meta">October 2025 · 6 min read</div></div></a>
-    <a href="#" class="blog-post reveal"><div class="blog-post-img"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=700&q=80" alt=""/></div><div class="blog-post-body"><span class="blog-post-cat">Social Media</span><div class="blog-post-title">Building Community on Social Media in 2026</div><div class="blog-post-excerpt">The shift from broadcasting to community building: how leading brands tackle this challenge.</div><div class="blog-post-meta">September 2025 · 5 min read</div></div></a>
+  <div class="blog-list" id="blogList">
+    <!-- Other posts will be rendered here -->
   </div>
 </section>
+
+<script src="../admin/data.js"></script>
+<script>
+  function renderBlogs() {
+    const featuredArea = document.getElementById('featuredBlogArea');
+    const listGrid = document.getElementById('blogList');
+    if (typeof BLOG_POSTS === 'undefined') return;
+
+    let blogs = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
+      blogs = saved.blogs || [];
+    } catch(e) {}
+
+    if (!blogs.length) blogs = BLOG_POSTS;
+
+    // Filter EN blogs or fallback to TR if EN not available for that specific post
+    // But since we now have EN versions for all, we just take EN
+    const enBlogs = blogs.filter(b => b.lang === 'EN');
+    
+    // If somehow no EN blogs (unlikely now), fallback to TR
+    const finalBlogs = enBlogs.length > 0 ? enBlogs : blogs.filter(b => b.lang === 'TR');
+
+    if (finalBlogs.length > 0) {
+      // 1. Latest -> Featured
+      const first = finalBlogs[0];
+      if (featuredArea) {
+        featuredArea.innerHTML = `
+          <div class="featured-img"><img src="${first.img}" alt="${first.title}" /></div>
+          <div class="featured-body">
+            <span class="featured-tag">Featured · ${first.tag || 'Blog'}</span>
+            <h2 class="featured-title">${first.title}</h2>
+            <p class="featured-excerpt">${first.desc || ''}</p>
+            <div class="featured-meta">${first.date} · ${first.author || 'Emek Ajans'}</div>
+            <a href="blog-detail.html?id=${first.id}" class="btn btn-navy">Read Article</a>
+          </div>
+        `;
+      }
+
+      // 2. Others -> List
+      const others = enBlogs.slice(1);
+      if (listGrid) {
+        listGrid.innerHTML = others.map(post => `
+          <a href="blog-detail.html?id=${post.id}" class="blog-post reveal up">
+            <div class="blog-post-img"><img src="${post.img}" alt="${post.title}" /></div>
+            <div class="blog-post-body">
+              <span class="blog-post-cat">${post.tag || 'Blog'}</span>
+              <div class="blog-post-title">${post.title}</div>
+              <div class="blog-post-meta">${post.date} · ${post.author || 'Emek Ajans'}</div>
+            </div>
+          </a>
+        `).join('');
+      }
+    }
+  }
+  window.addEventListener('load', renderBlogs);
+</script>
 <footer class="site-footer">
   <div class="footer-top">
     <a href="../index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>

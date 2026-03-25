@@ -24,17 +24,22 @@
     closeMobileNav();
     let filename = window.location.pathname.split('/').pop() || 'index.html';
     
-    // Special mapping for Policy pages
+    // Special mapping for Policy and Blog pages
     if (filename === 'cerez-politikasi.html' && lang === 'en') {
       filename = 'cookie-policy.html';
     } else if (filename === 'cookie-policy.html' && lang === 'tr') {
       filename = 'cerez-politikasi.html';
+    } else if (filename === 'blog-detay.html' && lang === 'en') {
+      filename = 'blog-detail.html';
+    } else if (filename === 'blog-detail.html' && lang === 'tr') {
+      filename = 'blog-detay.html';
     }
 
+    const search = window.location.search;
     if (lang === 'en' && !isEN) {
-      window.location.href = 'en/' + filename;
+      window.location.href = 'en/' + filename + search;
     } else if (lang === 'tr' && isEN) {
-      window.location.href = '../' + filename;
+      window.location.href = '../' + filename + search;
     }
   };
 

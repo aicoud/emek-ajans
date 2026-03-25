@@ -275,22 +275,48 @@
     <span class="section-label light">From Our Blog</span>
     <h2 class="serif-title light">Insights & perspectives.</h2>
   </div>
-  <div class="blog-grid">
+  <div class="blog-grid" id="blogGridHome">
+    <!-- Static fallback JS updated -->
     <a href="../blog.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=700&q=80" alt="GEO" /></div>
+      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="GEO" /></div>
       <div class="blog-card-body"><span class="blog-cat">GEO · Strategy</span><div class="blog-title">Capturing the Future with GEO (Generative Engine Optimisation)</div><div class="blog-excerpt">The rise of AI assistants is fundamentally changing how brands are discovered.</div></div>
-    </a>
-    <a href="../blog.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80" alt="Google Ads" /></div>
-      <div class="blog-card-body"><span class="blog-cat">Google Ads · Performance</span><div class="blog-title">The Complete Brand Guide to Google Search Ads</div><div class="blog-excerpt">The clearest signal of purchase intent and the channel that delivers the highest ROI.</div></div>
-    </a>
-    <a href="../blog.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=700&q=80" alt="Web Design" /></div>
-      <div class="blog-card-body"><span class="blog-cat">Web Design · UX</span><div class="blog-title">Web Design Trends That Set Brands Apart in 2026</div><div class="blog-excerpt">User experience, speed and conversion optimisation — the three pillars of modern web design.</div></div>
     </a>
   </div>
   <div class="blog-footer-cta reveal"><a href="../blog.html" class="btn btn-outline-white">All Articles</a></div>
 </section>
+
+<script src="../admin/data.js"></script>
+<script>
+  function renderHomeBlogs() {
+    const grid = document.getElementById('blogGridHome');
+    if (!grid || typeof BLOG_POSTS === 'undefined') return;
+
+    let blogs = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
+      blogs = saved.blogs || [];
+    } catch(e) {}
+
+    if (!blogs.length) blogs = BLOG_POSTS;
+
+    // Latest 3 EN blogs
+    const enBlogs = blogs.filter(b => b.lang === 'EN' || b.lang === 'TR').slice(0, 3);
+    
+    if (enBlogs.length > 0) {
+      grid.innerHTML = enBlogs.map(post => `
+        <a href="blog-detail.html?id=${post.id}" class="blog-card reveal up">
+          <div class="blog-card-img"><img src="${post.img}" alt="${post.title}" /></div>
+          <div class="blog-card-body">
+            <span class="blog-cat">${post.tag || 'Blog'}</span>
+            <div class="blog-title">${post.title}</div>
+            <div class="blog-excerpt">${post.desc ? post.desc.substring(0, 100) + '...' : ''}</div>
+          </div>
+        </a>
+      `).join('');
+    }
+  }
+  window.addEventListener('load', renderHomeBlogs);
+</script>
 
 <section class="cta-section">
   <div class="cta-bg"><img src="https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1920&q=80" alt="Istanbul" /></div>

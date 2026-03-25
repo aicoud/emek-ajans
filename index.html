@@ -440,7 +440,8 @@ Günümüz için yeniden.</h2>
     <span class="section-label light">Blogumuzdan</span>
     <h2 class="serif-title light">İçgörüler &amp; bakış açıları.</h2>
   </div>
-  <div class="blog-grid">
+  <div class="blog-grid" id="blogGridHome">
+    <!-- Statik yedekler JS ile güncellenecek -->
     <a href="blog.html" class="blog-card reveal">
       <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="GEO"></div>
       <div class="blog-card-body">
@@ -449,27 +450,44 @@ Günümüz için yeniden.</h2>
         <div class="blog-excerpt">Yapay zeka asistanlarının yükselişi markaların keşfedilme biçimini kökten değiştiriyor.</div>
       </div>
     </a>
-    <a href="blog.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Google Ads"></div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Google Ads · Performans</span>
-        <div class="blog-title">Markalar İçin Google Arama Reklamları Rehberi</div>
-        <div class="blog-excerpt">Kullanıcının satın alma niyetinin en net göstergesi ve en yüksek ROI'yi sunan kanal.</div>
-      </div>
-    </a>
-    <a href="blog.html" class="blog-card reveal">
-      <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Web Tasarım"></div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Web Tasarım · UX</span>
-        <div class="blog-title">2026'da Markanızı Öne Çıkaran Web Tasarım Trendleri</div>
-        <div class="blog-excerpt">Kullanıcı deneyimi, hız ve dönüşüm optimizasyonu — modern web tasarımın üç sacayağı.</div>
-      </div>
-    </a>
   </div>
   <div class="blog-footer-cta reveal">
     <a href="blog.html" class="btn btn-outline-white">Tüm Yazılar</a>
   </div>
 </section>
+
+<script src="admin/data.js"></script>
+<script>
+  function renderHomeBlogs() {
+    const grid = document.getElementById('blogGridHome');
+    if (!grid || typeof BLOG_POSTS === 'undefined') return;
+
+    let blogs = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
+      blogs = saved.blogs || [];
+    } catch(e) {}
+
+    if (!blogs.length) blogs = BLOG_POSTS;
+
+    // Son 3 yazıyı al (TR olanlar)
+    const trBlogs = blogs.filter(b => !b.lang || b.lang === 'TR').slice(0, 3);
+    
+    if (trBlogs.length > 0) {
+      grid.innerHTML = trBlogs.map(post => `
+        <a href="blog-detay.html?id=${post.id}" class="blog-card reveal up">
+          <div class="blog-card-img"><img src="${post.img}" alt="${post.title}" /></div>
+          <div class="blog-card-body">
+            <span class="blog-cat">${post.tag || 'Blog'}</span>
+            <div class="blog-title">${post.title}</div>
+            <div class="blog-excerpt">${post.desc ? post.desc.substring(0, 100) + '...' : ''}</div>
+          </div>
+        </a>
+      `).join('');
+    }
+  }
+  window.addEventListener('load', renderHomeBlogs);
+</script>
 
 <!-- CTA SECTION -->
 <section class="cta-section">

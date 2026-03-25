@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Blog — Emek Ajans</title>
+  <meta name="description" id="pageDesc" content="Emek Ajans blog yazısı detayı." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .blog-detail-hero { padding: 12rem 5vw 6rem; background: var(--beige); position: relative; overflow: hidden; }
+    .blog-detail-container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .blog-category { font-size: 0.75rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; display: block; }
+    .blog-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 4rem); line-height: 1.1; color: var(--navy); margin-bottom: 2rem; }
+    .blog-meta { display: flex; align-items: center; gap: 1.5rem; font-size: 0.85rem; color: var(--text-l); border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem; }
+    
+    .blog-content-wrap { max-width: 1200px; margin: 0 auto 8rem; padding: 0 20px; }
+    .blog-main-img { width: 100%; height: auto; max-height: 600px; object-fit: cover; border-radius: 12px; margin: -4rem auto 4rem; display: block; position: relative; z-index: 3; box-shadow: 0 40px 100px rgba(0,0,0,0.1); }
+    .blog-content { font-size: 1rem; line-height: 1.85; color: var(--navy); }
+    .blog-content p { margin-bottom: 2rem; }
+    .blog-content h2, .blog-content h3 { font-family: var(--serif); margin: 3rem 0 1.5rem; line-height: 1.3; }
+    .blog-content strong { color: var(--orange); }
+    .blog-content blockquote { border-left: 4px solid var(--orange); padding-left: 2rem; margin: 3rem 0; font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--text-m); }
+    
+    .blog-nav { border-top: 1px solid rgba(0,0,0,0.08); padding: 4rem 0; display: flex; justify-content: space-between; align-items: center; }
+    .blog-nav .btn-ghost { padding-left: 0; margin-left: -0.2rem; } /* Align text with content */
+    
+    @media(max-width:768px) {
+      .blog-detail-hero { padding: 8rem 5vw 4rem; }
+      .blog-main-img { height: 40vh; margin-top: -2rem; margin-bottom: 3rem; }
+      .blog-content { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Hizmetler</a></li>
+    <li><a href="work.html">Projelerimiz</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <!-- Mobile nav content same as other pages -->
+</div>
+
+<main>
+  <article>
+    <header class="blog-detail-hero">
+      <div class="blog-detail-container">
+        <span class="blog-category" id="blogCat">Kategori</span>
+        <h1 class="blog-title" id="blogTitle">Blog Yazısı Başlığı</h1>
+        <div class="blog-meta">
+          <span id="blogAuthor">Emek Ajans</span>
+          <span id="blogDate">Tarih</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="blog-detail-container">
+      <img src="" alt="" class="blog-main-img" id="blogImg" />
+    </div>
+
+    <div class="blog-content-wrap">
+      <div class="blog-content" id="blogContent">
+        <!-- İçerik buraya yüklenecek -->
+      </div>
+
+      <div class="blog-nav">
+        <a href="blog.html" class="btn btn-ghost">← Blog'a Dön</a>
+        <div class="share-links">
+          <!-- Sosyal paylaşım butonları eklenebilir -->
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials"><a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a><a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a><a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a></div>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <div class="footer-col-title">Hizmetler</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br><a href="services.html">Web Tasarım</a><br><a href="services.html">Kurumsal Kimlik</a><br><a href="services.html">Halkla İlişkiler</a><br><a href="services.html">Medya Planlaması</a><br><a href="services.html">Etkinlik Yönetimi</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Kurumsal</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="about.html">Hakkımızda</a><br><a href="work.html">Projelerimiz</a><br><a href="blog.html">Blog</a><br><a href="contact.html">İletişim</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Sertifikalar</div><hr class="footer-rule">
+      <div class="footer-col-body">✓ Google Partner · 8 Yıl<br>✓ Meta Business Partner<br>SEO · Google Ads<br>Sosyal Medya Yönetimi</div>
+    </div>
+    <div>
+      <div class="footer-col-title">İstanbul</div><hr class="footer-rule">
+      <div class="footer-col-body">+90 212 230 09 79<br>info@emekajans.com<br>Etiler, Nispetiye Cd. No:40/10<br>Beşiktaş / İstanbul</div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p><ul class="footer-legal"><li><a href="kvkk.html">KVKK Politikası</a></li><li><a href="cerez-politikasi.html">Çerez Politikası</a></li></ul></div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="admin/data.js"></script>
+<script src="lang.js"></script>
+<script>
+  // Blog içeriğini yükleme mantığı
+  function loadBlogPost() {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+    
+    // 1. Önce localStorage (Dashboard verisi) kontrol et
+    let blogs = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem('ea_dashboard_data') || '{}');
+      blogs = saved.blogs || [];
+    } catch(e) {}
+    
+    // 2. Eğer localStorage boşsa data.js'den al (Fallback)
+    if (!blogs.length && typeof BLOG_POSTS !== 'undefined') {
+      blogs = BLOG_POSTS;
+    }
+    
+    const post = blogs.find(b => b.id === postId) || blogs[0]; // Bulunamazsa ilkini göster (veya 404)
+    
+    if (post) {
+      document.title = `${post.title} — Emek Ajans`;
+      document.getElementById('blogTitle').textContent = post.title;
+      document.getElementById('blogCat').textContent = post.tag || 'Blog';
+      document.getElementById('blogDate').textContent = post.date;
+      document.getElementById('blogImg').src = post.img;
+      document.getElementById('blogImg').alt = post.title;
+      document.getElementById('blogContent').innerHTML = post.content || post.desc;
+      
+      // SEO meta
+      const metaDesc = document.getElementById('pageDesc');
+      if (metaDesc) metaDesc.setAttribute('content', post.desc || post.title);
+    }
+  }
+
+  window.addEventListener('load', loadBlogPost);
+  
+  // Scrolled nav effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+</script>
+
+</body>
+</html>
