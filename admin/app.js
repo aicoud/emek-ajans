@@ -585,7 +585,8 @@ $('deployBtn').addEventListener('click', async () => {
     if (res.ok && result.success) {
       toast('✅ ' + result.message);
     } else {
-      toast('Hata: ' + (result.error || 'Bilinmeyen hata'), 'error');
+      const errMsg = result.error || result.errorMessage || 'Bilinmeyen hata';
+      toast('Hata: ' + errMsg, 'error');
       if (result.details) console.error(result.details);
     }
   } catch (err) {
