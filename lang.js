@@ -67,3 +67,67 @@
     document.body.style.overflow = '';
   };
 })();
+
+// ── ADMIN DYNAMIC PREVIEW MODE ──────────────────────────────
+(function() {
+  try {
+    const creds = localStorage.getItem('ea_credentials');
+    const dataStr = localStorage.getItem('ea_dashboard_data');
+    if (!creds || !dataStr) return;
+
+    const data = JSON.parse(dataStr);
+    const isEn = document.documentElement.lang.toLowerCase().includes('en');
+    
+    let path = window.location.pathname.toLowerCase();
+    if (path.endsWith('/')) path += 'index.html';
+    
+    let pageName = path.split('/').filter(p => p.endsWith('.html'))[0];
+    if (!pageName) pageName = 'index.html';
+    pageName = pageName.replace('.html', '');
+    
+    const pageId = (isEn ? 'en-' : 'tr-') + pageName;
+    const pageData = data[pageId];
+    if (!pageData) return;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Admin klasörü içinde değilsek çalışsın
+      if (window.location.pathname.includes('/admin')) return;
+
+      let previewCount = 0;
+
+      // Replace Text
+      if (pageData.content) {
+        Object.entries(pageData.content).forEach(([key, val]) => {
+          if(!val) return;
+          const el = document.querySelector(`[data-cms="${key}"]`);
+          if (el) { el.innerHTML = val; previewCount++; }
+        });
+      }
+      
+      // Replace Images
+      if (pageData.images) {
+        pageData.images.forEach(img => {
+          if(!img.url) return;
+          const el = document.querySelector(`[data-cms-img="${img.id}"]`);
+          if (el) {
+            if (el.tagName === 'IMG') el.src = img.url;
+            else {
+              const str = el.getAttribute('style') || '';
+              if (str.includes('background-image')) el.setAttribute('style', str.replace(/url\(['"]?.*?['"]?\)/, `url('${img.url}')`));
+              else el.style.backgroundImage = `url('${img.url}')`;
+            }
+            previewCount++;
+          }
+        });
+      }
+
+      if (previewCount > 0) {
+        const badge = document.createElement('div');
+        badge.innerHTML = `<span>👀 Önizleme Modu (Canlı Değil)</span>`;
+        badge.style.cssText = 'position:fixed;bottom:24px;left:24px;background:#C8102E;color:#fff;padding:8px 16px;border-radius:24px;font-size:12px;font-weight:bold;z-index:999999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
+        document.body.appendChild(badge);
+      }
+    });
+
+  } catch(e) { console.error('Preview error:', e); }
+})();
