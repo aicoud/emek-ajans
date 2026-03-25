@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KVKK and Privacy Agreement — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans Personal Data Protection Law (KVKK) and Privacy Policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .legal-content { background: var(--beige); padding: 7rem 5vw; }
+    .legal-inner { max-width: 900px; margin: 0 auto; background: var(--white); padding: 3rem 4rem; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); }
+    .legal-inner h1 { font-family: var(--serif); font-size: 2.5rem; color: var(--navy); margin-bottom: 2rem; font-style: italic; }
+    .legal-inner h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); margin-top: 2.5rem; margin-bottom: 1.25rem; }
+    .legal-inner h3 { font-size: 1.1rem; color: var(--navy); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 700; }
+    .legal-inner p { font-size: 0.95rem; color: var(--text-m); line-height: 1.8; margin-bottom: 1.25rem; }
+    .legal-inner ul { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+    .legal-inner ul li { font-size: 0.95rem; color: var(--text-m); line-height: 1.8; margin-bottom: 0.75rem; list-style-type: disc; }
+    .legal-inner strong { color: var(--navy); font-weight: 700; }
+    
+    @media(max-width:768px){ .legal-inner { padding: 2rem; } .legal-inner h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇬🇧 EN</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Close" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">Projects</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Language / Dil</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="mobile-lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero" style="height: 300px;" data-cms-img="hero-bg">
+  <div class="page-hero-overlay" style="background: var(--navy);"></div>
+  <div class="page-hero-content">
+    <span class="section-label" data-cms="heroLabel">Legal</span>
+    <h1 class="serif-title" data-cms="heroTitle">KVKK and Privacy Agreement</h1>
+  </div>
+</div>
+
+<section class="legal-content">
+  <div class="legal-inner reveal">
+    <h1 data-cms="contentTitle">KVKK and Privacy Agreement</h1>
+    <p data-cms="introText">By visiting this website and requesting to benefit from the services we offer through this site, you accept the terms specified in this "Privacy Policy". EMEK AJANS has adopted it as a principle to ensure the confidentiality of the information shared by the people visiting the company website.</p>
+    
+    <h2 data-cms="sec1Title">I. Purpose of the Personal Data Protection and Processing Policy</h2>
+    <p data-cms="sec1Text">All kinds of data on the site https://www.emekajans.com are the property of EMEK AJANS. No information and data on the Site can be changed, copied, reproduced, republished, transmitted, distributed, translated into another language or uploaded to another computer. Protecting personal data is the basic policy of our company.</p>
+
+    <h2 data-cms="sec2Title">II. Scope and Modification of the Policy</h2>
+    <p data-cms="sec2Text">This Policy prepared by our company has been prepared in accordance with the Law No. 6698 on the Protection of Personal Data (“KVKK”). The data obtained with your consent or due to other legal compliance listed in the Law will be used to improve the quality of the services we offer. Some of our data is anonymized and used for statistical purposes.</p>
+
+    <h2 data-cms="sec3Title">III. Basic Rules Regarding Processing of Personal Data</h2>
+    <ul data-cms="sec3List">
+      <li><strong>Compliance with the law and rules of honesty:</strong> Our company questions the source of the data it collects or receives and attaches importance to obtaining it within the framework of honesty rules.</li>
+      <li><strong>Being accurate and up-to-date:</strong> Importance is given to keeping the data accurate and updating it when changes are reported.</li>
+      <li><strong>Processing for specific, explicit and legitimate purposes:</strong> Data is processed only for purposes for which approval has been received.</li>
+      <li><strong>Being connected, limited and measured:</strong> Data is used only to the extent required by the service.</li>
+      <li><strong>Retention for the period required:</strong> Data is kept for legal periods or for the time required for the purpose of processing.</li>
+    </ul>
+
+    <h3 data-cms="rightsTitle">Rights of the Data Subject (KVKK Art. 11)</h3>
+    <p>Real persons whose personal data is processed have the following rights:</p>
+    <ul data-cms="rightsList">
+      <li>To learn whether personal data is processed or not,</li>
+      <li>To request information if personal data has been processed,</li>
+      <li>To learn the purpose of processing and whether they are used in accordance with the purpose,</li>
+      <li>To know the third parties to whom personal data is transferred domestically or abroad,</li>
+      <li>To request correction of incomplete or incorrectly processed data,</li>
+      <li>To request deletion or destruction of personal data.</li>
+    </ul>
+
+    <h2 data-cms="securityTitle">Confidentiality and Data Security</h2>
+    <p data-cms="securityText">Personal data is confidential and our company complies with this confidentiality. EMEK AJANS has taken measures within the current possibilities to protect the information entered into the Site from unauthorized access, misuse and/or modification. However, due to the nature of the internet, no system is completely secure.</p>
+
+    <h2 data-cms="contactTitle">Contact</h2>
+    <p data-cms="contactText">
+      <strong>EMEK AJANS LIMITED COMPANY</strong><br>
+      Address: Etiler, Nispetiye Cd. No:40/10 Gurel Apt., D:B, 34340 Besiktas/Istanbul<br>
+      Tel: +90 212 230 09 79<br>
+      E-mail: info@emekajans.com
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">strategic · creative · communication agency · since 1967 · Istanbul</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a>
+      <a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a>
+      <a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a>
+    </div>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <div class="footer-col-title">Services</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="services.html">Digital Marketing</a><br><a href="services.html">Web Design</a><br><a href="services.html">Corporate Identity</a><br><a href="services.html">Public Relations</a><br><a href="services.html">Media Planning</a><br><a href="services.html">Event Management</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Corporate</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="about.html">About Us</a><br><a href="work.html">Projects</a><br><a href="blog.html">Blog</a><br><a href="contact.html">Contact</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Certificates</div><hr class="footer-rule">
+      <div class="footer-col-body">✓ Google Partner · 8 Years<br>✓ Meta Business Partner<br>SEO · Google Ads<br>Social Media Management</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Istanbul</div><hr class="footer-rule">
+      <div class="footer-col-body">+90 212 230 09 79<br>info@emekajans.com<br>Etiler, Nispetiye Cd. No:40/10<br>Besiktas / Istanbul</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">Emek Ajans © 2026. All rights reserved.</p>
+    <ul class="footer-legal"><li><a href="kvkk.html">KVKK Policy</a></li><li><a href="cookie-policy.html">Cookie Policy</a></li></ul>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script src="../lang.js"></script>
+</body>
+</html>

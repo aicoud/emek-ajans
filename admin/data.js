@@ -17,7 +17,7 @@ const SITE_PAGES = [
     // HERO
     heroHeadline:'Emek Ajans',
     heroTaglines:'stratejik, yaratıcı, iletişim ajansı, 1967\'den beri',
-    heroCtaPrimary:'HİZMETLERİ KEŞFET', heroCtaSecondary:'HİKÂYEMİZ',
+    heroCtaPrimary:'HİZMETLERİ KEŞFET', heroCtaSecondary:'HİKAYEMİZ',
     // HİZMETLER
     servicesLabel:'Hizmetlerimiz', servicesTitle:'Hizmetlerimiz',
     servicesSubtitle:'Dijital pazarlamadan medya planlamasına, web tasarımdan etkinlik yönetimine kadar tüm iletişim hizmetlerini tek çatı altında sunuyoruz.',
@@ -26,14 +26,14 @@ const SITE_PAGES = [
     svc3Title:'Kurumsal Kimlik & Yaratıcı', svc3Desc:'Marka stratejisi, logo ve görsel kimlik sistemlerinden kampanya yaratımına kadar eksiksiz hizmet.',
     svc4Title:'Halkla İlişkiler & İletişim', svc4Desc:'Basın ilişkileri, itibar yönetimi, kriz iletişimi ve paydaş iletişimi danışmanlığı sunuyoruz.',
     svc5Title:'Medya Planlaması & Satın Alma', svc5Desc:'TV, radyo, açıkhava, baskı ve dijital mecralarda çok kanallı medya stratejisi ve satın alma.',
-    svc6Title:'Etkinlik & Organizasyon Yönetimi', svc6Desc:'Mekân seçiminden prodüksiyona, lojistikten marka aktivasyonuna tam etkinlik yönetimi.',
+    svc6Title:'Etkinlik & Organizasyon Yönetimi', svc6Desc:'Mekan seçiminden prodüksiyona, lojistikten marka aktivasyonuna tam etkinlik yönetimi.',
     // HAKKIMIZDA ŞERİDİ
     aboutLabel:'Hakkımızda', aboutTitle:'1967\'den beri.\nGünümüz için yeniden.',
     aboutP1:'1967\'den bu yana İstanbul\'dan dünyaya uzanan Emek Ajans; köklü pazar deneyimini yeni nesil dijital yeteneklerle harmanlayan 360° entegre iletişim ajansıdır.',
     aboutP2:'Google Partner ve Meta Business Partner sertifikalarımızla, markanız için her kanalda ölçülebilir sonuçlar üretiyoruz.',
-    aboutCta:'Hikâyemizi Oku',
+    aboutCta:'Hikayemizi Oku',
     // PORTFÖY
-    portfolioLabel:'Çalışmalarımız', portfolioTitle:'Hikâyelerimiz, paylaşmak için.',
+    portfolioLabel:'Projelerimiz', portfolioTitle:'Hikayelerimiz, paylaşmak için.',
     port1Label:'Marka Kampanyası', port2Label:'Sosyal Medya', port3Label:'Medya Planlaması',
     port4Label:'Etkinlik Yönetimi', port5Label:'Web Tasarım', port6Label:'Halkla İlişkiler',
     // BLOG
@@ -48,7 +48,7 @@ const SITE_PAGES = [
     ctaBtn:'İletişime Geç',
     // FOOTER
     footerTagline:'stratejik · yaratıcı · iletişim ajansı · 1967\'den Beri · İstanbul',
-    footerServices:'Hizmetler', footerWork:'Çalışmalarımız', footerAbout:'Hakkımızda',
+    footerServices:'Hizmetler', footerWork:'Projelerimiz', footerAbout:'Hakkımızda',
     footerBlog:'Blog', footerContact:'İletişim',
     footerAddress:'Etiler, Nispetiye Cd. No:40/10\nGürel Apt., D:B, 34340\nBeşiktaş / İstanbul',
     footerPhone:'+90 212 230 09 79', footerEmail:'info@emekajans.com',
@@ -97,7 +97,7 @@ const SITE_PAGES = [
     s3Title:'Kurumsal Kimlik & Yaratıcı', s3Tag:'Yaratıcı', s3Desc:'Marka stratejisi, logo ve görsel kimlik sistemleri.',s3Detail:'Logo · Marka Rehberi · Ambalaj · Kampanya Yaratımı',
     s4Title:'Halkla İlişkiler & Kurumsal İletişim', s4Tag:'İletişim', s4Desc:'Stratejik itibar yönetimi ve paydaş iletişimi.',s4Detail:'Basın Bülteni · Medya İlişkileri · Kriz İletişimi · Sözcü Eğitimi',
     s5Title:'Medya Planlaması & Satın Alma', s5Tag:'Medya', s5Desc:'TV, radyo, açıkhava, baskı ve dijitalde çok kanallı strateji.',s5Detail:'TV · Radyo · OOH · Baskı · Dijital Medya',
-    s6Title:'Etkinlik & Organizasyon Yönetimi', s6Tag:'Etkinlik', s6Desc:'Mekân seçiminden prodüksiyona tam etkinlik yönetimi.',s6Detail:'Kurumsal Etkinlik · Ürün Lansmanı · Basın Toplantısı · Fuar',
+    s6Title:'Etkinlik & Organizasyon Yönetimi', s6Tag:'Etkinlik', s6Desc:'Mekan seçiminden prodüksiyona tam etkinlik yönetimi.',s6Detail:'Kurumsal Etkinlik · Ürün Lansmanı · Basın Toplantısı · Fuar',
     // Dijital sub-kartlar
     dig1Title:'Google Ads', dig1Desc:'Arama, display ve video kampanyaları.',
     dig2Title:'Sosyal Medya Yönetimi', dig2Desc:'İçerik üretimi ve topluluk yönetimi.',
@@ -154,14 +154,14 @@ const SITE_PAGES = [
     {id:'cta-bg', label:'CTA Arka Plan', url:'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1920&q=80'}
   ]
 },
-// ─── TR: ÇALIŞMALARIMIZ ──────────────────────────────────────
+// ─── TR: PROJELERİMİZ ──────────────────────────────────────
 {
-  id:'tr-work', lang:'TR', name:'Çalışmalarımız', path:'../work.html', icon:'💼',
+  id:'tr-work', lang:'TR', name:'Projelerimiz', path:'../work.html', icon:'💼',
   seo:{
-    title:'Çalışmalarımız — Emek Ajans',
+    title:'Projelerimiz — Emek Ajans',
     description:'Emek Ajans portföyü — kampanyalar, web tasarım, PR ve etkinlik yönetimi projeleri.',
-    keywords:'emek ajans portföy, çalışmalar, kampanya örnekleri, reklam projeleri',
-    ogTitle:'Çalışmalarımız — Emek Ajans', ogDesc:'Paylaşmaya değer hikayeler.',
+    keywords:'emek ajans portföy, projeler, kampanya örnekleri, reklam projeleri',
+    ogTitle:'Projelerimiz — Emek Ajans', ogDesc:'Paylaşmaya değer hikayeler.',
     ogImage:'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200',
     canonical:'https://emekajans.com/work.html',
     hreflangTR:'https://emekajans.com/work.html', hreflangEN:'https://emekajans.com/en/work.html'
@@ -408,6 +408,126 @@ const SITE_PAGES = [
   },
   images:[
     {id:'hero-bg', label:'Hero Background (Istanbul)', url:'https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1920&q=80'}
+  ],
+  images:[
+    {id:'hero-bg', label:'Hero Background (Istanbul)', url:'https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1920&q=80'}
+  ]
+},
+// ─── TR: KVKK ───────────────────────────────────────────────
+{
+  id:'tr-kvkk', lang:'TR', name:'KVKK Politikası', path:'../kvkk.html', icon:'⚖️',
+  seo:{
+    title:'KVKK ve Gizlilik Sözleşmesi — Emek Ajans',
+    description:'Emek Ajans Kişisel Verilerin Korunması ve İşlenmesi Hakkında Aydınlatma Metni.',
+    keywords:'kvkk, kişisel verilerin korunması, aydınlatma metni, emek ajans',
+    ogTitle:'KVKK ve Gizlilik Sözleşmesi — Emek Ajans', ogDesc:'Kişisel Verilerin Korunması Hakkında Bilgilendirme.',
+    ogImage:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200',
+    canonical:'https://emekajans.com/kvkk.html', hreflangTR:'https://emekajans.com/kvkk.html', hreflangEN:'https://emekajans.com/en/kvkk.html'
+  },
+  content:{
+    heroLabel:'Yasal', heroTitle:'KVKK ve Gizlilik Sözleşmesi',
+    contentTitle:'KVKK ve Gizlilik Sözleşmesi',
+    introText:'Bu web sitesini ziyaret etmeniz ve bu site vasıtasıyla sunduğumuz hizmetlerden yararlanmanız sırasında, size ve talep ettiğiniz hizmetlere ilişkin olarak elde ettiğimiz bilgilerin ne şekilde kullanılacağı ve korunacağı, işbu "Gizlilik Politikası"nda belirtilen şartlara tabidir.',
+    sec1Title:'I. Kişisel verilerin korunması ve işlenmesi politikasının amacı',
+    sec1Text:'Https://www.emekajans.com sitesindeki her türlü veri EMEK AJANS’ın mülkiyetindedir. Site’deki hiçbir bilgi ve veri değiştirilemez, kopyalanamaz, çoğaltılamaz, yeniden yayınlanamaz, iletilemez, dağıtılamaz, başka bir dile çevrilemez ve başka bir bilgisayara yüklenemez.',
+    sec2Title:'II. Kişisel verilerin korunması ve işlenmesi politikasının kapsamı',
+    sec2Text:'Şirketimiz tarafından hazırlanan bu Politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu’na (“KVKK”) uygun olarak hazırlanmıştır. Kanun, bugün itibariyle bütün hükümleri ile yürürlüğe girmiştir.',
+    sec3Title:'III. Kişisel verilerin işlenmesi ile ilgili temel kurallar',
+    sec3List:'<li><strong>Hukuka ve dürüstlük kurallarına uygun olma:</strong> Şirketimiz topladığı ya da kendisine diğer şirketlerden gelen verilerin kaynağını sorgular.</li><li><strong>Doğru ve gerektiğinde güncel olma:</strong> EMEK AJANS verilerin doğruluğuna ve güncelliğine önem verir.</li><li><strong>Belirli, açık ve meşru amaçlar için işlenme:</strong> Şirketimiz, ancak sunduğu ve hizmet sırasında kişilerden onayını aldığı amaçlarla sınırlı şekilde verileri işler.</li>',
+    rightsTitle:'İlgili Kişinin Hakları (KVKK m.11)',
+    rightsList:'<li>Kişisel verinizin işlenip işlenmediğini öğrenme,</li><li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,</li><li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li><li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>',
+    securityTitle:'Gizlilik ve Veri Güvenliği',
+    securityText:'Kişisel veriler gizlidir ve şirketimiz de bu gizliliğe riayet etmektedir. Kişisel verilere şirket içinde ancak yetki verilmiş kişiler ulaşabilir. EMEK AJANS, kullanıcı tarafından Site’ye girilen bilgileri yetkisiz erişim, hatalı kullanım ve/veya değişime karşı korumak amacıyla mevcut imkânlar dâhilinde tedbirler almıştır.',
+    contactTitle:'İletişim',
+    contactText:'<strong>EMEK AJANS LİMİDET ŞİRKETİ</strong><br>Adres: Etiler, Nispetiye Cd. No:40/10 Gürel Apt., D:B, 34340 Beşiktaş/İstanbul<br>Tel: +90 212 230 09 79<br>Mail adresi: info@emekajans.com'
+  },
+  images:[
+    {id:'hero-bg', label:'Hero Arka Plan', url:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80'}
+  ]
+},
+// ─── TR: ÇEREZ POLİTİKASI ────────────────────────────────────
+{
+  id:'tr-cookies', lang:'TR', name:'Çerez Politikası', path:'../cerez-politikasi.html', icon:'🍪',
+  seo:{
+    title:'Çerez Politikası — Emek Ajans',
+    description:'Emek Ajans Çerez Politikası ve kullanım detayları.',
+    keywords:'çerez politikası, cookies, emek ajans gizlilik',
+    ogTitle:'Çerez Politikası — Emek Ajans', ogDesc:'Web sitemizde kullanılan çerezler hakkında bilgilendirme.',
+    ogImage:'https://images.unsplash.com/photo-1590059302758-1f19f20e402a?w=1200',
+    canonical:'https://emekajans.com/cerez-politikasi.html', hreflangTR:'https://emekajans.com/cerez-politikasi.html', hreflangEN:'https://emekajans.com/en/cookie-policy.html'
+  },
+  content:{
+    heroLabel:'Yasal', heroTitle:'Çerez Politikası',
+    contentTitle:'EMEK AJANS ÇEREZ POLİTİKASI',
+    introText:'Emek Ajans (“Şirket”) olarak, çevrimiçi mecralarımızı ziyaretleriniz sırasında sizlerin kullanıcı deneyimini geliştirmek ve verimliliği artırmak amacıyla çerezler (cookies), pikseller, beaconlar ve benzeri teknolojiler kullanmaktayız.',
+    whatIsTitle:'1. Çerez Nedir?',
+    whatIsText:'Çerezler, bir internet sitesini ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza (bilgisayar, telefon, tablet) kaydedilen çok küçük metin dosyalarıdır. Bu dosyalar, sitemizin sizi tanımasını ve bir sonraki ziyaretinizde tercihlerinizi hatırlayarak size özel bir hizmet sunmamızı sağlar.',
+    purposesTitle:'2. Çerezlerin Kullanım Amaçları',
+    purposesList:'<li><strong>İşlevsellik ve Zorunluluk:</strong> Sitenin temel fonksiyonlarını yerine getirmek.</li><li><strong>Performans ve Analiz:</strong> Ziyaretçi trafiğini analiz ederek sitenin performansını ölçmek.</li><li><strong>Kişiselleştirme:</strong> Kullanıcı tercihlerini hatırlatmak.</li><li><strong>Reklam ve Pazarlama:</strong> İlgi alanlarına göre reklam sunmak.</li>',
+    typesTitle:'3. Sitemizde Kullanılan Çerez Türleri',
+    typesTable:'<thead><tr><th>Çerez Kategorisi</th><th>Açıklama</th></tr></thead><tbody><tr><td>Zorunlu Çerezler</td><td>Sitenin çalışması için gereklidir.</td></tr><tr><td>Analitik Çerezler</td><td>Site performansını ölçer.</td></tr></tbody>',
+    controlTitle:'4. Çerezlerin Kontrolü ve Yönetimi',
+    controlText:'Çerezlerin kullanımına dair tercihleriniz tamamen size aittir. Tarayıcı ayarlarınızdan mevcut çerezleri silebilir veya çerezleri tamamen engelleyebilirsiniz.',
+    rightsTitle:'5. Veri Sahibi Olarak Haklarınız ve İletişim',
+    rightsText:'6698 sayılı KVKK’nın 11. maddesi uyarınca, verilerinizin işlenip işlenmediğini öğrenme ve düzeltilmesini/silinmesini talep etme hakkına sahipsiniz. Sorularınızı info@emekajans.com adresine iletebilirsiniz.'
+  },
+  images:[
+    {id:'hero-bg', label:'Hero Arka Plan', url:'https://images.unsplash.com/photo-1590059302758-1f19f20e402a?auto=format&fit=crop&w=1920&q=80'}
+  ]
+},
+// ─── EN: KVKK ───────────────────────────────────────────────
+{
+  id:'en-kvkk', lang:'EN', name:'KVKK Policy', path:'../en/kvkk.html', icon:'⚖️',
+  seo:{
+    title:'KVKK and Privacy Agreement — Emek Ajans',
+    description:'Emek Ajans Personal Data Protection Law (KVKK) and Privacy Policy.',
+    keywords:'kvkk, data protection, privacy policy, emek ajans',
+    ogTitle:'KVKK and Privacy Agreement — Emek Ajans', ogDesc:'Information on the Protection of Personal Data and Privacy.',
+    ogImage:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200',
+    canonical:'https://emekajans.com/en/kvkk.html', hreflangTR:'https://emekajans.com/kvkk.html', hreflangEN:'https://emekajans.com/en/kvkk.html'
+  },
+  content:{
+    heroLabel:'Legal', heroTitle:'KVKK and Privacy Agreement',
+    contentTitle:'KVKK and Privacy Agreement',
+    introText:'By visiting this website and requesting to benefit from the services we offer through this site, you accept the terms specified in this "Privacy Policy". EMEK AJANS has adopted it as a principle to ensure the confidentiality of the information shared by the people visiting the company website.',
+    sec1Title:'I. Purpose of the Personal Data Protection and Processing Policy',
+    sec1Text:'All kinds of data on the site https://www.emekajans.com are the property of EMEK AJANS. No information and data on the Site can be changed, copied, reproduced, republished, transmitted, distributed, translated into another language or uploaded to another computer.',
+    sec2Title:'II. Scope and Modification of the Policy',
+    sec2Text:'This Policy prepared by our company has been prepared in accordance with the Law No. 6698 on the Protection of Personal Data (“KVKK”). The data obtained with your consent or due to other legal compliance will be used to improve the quality of the services.',
+    sec3Title:'III. Basic Rules Regarding Processing of Personal Data',
+    sec3List:'<li><strong>Compliance with the law and rules of honesty:</strong> Our company questions the source of the data it collects.</li><li><strong>Being accurate and up-to-date:</strong> Importance is given to keeping the data accurate.</li><li><strong>Processing for specific, explicit and legitimate purposes:</strong> Data is processed only for approved purposes.</li>',
+    rightsTitle:'Rights of the Data Subject (KVKK Art. 11)',
+    rightsList:'<li>To learn whether personal data is processed or not,</li><li>To request information if processed,</li><li>To learn the purpose of processing,</li><li>To know the third parties to whom data is transferred,</li>',
+    securityTitle:'Confidentiality and Data Security',
+    securityText:'Personal data is confidential and our company complies with this confidentiality. EMEK AJANS has taken measures within the current possibilities to protect the information from unauthorized access.',
+    contactTitle:'Contact',
+    contactText:'<strong>EMEK AJANS LIMITED COMPANY</strong><br>Address: Etiler, Nispetiye Cd. No:40/10 Gurel Apt., D:B, 34340 Besiktas/Istanbul<br>Tel: +90 212 230 09 79<br>E-mail: info@emekajans.com'
+  },
+  images:[
+    {id:'hero-bg', label:'Hero Background', url:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80'}
+  ]
+},
+// ─── EN: COOKIE POLICY ────────────────────────────────────
+{
+  id:'en-cookies', lang:'EN', name:'Cookie Policy', path:'../en/cookie-policy.html', icon:'🍪',
+  seo:{
+    title:'Cookie Policy — Emek Ajans',
+    description:'Emek Ajans Cookie Policy and usage details.',
+    keywords:'cookie policy, privacy, emek ajans',
+    ogTitle:'Cookie Policy — Emek Ajans', ogDesc:'Information about the cookies used on our website.',
+    ogImage:'https://images.unsplash.com/photo-1590059302758-1f19f20e402a?w=1200',
+    canonical:'https://emekajans.com/en/cookie-policy.html', hreflangTR:'https://emekajans.com/cerez-politikasi.html', hreflangEN:'https://emekajans.com/en/cookie-policy.html'
+  },
+  content:{
+    heroLabel:'Legal', heroTitle:'Cookie Policy',
+    managementTitle:'Management of Cookies',
+    managementText:'You can reject cookies or delete existing cookies on your device by changing your browser settings. However, disabling cookies may cause some features on our site not to function properly. You can use the following links for cookie management in popular browsers:',
+    managementLinks:'<li>Google Chrome</li><li>Mozilla Firefox</li><li>Safari</li><li>Microsoft Edge</li>',
+    contactTitle:'Contact',
+    contactText:'<strong>EMEK AJANS LİMİTED ŞİRKETİ</strong><br>E-mail: info@emekajans.com<br>Address: Etiler, Nispetiye Cd. No:40/10, Beşiktaş / Istanbul'
+  },
+  images:[
+    {id:'hero-bg', label:'Hero Background', url:'https://images.unsplash.com/photo-1590059302758-1f19f20e402a?auto=format&fit=crop&w=1920&q=80'}
   ]
 }
 ];

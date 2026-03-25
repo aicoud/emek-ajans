@@ -22,7 +22,15 @@
   window.setLang = function(lang) {
     closeLangDropdown();
     closeMobileNav();
-    const filename = window.location.pathname.split('/').pop() || 'index.html';
+    let filename = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Special mapping for Policy pages
+    if (filename === 'cerez-politikasi.html' && lang === 'en') {
+      filename = 'cookie-policy.html';
+    } else if (filename === 'cookie-policy.html' && lang === 'tr') {
+      filename = 'cerez-politikasi.html';
+    }
+
     if (lang === 'en' && !isEN) {
       window.location.href = 'en/' + filename;
     } else if (lang === 'tr' && isEN) {

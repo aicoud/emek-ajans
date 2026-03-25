@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KVKK ve Gizlilik Sözleşmesi — Emek Ajans</title>
+  <meta name="description" content="Emek Ajans Kişisel Verilerin Korunması ve İşlenmesi Hakkında Aydınlatma Metni ile Gizlilik Politikası." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .legal-content { background: var(--beige); padding: 7rem 5vw; }
+    .legal-inner { max-width: 900px; margin: 0 auto; background: var(--white); padding: 3rem 4rem; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); }
+    .legal-inner h1 { font-family: var(--serif); font-size: 2.5rem; color: var(--navy); margin-bottom: 2rem; font-style: italic; }
+    .legal-inner h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); margin-top: 2.5rem; margin-bottom: 1.25rem; }
+    .legal-inner h3 { font-size: 1.1rem; color: var(--navy); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 700; }
+    .legal-inner p { font-size: 0.95rem; color: var(--text-m); line-height: 1.8; margin-bottom: 1.25rem; }
+    .legal-inner ul { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+    .legal-inner ul li { font-size: 0.95rem; color: var(--text-m); line-height: 1.8; margin-bottom: 0.75rem; list-style-type: disc; }
+    .legal-inner strong { color: var(--navy); font-weight: 700; }
+    
+    @media(max-width:768px){ .legal-inner { padding: 2rem; } .legal-inner h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Emek<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Hizmetler</a></li>
+    <li><a href="work.html">Projelerimiz</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLangDropdown()">
+      <span id="langLabel">🇹🇷 TR</span>
+      <span class="lang-btn-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü Aç" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true">
+  <button class="mobile-nav-close" aria-label="Kapat" onclick="closeMobileNav()">&#x2715;</button>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-logo">
+      <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="services.html" onclick="closeMobileNav()">Hizmetler</a></li>
+      <li><a href="work.html" onclick="closeMobileNav()">Projelerimiz</a></li>
+      <li><a href="about.html" onclick="closeMobileNav()">Hakkımızda</a></li>
+      <li><a href="blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="contact.html" onclick="closeMobileNav()">İletişim</a></li>
+    </ul>
+    <hr class="mobile-nav-divider"/>
+    <p class="mobile-nav-lang-label">Dil / Language</p>
+    <div class="mobile-nav-lang-btns">
+      <button class="mobile-lang-btn active" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+      <button class="mobile-lang-btn " data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+    <div class="mobile-nav-bottom">
+      <div class="mobile-nav-bottom-logo">
+        <a href="index.html" onclick="closeMobileNav()">Emek<span>.</span></a>
+      </div>
+      <div class="mobile-nav-socials">
+        <a href="https://www.linkedin.com/company/emek-ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">in</a>
+        <a href="https://www.instagram.com/emek_ajans/" class="mobile-nav-social-btn" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.youtube.com/@emekajans" class="mobile-nav-social-btn" target="_blank" rel="noopener">yt</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero" style="height: 300px;" data-cms-img="hero-bg">
+  <div class="page-hero-overlay" style="background: var(--navy);"></div>
+  <div class="page-hero-content">
+    <span class="section-label" data-cms="heroLabel">Yasal</span>
+    <h1 class="serif-title" data-cms="heroTitle">KVKK ve Gizlilik Sözleşmesi</h1>
+  </div>
+</div>
+
+<section class="legal-content">
+  <div class="legal-inner reveal">
+    <h1 data-cms="contentTitle">KVKK ve Gizlilik Sözleşmesi</h1>
+    <p data-cms="introText">Bu web sitesini ziyaret etmeniz ve bu site vasıtasıyla sunduğumuz hizmetlerden yararlanmanız sırasında, size ve talep ettiğiniz hizmetlere ilişkin olarak elde ettiğimiz bilgilerin ne şekilde kullanılacağı ve korunacağı, işbu "Gizlilik Politikası"nda belirtilen şartlara tabidir. Bu web sitesini ziyaret etmekle ve bu site vasıtasıyla sunduğumuz hizmetlerden yararlanmayı talep etmekle işbu "Gizlilik Politikası"nda belirtilen şartları kabul etmektesiniz.</p>
+    
+    <h2 data-cms="sec1Title">I. Kişisel verilerin korunması ve işlenmesi politikasının amacı</h2>
+    <p data-cms="sec1Text">Https://www.emekajans.com sitesindeki her türlü veri EMEK AJANS’ın mülkiyetindedir. Site’deki hiçbir bilgi ve veri değiştirilemez, kopyalanamaz, çoğaltılamaz, yeniden yayınlanamaz, iletilemez, dağıtılamaz, başka bir dile çevrilemez ve başka bir bilgisayara yüklenemez. Kişisel verilerin korunması, şirketimizin temel politikasıdır. Herhangi bir yasal düzenleme olmadan önce de şirketimiz kişisel verilerin gizliliğine büyük önem vermiş ve bunu bir çalışma ilkesi olarak benimsemiş ve çalışanlarına da bu ilke doğrultusunda çalışma talimatlarını vermiştir.</p>
+
+    <h2 data-cms="sec2Title">II. Kişisel verilerin korunması ve işlenmesi politikasının kapsamı</h2>
+    <p data-cms="sec2Text">Şirketimiz tarafından hazırlanan bu Politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu’na (“KVKK”) uygun olarak hazırlanmıştır. Sizlerden rızanızla ya da Kanunda sayılan diğer hukuka uygunluk gereği elde edilmiş veriler, sunmuş olduğumuz hizmetlerin daha kaliteli hale getirilmesi amacıyla kullanılacaktır. Yine elimizdeki bazı veriler ise, kişisel olmaktan çıkarılmakta ve anonimleştirilmektedir. Bu veriler, istatistiki amaçlarla kullanılan verilerdir ve Kanun uygulamasına ve Politikamıza tabi değildir.</p>
+
+    <h2 data-cms="sec3Title">III. Kişisel verilerin işlenmesi ile ilgili temel kurallar</h2>
+    <ul data-cms="sec3List">
+      <li><strong>Hukuka ve dürüstlük kurallarına uygun olma:</strong> Şirketimiz topladığı verilerin kaynağını sorgular ve bunların hukuka uygun elde edilmesine önem verir.</li>
+      <li><strong>Doğru ve gerektiğinde güncel olma:</strong> Verilerin doğru olmasına ve değişiklik iletildiği takdirde güncellenmesine önem verir.</li>
+      <li><strong>Belirli, açık ve meşru amaçlar için işlenme:</strong> Sadece hizmet sırasında onay alınan amaçlarla sınırlı şekilde verileri işler.</li>
+      <li><strong>İşlendikleri amaçla bağlantılı, sınırlı ve ölçülü olma:</strong> Sadece verileri işlendikleri amaçla sınırlı ve ölçülü düzeyde kullanır.</li>
+      <li><strong>Süre sınırlaması:</strong> Verileri yasal süreler veya işlendikleri amaç için gerekli süre kadar muhafaza eder.</li>
+    </ul>
+
+    <h3 data-cms="rightsTitle">İlgili Kişinin Hakları (KVKK m.11)</h3>
+    <p>Kişisel verileri işlenen gerçek kişiler aşağıdaki haklara sahiptir:</p>
+    <ul data-cms="rightsList">
+      <li>Kişisel verisinin işlenip işlenmediğini öğrenme,</li>
+      <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,</li>
+      <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+      <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
+      <li>Verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,</li>
+      <li>Verilerin silinmesini veya yok edilmesini isteme.</li>
+    </ul>
+
+    <h2 data-cms="securityTitle">Gizlilik ve Veri Güvenliği</h2>
+    <p data-cms="securityText">Kişisel veriler gizlidir ve şirketimiz de bu gizliliğe riayet etmektedir. Kişisel verilere şirket içinde ancak yetki verilmiş kişiler ulaşabilir. EMEK AJANS, kullanıcı tarafından Site’ye girilen bilgileri yetkisiz erişim, hatalı kullanım ve/veya değişime karşı korumak amacıyla mevcut imkânlar dâhilinde tedbirler almıştır. Ancak internetin yapısı gereği hiçbir sistem tamamen güvenli değildir.</p>
+
+    <h2 data-cms="contactTitle">İletişim</h2>
+    <p data-cms="contactText">
+      <strong>EMEK AJANS LİMİDET ŞİRKETİ</strong><br>
+      Adres: Etiler, Nispetiye Cd. No:40/10 Gürel Apt., D:B, 34340 Beşiktaş/İstanbul<br>
+      Tel: +90 212 230 09 79<br>
+      E-posta: info@emekajans.com
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Emek<span class="logo-dot">.</span></a>
+    <p class="footer-tagline">stratejik · yaratıcı · iletişim ajansı · 1967'den Beri · İstanbul</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/emek-ajans/" class="social-btn">in</a>
+      <a href="https://www.instagram.com/emek_ajans/" class="social-btn">ig</a>
+      <a href="https://www.youtube.com/@emekajans" class="social-btn">yt</a>
+    </div>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <div class="footer-col-title">Hizmetler</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="services.html">Dijital Pazarlama</a><br><a href="services.html">Web Tasarım</a><br><a href="services.html">Kurumsal Kimlik</a><br><a href="services.html">Halkla İlişkiler</a><br><a href="services.html">Medya Planlaması</a><br><a href="services.html">Etkinlik Yönetimi</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Kurumsal</div><hr class="footer-rule">
+      <div class="footer-col-body"><a href="about.html">Hakkımızda</a><br><a href="work.html">Projelerimiz</a><br><a href="blog.html">Blog</a><br><a href="contact.html">İletişim</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">Sertifikalar</div><hr class="footer-rule">
+      <div class="footer-col-body">✓ Google Partner · 8 Yıl<br>✓ Meta Business Partner<br>SEO · Google Ads<br>Sosyal Medya Yönetimi</div>
+    </div>
+    <div>
+      <div class="footer-col-title">İstanbul</div><hr class="footer-rule">
+      <div class="footer-col-body">+90 212 230 09 79<br>info@emekajans.com<br>Etiler, Nispetiye Cd. No:40/10<br>Beşiktaş / İstanbul</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">Emek Ajans © 2026. Tüm hakları saklıdır.</p>
+    <ul class="footer-legal"><li><a href="kvkk.html">KVKK Politikası</a></li><li><a href="cerez-politikasi.html">Çerez Politikası</a></li></ul>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script src="lang.js"></script>
+</body>
+</html>
