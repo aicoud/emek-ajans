@@ -3,8 +3,8 @@
    ============================================================ */
 
 // ── CREDENTIALS ─────────────────────────────────────────────
-const DEFAULT_USER = 'aykutadmin';
-const DEFAULT_PASS = 'EmekAjans2024';
+const DEFAULT_USER = 'admin';
+const DEFAULT_PASS = 'AdminEmek2026*';
 
 // ── STATE ────────────────────────────────────────────────────
 let state = {
