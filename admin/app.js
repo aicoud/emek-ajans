@@ -561,6 +561,41 @@ $('importBtn').addEventListener('click', () => {
   input.click();
 });
 
+// ── DEPLOY (CANLIYA ALMA) ────────────────────────────────────
+$('deployBtn').addEventListener('click', async () => {
+  const btn = $('deployBtn');
+  btn.disabled = true;
+  const originalText = btn.innerHTML;
+  btn.textContent = '🚀 Gönderiliyor...';
+  
+  try {
+    const payload = JSON.stringify({ pages: state.data, blogs: state.blogs }, null, 2);
+    const res = await fetch('/.netlify/functions/deploy', {
+      method: 'POST',
+      body: payload
+    });
+    
+    let result;
+    try {
+      result = await res.json();
+    } catch(e) {
+      throw new Error('Netlify sunucusu yanıt vermedi.');
+    }
+    
+    if (res.ok && result.success) {
+      toast('✅ ' + result.message);
+    } else {
+      toast('Hata: ' + (result.error || 'Bilinmeyen hata'), 'error');
+      if (result.details) console.error(result.details);
+    }
+  } catch (err) {
+    toast('Bağlantı hatası: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+});
+
 // ── INIT ─────────────────────────────────────────────────────
 loadState();
 
