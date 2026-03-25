@@ -563,6 +563,14 @@ $('importBtn').addEventListener('click', () => {
 
 // ── DEPLOY (CANLIYA ALMA) ────────────────────────────────────
 $('deployBtn').addEventListener('click', async () => {
+  // Canlıya almadan önce aktif sayfada unutulmuş değişiklik varsa otomatik kaydet
+  if (state.selectedPageId) {
+    try {
+      if (state.contentTab === 'content') saveContentFields(state.selectedPageId);
+      if (state.contentTab === 'seo') saveSEOFields(state.selectedPageId);
+    } catch(e) {}
+  }
+
   const btn = $('deployBtn');
   btn.disabled = true;
   const originalText = btn.innerHTML;
