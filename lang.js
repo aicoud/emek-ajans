@@ -79,11 +79,15 @@
     const isEn = document.documentElement.lang.toLowerCase().includes('en');
     
     let path = window.location.pathname.toLowerCase();
-    if (path.endsWith('/')) path += 'index.html';
+    if (path.endsWith('/') && path.length > 1) path = path.slice(0, -1);
     
-    let pageName = path.split('/').filter(p => p.endsWith('.html'))[0];
-    if (!pageName) pageName = 'index.html';
-    pageName = pageName.replace('.html', '');
+    let pageName = 'index';
+    let parts = path.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      pageName = parts[parts.length - 1];
+      if (pageName === 'en') pageName = 'index';
+    }
+    if (pageName.endsWith('.html')) pageName = pageName.replace('.html', '');
     
     const pageId = (isEn ? 'en-' : 'tr-') + pageName;
     const pageData = data[pageId];
@@ -92,8 +96,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       // Admin klasörü içinde değilsek çalışsın
       if (window.location.pathname.includes('/admin')) return;
-
-      let previewCount = 0;
 
       // Replace Text
       if (pageData.content) {
@@ -116,17 +118,15 @@
               if (str.includes('background-image')) el.setAttribute('style', str.replace(/url\(['"]?.*?['"]?\)/, `url('${img.url}')`));
               else el.style.backgroundImage = `url('${img.url}')`;
             }
-            previewCount++;
           }
         });
       }
 
-      if (previewCount > 0) {
-        const badge = document.createElement('div');
-        badge.innerHTML = `<span>👀 Önizleme Modu (Canlı Değil)</span>`;
-        badge.style.cssText = 'position:fixed;bottom:24px;left:24px;background:#C8102E;color:#fff;padding:8px 16px;border-radius:24px;font-size:12px;font-weight:bold;z-index:999999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
-        document.body.appendChild(badge);
-      }
+      // Her zaman rozeti göster ki çalıştığı anlaşılsın
+      const badge = document.createElement('div');
+      badge.innerHTML = `<span>👀 Önizleme Modu (Canlı Değil)</span>`;
+      badge.style.cssText = 'position:fixed;bottom:24px;left:24px;background:#C8102E;color:#fff;padding:8px 16px;border-radius:24px;font-size:12px;font-weight:bold;z-index:999999;box-shadow:0 4px 12px rgba(0,0,0,0.2)';
+      document.body.appendChild(badge);
     });
 
   } catch(e) { console.error('Preview error:', e); }
